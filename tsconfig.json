@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "include": ["./src/**/*"]
+}
