@@ -3,9 +3,8 @@
   "author": "Connor Mann",
   "license": "MIT",
   "scripts": {
-    "start": "npm run tsc && parcel serve ./src/index.html",
-    "build": "npm run tsc && parcel build ./src/index.html",
-    "tsc": "/usr/local/bin/tsc --noEmit"
+    "start": "tsc --noEmit && parcel serve ./src/index.html",
+    "build": "tsc --noEmit && parcel build ./src/index.html"
   },
   "repository": {
     "type": "git",
