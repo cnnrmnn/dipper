@@ -1,0 +1,16 @@
+.verificationCodeInput {
+  font-family: 'expressway', sans-serif;
+  font-size: 2em;
+  padding-left: 0.2em;
+  width: 4em;
+  letter-spacing: 0.1em;
+  border: solid;
+  border-color: var(--primary-color);
+  border-radius: 0.2em;
+  transition: border-color 0.4s;
+}
+
+.verificationCodeInput:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+}

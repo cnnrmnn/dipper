@@ -1,3 +1,5 @@
+import './VerificationCodeInput.css';
+
 type Props = {
   value: string;
   setValue(value: string): void;
@@ -12,6 +14,12 @@ export default function VerificationCodeInput({
       setValue(event.currentTarget.value);
   }
   return (
-    <input type="text" maxLength={6} value={value} onChange={handleChange} />
+    <input
+      className="verificationCodeInput"
+      type="text"
+      maxLength={6}
+      value={value}
+      onChange={handleChange}
+    />
   );
 }
