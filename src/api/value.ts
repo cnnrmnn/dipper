@@ -8,6 +8,8 @@ export interface ExtraValue {
 export interface ItemValue {
   valueId: number;
   value: string;
+  description: string;
+  imagePath: string;
   extras: ExtraValue[];
 }
 
@@ -21,6 +23,8 @@ export async function getItemValues(): Promise<ItemValue[]> {
         }
         value
         valueId
+        description
+        imagePath
       }
     }
   `;

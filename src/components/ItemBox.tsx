@@ -10,14 +10,12 @@ export default function ItemBox({ itemValue }: Props): JSX.Element {
     <div className="item-box">
       <img
         className="item-box-image"
-        src="https://i.ibb.co/7WrZ8n5/97fd828addb04f04e8e6b374214f4d8b.png"
+        src={`http://localhost:3000${itemValue.imagePath}`}
         alt={itemValue.value}
       />
       <div className="item-box-text">
         <h5 className="item-box-heading">{itemValue.value}</h5>
-        <p className="item-box-description">
-          Fried onion petals with a crispy, flaky breading.
-        </p>
+        <p className="item-box-description">{itemValue.description}</p>
       </div>
     </div>
   );
