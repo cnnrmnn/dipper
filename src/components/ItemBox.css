@@ -1,5 +1,28 @@
 .item-box {
+  display: flex;
+  flex-direction: row;
   border: solid var(--primary-color);
   border-radius: 5px;
-  padding-left: 10px;
+  min-width: 300px;
+}
+
+.item-box-image {
+  width: 100px;
+  height: 100px;
+}
+
+.item-box-text {
+  padding: 5px 10px;
+}
+
+.item-box-heading {
+  margin: 0px;
+  color: var(--primary-color);
+}
+
+.item-box-description {
+  color: var(--tertiary-color);
+  margin: 0px;
+  margin-top: 5px;
+  font-size: 12px;
 }
