@@ -15,7 +15,7 @@ export default function VerificationCodeInput({
   }
   return (
     <input
-      className="verificationCodeInput"
+      className="verification-code-input"
       type="text"
       maxLength={6}
       value={value}
