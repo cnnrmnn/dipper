@@ -3,7 +3,7 @@
   flex-direction: row;
   border: solid var(--primary-color);
   border-radius: 5px;
-  min-width: 300px;
+  width: 300px;
 }
 
 .item-box-image {
@@ -17,6 +17,7 @@
 
 .item-box-heading {
   margin: 0px;
+  font-size: 0.9rem;
   color: var(--primary-color);
 }
 
@@ -24,5 +25,5 @@
   color: var(--tertiary-color);
   margin: 0px;
   margin-top: 5px;
-  font-size: 12px;
+  font-size: 0.75rem;
 }

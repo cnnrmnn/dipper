@@ -14,7 +14,7 @@ export default function ItemBox({ itemValue }: Props): JSX.Element {
         alt={itemValue.value}
       />
       <div className="item-box-text">
-        <h5 className="item-box-heading">{itemValue.value}</h5>
+        <h3 className="item-box-heading">{itemValue.value}</h3>
         <p className="item-box-description">{itemValue.description}</p>
       </div>
     </div>
