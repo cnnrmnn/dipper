@@ -14,7 +14,7 @@ export async function sendCode(phone: string): Promise<boolean> {
       sendCode(phone: $phone)
     }
   `;
-  const data = await request('http://localhost:3000/graphql', q, { phone });
+  const data = await request(`${process.env.SERVER_URL}/graphql`, q, { phone });
   // Unnecessary type assertion. Exists to emphasize that data.sendCode is a
   // boolean rather than another type being coerced into a boolean.
   return data.sendCode as boolean;

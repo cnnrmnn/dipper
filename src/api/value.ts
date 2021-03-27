@@ -28,6 +28,6 @@ export async function getItemValues(): Promise<ItemValue[]> {
       }
     }
   `;
-  const data = await request('http://localhost:3000/graphql', q);
+  const data = await request(`${process.env.SERVER_URL}/graphql`, q);
   return data.itemValues as ItemValue[];
 }

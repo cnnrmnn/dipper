@@ -3,4 +3,5 @@ dist/
 node_modules/
 *.swp
 .DS_Store
+.env
 package-lock.json

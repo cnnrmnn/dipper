@@ -10,7 +10,7 @@ export default function ItemBox({ itemValue }: Props): JSX.Element {
     <div className="item-box">
       <img
         className="item-box-image"
-        src={`http://localhost:3000${itemValue.imagePath}`}
+        src={process.env.SERVER_URL + itemValue.imagePath}
         alt={itemValue.value}
       />
       <div className="item-box-text">
