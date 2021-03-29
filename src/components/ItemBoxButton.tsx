@@ -5,9 +5,5 @@ type Props = {
 };
 
 export function ItemBoxButton({ addItem }: Props): JSX.Element {
-  return (
-    <button className="item-box-button" onClick={addItem}>
-      +
-    </button>
-  );
+  return <button className="item-box-button" onClick={addItem}></button>;
 }
