@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ItemValue } from '../api/value';
 import { Select } from './Select';
 import './ItemBox.css';
+import { ItemBoxButton } from './ItemBoxButton';
 
 type Props = {
   itemValue: ItemValue;
@@ -29,6 +30,7 @@ export default function ItemBox({ itemValue }: Props): JSX.Element {
           ))}
         </Select>
       </div>
+      <ItemBoxButton addItem={() => null} />
     </div>
   );
 }

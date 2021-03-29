@@ -1,0 +1,34 @@
+.item-box-button {
+  align-self: center;
+  background-color: white;
+  border: solid 2.5px var(--primary-color);
+  margin: 0px;
+  margin-right: 5px;
+  /*
+   * 5.656 is half of the difference between 1.25rem and the width of "+" in the
+   * 1.25rem font.
+   */
+  padding: 0px 5.656px;
+  font-size: 1.25rem;
+  border-radius: 50%;
+}
+
+.item-box-button:hover {
+  cursor: pointer;
+}
+
+.item-box-button:active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.item-box-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 1.5px var(--secondary-color);
+}
+
+.item-box-button:disabled {
+  color: var(--tertiary-color);
+  border-color: var(--tertiary-color);
+  cursor: not-allowed;
+}
