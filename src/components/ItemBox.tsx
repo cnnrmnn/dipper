@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { ItemValue } from '../api/value';
+import { Select } from './Select';
 import './ItemBox.css';
 
 type Props = {
@@ -6,6 +8,7 @@ type Props = {
 };
 
 export default function ItemBox({ itemValue }: Props): JSX.Element {
+  const [extra, setExtra] = useState(itemValue.extras[0].valueId.toString());
   return (
     <div className="item-box">
       <img
@@ -14,8 +17,17 @@ export default function ItemBox({ itemValue }: Props): JSX.Element {
         alt={itemValue.value}
       />
       <div className="item-box-text">
-        <h3 className="item-box-heading">{itemValue.value}</h3>
-        <p className="item-box-description">{itemValue.description}</p>
+        <div>
+          <h3 className="item-box-heading">{itemValue.value}</h3>
+          <p className="item-box-description">{itemValue.description}</p>
+        </div>
+        <Select setValue={setExtra}>
+          {itemValue.extras.map((extraValue) => (
+            <option key={extraValue.valueId} value={extraValue.valueId}>
+              {extraValue.value}
+            </option>
+          ))}
+        </Select>
       </div>
     </div>
   );

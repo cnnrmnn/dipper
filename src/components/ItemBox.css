@@ -3,15 +3,18 @@
   flex-direction: row;
   border: solid var(--primary-color);
   border-radius: 5px;
-  width: 300px;
+  width: 340px;
 }
 
 .item-box-image {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
 }
 
 .item-box-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 5px 10px;
 }
 
@@ -24,6 +27,6 @@
 .item-box-description {
   color: var(--tertiary-color);
   margin: 0px;
-  margin-top: 5px;
+  margin-top: 2.5px;
   font-size: 0.75rem;
 }
