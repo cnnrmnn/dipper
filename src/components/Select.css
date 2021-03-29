@@ -1,0 +1,18 @@
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  background: url(../../assets/icons/chevron-down.svg) center right / 24px
+    no-repeat;
+  border: 2.25px solid var(--primary-color);
+  border-radius: 3px;
+  padding: 5px 28px 5px 5px;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.75rem;
+}
+
+.select:focus {
+  border-color: var(--secondary-color);
+}
