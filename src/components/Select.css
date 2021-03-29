@@ -13,6 +13,10 @@
   font-size: 0.75rem;
 }
 
+.select:hover {
+  cursor: pointer;
+}
+
 .select:focus {
   border-color: var(--secondary-color);
 }
