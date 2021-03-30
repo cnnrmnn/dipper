@@ -1,12 +1,12 @@
 .item-box-button {
   align-self: center;
-  border: solid 2.5px var(--primary-color);
+  border: solid 2px var(--primary-color);
   margin: 0px;
   margin-right: 5px;
-  background: url(../../assets/icons/plus.svg) center / 20px no-repeat;
-  height: 24px;
+  background: url(../../assets/icons/plus.svg) center / 16px no-repeat;
+  height: 20px;
   flex-shrink: 0;
-  flex-basis: 24px;
+  flex-basis: 20px;
   border-radius: 50%;
 }
 

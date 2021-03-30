@@ -3,24 +3,24 @@
   flex-direction: row;
   border: solid var(--primary-color);
   border-radius: 5px;
-  width: 375px;
+  width: 315px;
 }
 
 .item-box-image {
-  width: 125px;
-  height: 125px;
+  width: 105px;
+  height: 105px;
 }
 
 .item-box-text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 5px 10px;
+  margin: 4px 7.5px;
 }
 
 .item-box-heading {
   margin: 0px;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   color: var(--primary-color);
 }
 
@@ -28,5 +28,5 @@
   color: var(--tertiary-color);
   margin: 0px;
   margin-top: 2.5px;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
 }
