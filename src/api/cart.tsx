@@ -1,23 +1,20 @@
 import { gql, request } from 'graphql-request';
+import { Item } from './item';
 
 export interface TripleDipper {
   id: number;
   orderId: number;
 }
 
-export async function addToCart(
-  itemValueId: number,
-  extras: number[]
-): Promise<TripleDipper> {
+export async function addToCart(items: Item[]): Promise<TripleDipper> {
   const q = gql`
-    mutation addToCart(itemValueId: Int!, extras: [Int!]!) {
-      id
-      orderId
+    mutation addToCart($items: [ItemValue!]!) {
+      addToCart(items: $items) {
+        id
+        orderId
+      }
     }
   `;
-  const data = await request(`${process.env.SERVER_URL}/graphql`, q, {
-    itemValueId,
-    extras,
-  });
+  const data = await request(`${process.env.SERVER_URL}/graphql`, q, { items });
   return data.addToCart as TripleDipper;
 }

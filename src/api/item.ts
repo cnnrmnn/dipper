@@ -1,19 +1,19 @@
 import { request, gql } from 'graphql-request';
 
-export interface ExtraValue {
+export interface Extra {
   valueId: number;
   value: string;
 }
 
-export interface ItemValue {
+export interface Item {
   valueId: number;
   value: string;
   description: string;
   imagePath: string;
-  extras: ExtraValue[];
+  extras: Extra[];
 }
 
-export async function getItemValues(): Promise<ItemValue[]> {
+export async function getItems(): Promise<Item[]> {
   const q = gql`
     query {
       itemValues {
@@ -29,5 +29,5 @@ export async function getItemValues(): Promise<ItemValue[]> {
     }
   `;
   const data = await request(`${process.env.SERVER_URL}/graphql`, q);
-  return data.itemValues as ItemValue[];
+  return data.itemValues as Item[];
 }
