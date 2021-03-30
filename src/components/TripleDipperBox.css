@@ -1,0 +1,27 @@
+.triple-dipper-box {
+  align-self: start;
+  border: solid var(--primary-color);
+  border-radius: 5px;
+}
+
+.triple-dipper-box-header {
+  padding-right: 150px;
+  margin: 5px;
+}
+.triple-dipper-box-heading {
+  margin: 0px;
+  font-size: 1rem;
+}
+
+.triple-dipper-box-subheading {
+  margin: 0;
+  font-size: 0.75rem;
+  color: grey;
+}
+
+.triple-dipper-box-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px;
+}

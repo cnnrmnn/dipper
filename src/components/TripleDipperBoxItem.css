@@ -1,0 +1,26 @@
+.triple-dipper-box-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px;
+}
+
+.triple-dipper-box-item-text {
+  margin-left: 5px;
+}
+
+.triple-dipper-box-item-heading {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.triple-dipper-box-item-description {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--tertiary-color);
+}
+
+.triple-dipper-box-item-image {
+  height: 50px;
+  width: 50px;
+}
