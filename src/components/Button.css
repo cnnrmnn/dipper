@@ -1,0 +1,30 @@
+.button {
+  background-color: white;
+  border: solid 2px var(--primary-color);
+  border-radius: 2px;
+  padding: 2px 5px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button:active {
+  color: white;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 1.5px var(--secondary-color);
+}
+
+.button:disabled {
+  color: var(--tertiary-color);
+  border-color: var(--tertiary-color);
+  cursor: not-allowed;
+}
