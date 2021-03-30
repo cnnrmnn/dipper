@@ -7,10 +7,10 @@
     no-repeat;
   border: 2.25px solid var(--primary-color);
   border-radius: 3px;
-  padding: 5px 28px 5px 5px;
+  padding: 5px 20px 5px 5px;
   outline: none;
   font-family: inherit;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
 }
 
 .select:hover {
