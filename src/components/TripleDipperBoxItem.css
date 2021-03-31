@@ -18,8 +18,9 @@
   transition: right 500ms, opacity 500ms;
 }
 
-.triple-dipper-box-item-appear-done {
-  right: 0;
+.triple-dipper-box-item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms;
 }
 
 .triple-dipper-box-item-content {

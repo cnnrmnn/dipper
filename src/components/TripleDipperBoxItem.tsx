@@ -1,9 +1,9 @@
+import { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import TripleDipperBoxItemButton from './TripleDipperBoxItemButton';
 import { Extra, Item } from '../api/item';
 import { ItemInput } from '../api/cart';
 import './TripleDipperBoxItem.css';
-import { CSSTransition } from 'react-transition-group';
-import { useState, useEffect } from 'react';
-import TripleDipperBoxItemButton from './TripleDipperBoxItemButton';
 
 type Props = {
   item: Item;
@@ -16,17 +16,17 @@ export default function TripleDipperBoxItem({
   itemInput,
   removeItemInput,
 }: Props): JSX.Element {
-  const [inProp, setInProp] = useState(false);
+  const [inProp, setInProp] = useState(true);
   function getExtra(valueId: number): Extra {
     return item.extras.find((extra) => extra.valueId === valueId) as Extra;
   }
-  useEffect(() => setInProp(true), []);
   return (
     <CSSTransition
-      in={true}
+      in={inProp}
       appear={true}
       timeout={500}
       classNames="triple-dipper-box-item"
+      onExited={removeItemInput}
     >
       <div className="triple-dipper-box-item">
         <div className="triple-dipper-box-item-content">
@@ -41,7 +41,7 @@ export default function TripleDipperBoxItem({
             </p>
           </div>
         </div>
-        <TripleDipperBoxItemButton removeItemInput={removeItemInput} />
+        <TripleDipperBoxItemButton removeItemInput={() => setInProp(false)} />
       </div>
     </CSSTransition>
   );
