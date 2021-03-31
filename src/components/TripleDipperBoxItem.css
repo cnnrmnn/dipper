@@ -5,22 +5,20 @@
   justify-content: space-between;
   margin: 5px;
   position: relative;
-  /* hide item before transition classes are applied */
-  right: 300px;
 }
 
-.triple-dipper-box-item-enter {
+.triple-dipper-box-item-appear {
   opacity: 0;
   right: 300px;
 }
 
-.triple-dipper-box-item-enter-active {
+.triple-dipper-box-item-appear-active {
   right: 0;
   opacity: 1;
   transition: right 500ms, opacity 500ms;
 }
 
-.triple-dipper-box-item-enter-done {
+.triple-dipper-box-item-appear-done {
   right: 0;
 }
 

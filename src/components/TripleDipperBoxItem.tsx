@@ -23,7 +23,8 @@ export default function TripleDipperBoxItem({
   useEffect(() => setInProp(true), []);
   return (
     <CSSTransition
-      in={inProp}
+      in={true}
+      appear={true}
       timeout={500}
       classNames="triple-dipper-box-item"
     >
