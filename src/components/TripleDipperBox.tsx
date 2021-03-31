@@ -30,11 +30,20 @@ export default function TripleDipperBox({
           key={i}
           item={getItem(itemInput.valueId)}
           itemInput={itemInput}
+          removeItemInput={() => null}
         />
       ))}
       <div className="triple-dipper-box-buttons">
-        <Button text="Clear" handleClick={() => setItemInputs([])} />
-        <Button text="Add to cart" handleClick={() => null} />
+        <Button
+          text="Clear"
+          disabled={itemInputs.length === 0}
+          handleClick={() => setItemInputs([])}
+        />
+        <Button
+          text="Add to cart"
+          disabled={itemInputs.length !== 3}
+          handleClick={() => null}
+        />
       </div>
     </div>
   );
