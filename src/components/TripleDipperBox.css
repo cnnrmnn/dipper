@@ -2,6 +2,7 @@
   align-self: start;
   border: solid var(--primary-color);
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .triple-dipper-box-header {
