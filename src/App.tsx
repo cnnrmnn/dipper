@@ -24,7 +24,11 @@ export default function App(): JSX.Element {
     <>
       <h1>dipper</h1>
       <div className="app">
-        <ItemBoxContainer items={items} addItemInput={addItemInput} />
+        <ItemBoxContainer
+          items={items}
+          addItemInput={addItemInput}
+          disabled={itemInputs.length === 3}
+        />
         <TripleDipperBox
           items={items}
           itemInputs={itemInputs}

@@ -20,3 +20,8 @@
 .select:focus {
   border-color: var(--secondary-color);
 }
+
+.select:disabled {
+  border-color: var(--tertiary-color);
+  cursor: not-allowed;
+}

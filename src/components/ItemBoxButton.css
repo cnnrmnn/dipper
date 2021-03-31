@@ -26,7 +26,8 @@
 }
 
 .item-box-button:disabled {
-  color: var(--tertiary-color);
+  background-image: url(../../assets/icons/plus-gray.svg);
   border-color: var(--tertiary-color);
+  color: var(--tertiary-color);
   cursor: not-allowed;
 }
