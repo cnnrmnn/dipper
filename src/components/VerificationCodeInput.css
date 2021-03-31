@@ -1,4 +1,4 @@
-.verification-code-input {
+.input {
   font-family: inherit;
   font-size: 2em;
   padding-left: 0.2em;
@@ -10,7 +10,7 @@
   transition: border-color 0.4s;
 }
 
-.verification-code-input:focus {
+.input:focus {
   outline: none;
   border-color: var(--secondary-color);
 }

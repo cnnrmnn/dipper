@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import TripleDipperBoxItemButton from './TripleDipperBoxItemButton';
 import { Extra, Item } from '../api/item';
 import { ItemInput } from '../api/cart';
-import './TripleDipperBoxItem.css';
+import * as styles from './TripleDipperBoxItem.css';
 
 type Props = {
   item: Item;
@@ -25,18 +25,22 @@ export default function TripleDipperBoxItem({
       in={inProp}
       appear={true}
       timeout={500}
-      classNames="triple-dipper-box-item"
+      classNames={{
+        appear: styles.itemAppear,
+        appearActive: styles.itemAppearActive,
+        exitActive: styles.itemExitActive,
+      }}
       onExited={removeItemInput}
     >
-      <div className="triple-dipper-box-item">
-        <div className="triple-dipper-box-item-content">
+      <div className={styles.item}>
+        <div className={styles.content}>
           <img
-            className="triple-dipper-box-item-image"
+            className={styles.image}
             src={process.env.SERVER_URL + item.imagePath}
           />
-          <div className="triple-dipper-box-item-text">
-            <h3 className="triple-dipper-box-item-heading">{item.value}</h3>
-            <p className="triple-dipper-box-item-description">
+          <div className={styles.text}>
+            <h3 className={styles.heading}>{item.value}</h3>
+            <p className={styles.description}>
               {getExtra(itemInput.extras[0]).value}
             </p>
           </div>

@@ -1,4 +1,4 @@
-.item-box {
+.box {
   display: flex;
   flex-direction: row;
   border: solid var(--primary-color);
@@ -6,25 +6,25 @@
   width: 315px;
 }
 
-.item-box-image {
+.image {
   width: 105px;
   height: 105px;
 }
 
-.item-box-text {
+.text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 4px 7.5px;
 }
 
-.item-box-heading {
+.heading {
   margin: 0px;
   font-size: 0.75rem;
   color: var(--primary-color);
 }
 
-.item-box-description {
+.description {
   color: var(--tertiary-color);
   margin: 0px;
   margin-top: 2.5px;

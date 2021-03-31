@@ -1,4 +1,4 @@
-import './Select.css';
+import { select } from './Select.css';
 
 type Props = {
   children: JSX.Element[];
@@ -15,7 +15,7 @@ export default function Select({
     setValue(event.currentTarget.value);
   }
   return (
-    <select className="select" onChange={handleChange} disabled={disabled}>
+    <select className={select} onChange={handleChange} disabled={disabled}>
       {children}
     </select>
   );

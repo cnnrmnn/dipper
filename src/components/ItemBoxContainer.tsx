@@ -1,7 +1,7 @@
+import ItemBox from './ItemBox';
 import { ItemInput } from '../api/cart';
 import { Item } from '../api/item';
-import ItemBox from './ItemBox';
-import './ItemBoxContainer.css';
+import { container } from './ItemBoxContainer.css';
 
 type Props = {
   items: Item[];
@@ -14,7 +14,7 @@ export default function ItemBoxContainer({
   disabled,
 }: Props): JSX.Element {
   return (
-    <div className="item-box-container">
+    <div className={container}>
       {items.map((item) => (
         <ItemBox
           key={item.valueId}

@@ -1,4 +1,4 @@
-import './ItemBoxButton.css';
+import { button } from './ItemBoxButton.css';
 
 type Props = {
   addItem(): void;
@@ -10,10 +10,6 @@ export default function ItemBoxButton({
   disabled,
 }: Props): JSX.Element {
   return (
-    <button
-      className="item-box-button"
-      onClick={addItem}
-      disabled={disabled}
-    ></button>
+    <button className={button} onClick={addItem} disabled={disabled}></button>
   );
 }

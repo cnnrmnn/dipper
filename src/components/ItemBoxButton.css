@@ -1,4 +1,4 @@
-.item-box-button {
+.button {
   align-self: center;
   border: solid 2px var(--primary-color);
   margin: 0px;
@@ -10,22 +10,22 @@
   border-radius: 50%;
 }
 
-.item-box-button:hover {
+.button:hover {
   cursor: pointer;
 }
 
-.item-box-button:active {
+.button:active {
   background-image: url(../../assets/icons/plus-white.svg);
   background-color: var(--primary-color);
   color: white;
 }
 
-.item-box-button:focus {
+.button:focus {
   outline: none;
   box-shadow: 0 0 0 1.5px var(--secondary-color);
 }
 
-.item-box-button:disabled {
+.button:disabled {
   background-image: url(../../assets/icons/plus-gray.svg);
   border-color: var(--tertiary-color);
   color: var(--tertiary-color);

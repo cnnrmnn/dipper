@@ -3,7 +3,8 @@
     "jsx": "react-jsx",
     "strict": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "plugins": [{ "name": "typescript-css-modules" }]
   },
   "include": ["./src/**/*"]
 }

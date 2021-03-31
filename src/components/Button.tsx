@@ -1,4 +1,4 @@
-import './Button.css';
+import { button } from './Button.css';
 
 type Props = {
   text: string;
@@ -11,7 +11,7 @@ export default function Button({
   handleClick,
 }: Props): JSX.Element {
   return (
-    <button className="button" disabled={disabled} onClick={handleClick}>
+    <button className={button} disabled={disabled} onClick={handleClick}>
       {text}
     </button>
   );

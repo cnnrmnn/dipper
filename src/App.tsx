@@ -3,7 +3,7 @@ import ItemBoxContainer from './components/ItemBoxContainer';
 import TripleDipperBox from './components/TripleDipperBox';
 import { Item, getItems } from './api/item';
 import { ItemInput } from './api/cart';
-import './App.css';
+import { app } from './App.css';
 
 export default function App(): JSX.Element {
   const [items, setItems] = useState([] as Item[]);
@@ -27,7 +27,7 @@ export default function App(): JSX.Element {
   return (
     <>
       <h1>dipper</h1>
-      <div className="app">
+      <div className={app}>
         <ItemBoxContainer
           items={items}
           addItemInput={addItemInput}

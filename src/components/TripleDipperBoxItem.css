@@ -1,4 +1,4 @@
-.triple-dipper-box-item {
+.item {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -7,44 +7,44 @@
   position: relative;
 }
 
-.triple-dipper-box-item-appear {
+.itemAppear {
   opacity: 0;
   right: 300px;
 }
 
-.triple-dipper-box-item-appear-active {
+.itemAppearActive {
   right: 0;
   opacity: 1;
   transition: right 500ms, opacity 500ms;
 }
 
-.triple-dipper-box-item-exit-active {
+.itemExitActive {
   opacity: 0;
   transition: opacity 500ms;
 }
 
-.triple-dipper-box-item-content {
+.content {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.triple-dipper-box-item-text {
+.text {
   margin-left: 5px;
 }
 
-.triple-dipper-box-item-heading {
+.heading {
   margin: 0;
   font-size: 0.85rem;
 }
 
-.triple-dipper-box-item-description {
+.description {
   margin: 0;
   font-size: 0.75rem;
   color: var(--tertiary-color);
 }
 
-.triple-dipper-box-item-image {
+.image {
   height: 50px;
   width: 50px;
 }

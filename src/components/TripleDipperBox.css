@@ -1,27 +1,27 @@
-.triple-dipper-box {
+.box {
   align-self: start;
   border: solid var(--primary-color);
   border-radius: 5px;
   overflow: hidden;
 }
 
-.triple-dipper-box-header {
+.header {
   min-width: 250px;
   margin: 5px;
 }
 
-.triple-dipper-box-heading {
+.heading {
   margin: 0px;
   font-size: 1rem;
 }
 
-.triple-dipper-box-subheading {
+.subheading {
   margin: 0;
   font-size: 0.75rem;
   color: grey;
 }
 
-.triple-dipper-box-buttons {
+.buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

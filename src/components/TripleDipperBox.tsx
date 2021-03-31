@@ -1,8 +1,14 @@
 import TripleDipperBoxItem from './TripleDipperBoxItem';
 import Button from './Button';
 import { Item } from '../api/item';
-import './TripleDipperBox.css';
 import { ItemInput } from '../api/cart';
+import {
+  box,
+  header,
+  heading,
+  subheading,
+  buttons,
+} from './TripleDipperBox.css';
 
 type Props = {
   items: Item[];
@@ -22,10 +28,10 @@ export default function TripleDipperBox({
     return items.find((item) => item.valueId == valueId) as Item;
   }
   return (
-    <div className="triple-dipper-box">
-      <div className="triple-dipper-box-header">
-        <h2 className="triple-dipper-box-heading">Triple Dipper</h2>
-        <p className="triple-dipper-box-subheading">Choose any 3 items</p>
+    <div className={box}>
+      <div className={header}>
+        <h2 className={heading}>Triple Dipper</h2>
+        <p className={subheading}>Choose any 3 items</p>
       </div>
       {itemInputs.map((itemInput, i) => (
         <TripleDipperBoxItem
@@ -35,7 +41,7 @@ export default function TripleDipperBox({
           removeItemInput={() => removeItemInput(i)}
         />
       ))}
-      <div className="triple-dipper-box-buttons">
+      <div className={buttons}>
         <Button
           text="Clear"
           disabled={itemInputs.length === 0}

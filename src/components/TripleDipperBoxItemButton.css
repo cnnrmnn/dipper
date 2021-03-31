@@ -1,4 +1,4 @@
-.triple-dipper-box-item-button {
+.button {
   background: none;
   border: none;
   background: url(../../assets/icons/minus.svg) center / 16px no-repeat;
@@ -6,10 +6,10 @@
   margin: 5px;
 }
 
-.triple-dipper-box-item-button:hover {
+.button:hover {
   cursor: pointer;
 }
 
-.triple-dipper-box-item-button:active {
+.button:active {
   outline: none;
 }
