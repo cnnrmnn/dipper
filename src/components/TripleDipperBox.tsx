@@ -8,11 +8,13 @@ type Props = {
   items: Item[];
   itemInputs: ItemInput[];
   setItemInputs(itemsInputs: ItemInput[]): void;
+  removeItemInput(index: number): void;
 };
 export default function TripleDipperBox({
   items,
   itemInputs,
   setItemInputs,
+  removeItemInput,
 }: Props): JSX.Element {
   function getItem(valueId: number): Item {
     // Assume that an item will be found. If not, something else is seriously
@@ -30,7 +32,7 @@ export default function TripleDipperBox({
           key={i}
           item={getItem(itemInput.valueId)}
           itemInput={itemInput}
-          removeItemInput={() => null}
+          removeItemInput={() => removeItemInput(i)}
         />
       ))}
       <div className="triple-dipper-box-buttons">

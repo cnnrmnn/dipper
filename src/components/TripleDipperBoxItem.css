@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   margin: 5px;
   position: relative;
   /* hide item before transition classes are applied */
@@ -21,6 +22,12 @@
 
 .triple-dipper-box-item-enter-done {
   right: 0;
+}
+
+.triple-dipper-box-item-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .triple-dipper-box-item-text {

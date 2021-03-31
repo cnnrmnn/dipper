@@ -20,6 +20,10 @@ export default function App(): JSX.Element {
       setItemInputs(itemInputs.concat(itemInput));
     }
   }
+  function removeItemInput(index: number): void {
+    console.log(index);
+    setItemInputs(itemInputs.filter((itemInput, i) => i !== index));
+  }
   return (
     <>
       <h1>dipper</h1>
@@ -33,6 +37,7 @@ export default function App(): JSX.Element {
           items={items}
           itemInputs={itemInputs}
           setItemInputs={setItemInputs}
+          removeItemInput={removeItemInput}
         />
       </div>
     </>
