@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { Item } from '../api/item';
 import { ItemBoxButton } from './ItemBoxButton';
 import { Select } from './Select';
+import { ItemInput } from '../api/cart';
 import './ItemBox.css';
 
 type Props = {
   item: Item;
+  addItemInput(itemInput: ItemInput): void;
 };
 
-export default function ItemBox({ item }: Props): JSX.Element {
+export default function ItemBox({ item, addItemInput }: Props): JSX.Element {
   const [extra, setExtra] = useState(item.extras[0].valueId.toString());
   return (
     <div className="item-box">
@@ -30,7 +32,11 @@ export default function ItemBox({ item }: Props): JSX.Element {
           ))}
         </Select>
       </div>
-      <ItemBoxButton addItem={() => null} />
+      <ItemBoxButton
+        addItem={() =>
+          addItemInput({ valueId: item.valueId, extras: [parseInt(extra, 10)] })
+        }
+      />
     </div>
   );
 }

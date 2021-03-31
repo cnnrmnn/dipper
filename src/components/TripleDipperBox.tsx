@@ -1,19 +1,39 @@
 import TripleDipperBoxItem from './TripleDipperBoxItem';
-import './TripleDipperBox.css';
 import Button from './Button';
+import { Item } from '../api/item';
+import './TripleDipperBox.css';
+import { ItemInput } from '../api/cart';
 
-export default function TripleDipperBox(): JSX.Element {
+type Props = {
+  items: Item[];
+  itemInputs: ItemInput[];
+  setItemInputs(itemsInputs: ItemInput[]): void;
+};
+export default function TripleDipperBox({
+  items,
+  itemInputs,
+  setItemInputs,
+}: Props): JSX.Element {
+  function getItem(valueId: number): Item {
+    // Assume that an item will be found. If not, something else is seriously
+    // broken. Type would be Item | undefined if not for type assertion.
+    return items.find((item) => item.valueId == valueId) as Item;
+  }
   return (
     <div className="triple-dipper-box">
       <div className="triple-dipper-box-header">
         <h2 className="triple-dipper-box-heading">Triple Dipper</h2>
         <p className="triple-dipper-box-subheading">Choose any 3 items</p>
       </div>
-      <TripleDipperBoxItem />
-      <TripleDipperBoxItem />
-      <TripleDipperBoxItem />
+      {itemInputs.map((itemInput, i) => (
+        <TripleDipperBoxItem
+          key={i}
+          item={getItem(itemInput.valueId)}
+          itemInput={itemInput}
+        />
+      ))}
       <div className="triple-dipper-box-buttons">
-        <Button text="Clear" handleClick={() => null} />
+        <Button text="Clear" handleClick={() => setItemInputs([])} />
         <Button text="Add to cart" handleClick={() => null} />
       </div>
     </div>

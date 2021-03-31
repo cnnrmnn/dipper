@@ -1,14 +1,18 @@
 import { gql, request } from 'graphql-request';
-import { Item } from './item';
+
+export interface ItemInput {
+  valueId: number;
+  extras: number[];
+}
 
 export interface TripleDipper {
   id: number;
   orderId: number;
 }
 
-export async function addToCart(items: Item[]): Promise<TripleDipper> {
+export async function addToCart(items: ItemInput[]): Promise<TripleDipper> {
   const q = gql`
-    mutation addToCart($items: [ItemValue!]!) {
+    mutation addToCart($items: [ItemInput!]!) {
       addToCart(items: $items) {
         id
         orderId
