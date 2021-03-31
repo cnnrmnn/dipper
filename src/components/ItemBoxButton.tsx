@@ -5,7 +5,10 @@ type Props = {
   disabled: boolean;
 };
 
-export function ItemBoxButton({ addItem, disabled }: Props): JSX.Element {
+export default function ItemBoxButton({
+  addItem,
+  disabled,
+}: Props): JSX.Element {
   return (
     <button
       className="item-box-button"

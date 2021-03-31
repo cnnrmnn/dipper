@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import ItemBoxButton from './ItemBoxButton';
+import Select from './Select';
 import { Item } from '../api/item';
-import { ItemBoxButton } from './ItemBoxButton';
-import { Select } from './Select';
 import { ItemInput } from '../api/cart';
 import './ItemBox.css';
 

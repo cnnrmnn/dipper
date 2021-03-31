@@ -6,7 +6,11 @@ type Props = {
   disabled: boolean;
 };
 
-export function Select({ children, setValue, disabled }: Props): JSX.Element {
+export default function Select({
+  children,
+  setValue,
+  disabled,
+}: Props): JSX.Element {
   function handleChange(event: React.FormEvent<HTMLSelectElement>): void {
     setValue(event.currentTarget.value);
   }
