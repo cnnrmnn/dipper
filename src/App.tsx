@@ -1,3 +1,4 @@
+import './root.css';
 import { useEffect, useState } from 'react';
 import ItemBoxContainer from './components/ItemBoxContainer';
 import TripleDipperBox from './components/TripleDipperBox';

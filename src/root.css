@@ -1,0 +1,8 @@
+@import url('https://use.typekit.net/hns6jxq.css');
+
+:root {
+  --primary-color: black;
+  --secondary-color: #be0000;
+  --tertiary-color: grey;
+  font-family: 'expressway', sans-serif;
+}

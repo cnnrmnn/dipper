@@ -1,12 +1,3 @@
-@import url('https://use.typekit.net/hns6jxq.css');
-
-:root {
-  font-family: 'expressway', sans-serif;
-  --primary-color: black;
-  --secondary-color: #be0000;
-  --tertiary-color: grey;
-}
-
 .app {
   display: flex;
   flex-direction: row;
