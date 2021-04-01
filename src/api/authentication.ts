@@ -19,3 +19,52 @@ export async function sendCode(phone: string): Promise<boolean> {
   // boolean rather than another type being coerced into a boolean.
   return data.sendCode as boolean;
 }
+
+export async function logIn(phone: string, code: string): Promise<User> {
+  const q = gql`
+    mutation logIn($phone: String!, $code: String!) {
+      logIn(phone: $phone, code: $code) {
+        id
+        firstName
+        lastName
+        phone
+        email
+      }
+    }
+  `;
+  const data = await request(`${process.env.SERVER_URL}/graphql`, q, {
+    phone,
+    code,
+  });
+  return data.logIn as User;
+}
+
+export async function signUp(
+  firstName: string,
+  lastName: string,
+  phone: string,
+  email: string,
+  code: string
+): Promise<User> {
+  const q = gql`
+    mutation signUp($firstName: String!, $lastName: String!, $phone: String!,
+      email: String!, $code: String!) {
+      signUp(firstName: $firstName, lastName: $lastName, phone: $phone,
+        email: $email, code: $code) {
+        id
+        firstName
+        lastName
+        phone
+        email
+      }
+    }
+  `;
+  const data = await request(`${process.env.SERVER_URL}/graphql`, q, {
+    firstName,
+    lastName,
+    phone,
+    email,
+    code,
+  });
+  return data.signUp as User;
+}
