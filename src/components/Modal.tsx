@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import ModalButton from './ModalButton';
 import { container, modal, header, heading } from './Modal.css';
 
 type Props = {
@@ -52,7 +53,7 @@ export default function Modal({
       <div className={modal}>
         <div className={header}>
           <h2 className={heading}>{title}</h2>
-          <button onClick={closeModal}>hi</button>
+          <ModalButton closeModal={closeModal} />
         </div>
         {children}
       </div>

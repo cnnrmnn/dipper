@@ -1,0 +1,15 @@
+.button {
+  background: none;
+  border: none;
+  background: url(../../assets/icons/x.svg) center / 16px no-repeat;
+  padding: 8px;
+  margin: 5px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button:active {
+  outline: none;
+}
