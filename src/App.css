@@ -4,7 +4,3 @@
   align-items: center;
   justify-content: space-between;
 }
-
-.blur {
-  filter: blur(2px);
-}
