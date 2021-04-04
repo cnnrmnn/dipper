@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Modal from './Modal';
-import TextInput from './TextInput';
+import PhoneInput from './PhoneInput';
 import { body } from './AuthenticationModal.css';
 
 type Props = {
@@ -14,7 +14,7 @@ export default function AuthenticationModal({
   return (
     <Modal title="Enter your phone" setVisible={setVisible}>
       <div className={body}>
-        <TextInput value={value} setValue={setValue} />
+        <PhoneInput value={value} setValue={setValue} />
       </div>
     </Modal>
   );
