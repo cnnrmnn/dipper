@@ -59,7 +59,7 @@ export default function Modal({
           <h2 className={heading}>{title}</h2>
           <ModalButton closeModal={closeModal} />
         </div>
-        {children}
+        <div>{children}</div>
       </div>
     </div>
   );
