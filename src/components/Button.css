@@ -1,10 +1,9 @@
 .button {
   background-color: white;
   border: solid 2px var(--primary-color);
-  border-radius: 2px;
+  border-radius: 3px;
   padding: 2px 5px;
   font-family: inherit;
-  font-size: 0.8rem;
   font-weight: 600;
 }
 

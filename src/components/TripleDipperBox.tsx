@@ -43,11 +43,13 @@ export default function TripleDipperBox({
       ))}
       <div className={buttons}>
         <Button
+          fontSize="0.8rem"
           text="Clear"
           disabled={itemInputs.length === 0}
           handleClick={() => setItemInputs([])}
         />
         <Button
+          fontSize="0.8rem"
           text="Add to cart"
           disabled={itemInputs.length !== 3}
           handleClick={() => null}
