@@ -4,9 +4,11 @@ type Props = {
   text: string;
   disabled: boolean;
   fontSize: string;
-  handleClick(event: React.MouseEvent<HTMLButtonElement>): void;
+  type?: 'button' | 'submit' | 'reset';
+  handleClick?(event: React.MouseEvent<HTMLButtonElement>): void;
 };
 export default function Button({
+  type,
   text,
   disabled,
   fontSize,
@@ -14,6 +16,7 @@ export default function Button({
 }: Props): JSX.Element {
   return (
     <button
+      type={type}
       className={button}
       style={{ fontSize }}
       disabled={disabled}
