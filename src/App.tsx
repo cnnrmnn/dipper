@@ -46,9 +46,7 @@ export default function App(): JSX.Element {
           removeItemInput={removeItemInput}
         />
       </main>
-      {modalVisible ? (
-        <AuthenticationModal setVisible={setModalVisible} />
-      ) : null}
+      {modalVisible && <AuthenticationModal setVisible={setModalVisible} />}
     </>
   );
 }
