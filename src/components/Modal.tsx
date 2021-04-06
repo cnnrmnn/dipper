@@ -4,12 +4,16 @@ import { container, modal, header, heading } from './Modal.css';
 
 type Props = {
   title: string;
+  height: string;
+  width: string;
   setVisible(visible: boolean): void;
   children: JSX.Element;
 };
 
 export default function Modal({
   title,
+  height,
+  width,
   setVisible,
   children,
 }: Props): JSX.Element {
@@ -50,7 +54,7 @@ export default function Modal({
   }
   return (
     <div className={container} ref={node}>
-      <div className={modal}>
+      <div className={modal} style={{ height, width }}>
         <div className={header}>
           <h2 className={heading}>{title}</h2>
           <ModalButton closeModal={closeModal} />
