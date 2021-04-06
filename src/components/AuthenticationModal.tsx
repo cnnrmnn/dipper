@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import Modal from './Modal';
-import PhoneInput from './PhoneInput';
-import { body } from './AuthenticationModal.css';
-import Button from './Button';
+import VerificationCodeForm from './VerificationCodeForm';
 
 type Props = {
   setVisible(visible: boolean): void;
@@ -11,24 +9,42 @@ type Props = {
 export default function AuthenticationModal({
   setVisible,
 }: Props): JSX.Element {
-  const [value, setValue] = useState('');
+  const [form, setForm] = useState('code');
+  function currentForm(): JSX.Element {
+    switch (form) {
+      case 'code':
+        return <VerificationCodeForm setForm={setForm} />;
+      case 'signup':
+        return <p>Signup form goes here</p>;
+      case 'login':
+        return <p>Login form goes here</p>;
+      // This case should never be reached but ensures we always return a
+      // JSX.Element.
+      default:
+        return <></>;
+    }
+  }
+
+  function currentTitle(): string {
+    switch (form) {
+      case 'code':
+        return 'Enter your phone';
+      case 'signup':
+        return 'Sign up';
+      case 'login':
+        return 'Log in';
+      default:
+        return '';
+    }
+  }
   return (
     <Modal
-      title="Enter your phone"
-      height="300px"
+      title={currentTitle()}
+      height="auto"
       width="300px"
       setVisible={setVisible}
     >
-      <div className={body}>
-        <PhoneInput value={value} setValue={setValue} />
-        <Button
-          fontSize="1rem"
-          text="Send verification code"
-          disabled={value.length !== 10}
-          handleClick={() => null}
-        />
-        <p>Message and data rates may apply</p>
-      </div>
+      {currentForm()}
     </Modal>
   );
 }
