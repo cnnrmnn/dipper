@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { sendCode } from '../api/authentication';
 import Button from './Button';
+import ModalError from './ModalError';
 import PhoneInput from './PhoneInput';
-import styles from './VerificationCodeForm.css';
+import { body, notice } from './VerificationCodeForm.css';
 
 type Props = {
   setForm(form: string): void;
@@ -24,7 +25,7 @@ export default function VerificationCodeForm({ setForm }: Props): JSX.Element {
     }
   }
   return (
-    <form className={styles.body} onSubmit={handleSubmit}>
+    <form className={body} onSubmit={handleSubmit}>
       <PhoneInput value={value} setValue={setValue} />
       <Button
         type="submit"
@@ -32,8 +33,8 @@ export default function VerificationCodeForm({ setForm }: Props): JSX.Element {
         text="Send verification code"
         disabled={value.length !== 10}
       />
-      {error && <p className={styles.error}>{error}</p>}
-      <p className={styles.notice}>Message and data rates may apply.</p>
+      {error && <ModalError message={error} />}
+      <p className={notice}>Message and data rates may apply.</p>
     </form>
   );
 }

@@ -11,13 +11,3 @@
   font-size: 0.7rem;
   margin: 0;
 }
-
-.error {
-  color: red;
-  font-size: 0.75rem;
-  margin: 0;
-}
-
-.error:first-letter {
-  text-transform: capitalize;
-}
