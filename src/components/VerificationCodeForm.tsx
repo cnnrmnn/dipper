@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { sendCode } from '../api/authentication';
 import Button from './Button';
+import ModalForm from './ModalForm';
 import ModalError from './ModalError';
 import PhoneInput from './PhoneInput';
-import { body, notice } from './VerificationCodeForm.css';
+import { notice } from './VerificationCodeForm.css';
 
 type Props = {
   setForm(form: string): void;
@@ -25,7 +26,7 @@ export default function VerificationCodeForm({ setForm }: Props): JSX.Element {
     }
   }
   return (
-    <form className={body} onSubmit={handleSubmit}>
+    <ModalForm onSubmit={handleSubmit}>
       <PhoneInput value={value} setValue={setValue} />
       <Button
         type="submit"
@@ -35,6 +36,6 @@ export default function VerificationCodeForm({ setForm }: Props): JSX.Element {
       />
       {error && <ModalError message={error} />}
       <p className={notice}>Message and data rates may apply.</p>
-    </form>
+    </ModalForm>
   );
 }
