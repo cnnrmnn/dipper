@@ -7,17 +7,22 @@ import PhoneInput from './PhoneInput';
 import { notice } from './VerificationCodeForm.css';
 
 type Props = {
+  phone: string;
+  setPhone(phone: string): void;
   setForm(form: string): void;
 };
-export default function VerificationCodeForm({ setForm }: Props): JSX.Element {
-  const [value, setValue] = useState('');
+export default function VerificationCodeForm({
+  phone,
+  setPhone,
+  setForm,
+}: Props): JSX.Element {
   const [error, setError] = useState('');
 
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     setError('');
     try {
-      const exists = await sendCode(value);
+      const exists = await sendCode(phone);
       if (exists) setForm('login');
       else setForm('signup');
     } catch (error) {
@@ -27,12 +32,12 @@ export default function VerificationCodeForm({ setForm }: Props): JSX.Element {
   }
   return (
     <ModalForm onSubmit={handleSubmit}>
-      <PhoneInput value={value} setValue={setValue} />
+      <PhoneInput value={phone} setValue={setPhone} />
       <Button
         type="submit"
         fontSize="1rem"
         text="Send verification code"
-        disabled={value.length !== 10}
+        disabled={phone.length !== 10}
       />
       {error && <ModalError message={error} />}
       <p className={notice}>Message and data rates may apply.</p>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Modal from './Modal';
+import SignupForm from './SignupForm';
 import VerificationCodeForm from './VerificationCodeForm';
 
 type Props = {
@@ -10,16 +11,23 @@ export default function AuthenticationModal({
   setVisible,
 }: Props): JSX.Element {
   const [form, setForm] = useState('code');
+  const [phone, setPhone] = useState('');
   function currentForm(): JSX.Element {
     switch (form) {
       case 'code':
-        return <VerificationCodeForm setForm={setForm} />;
+        return (
+          <VerificationCodeForm
+            setForm={setForm}
+            phone={phone}
+            setPhone={setPhone}
+          />
+        );
       case 'signup':
-        return <p>Signup form goes here</p>;
+        return <SignupForm setForm={setForm} phone={phone} />;
       case 'login':
         return <p>Login form goes here</p>;
-      // This case should never be reached but ensures we always return a
-      // JSX.Element.
+      // This case should never be reached but ensures the function always
+      // returns a JSX.Element.
       default:
         return <></>;
     }
