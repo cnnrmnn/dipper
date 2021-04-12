@@ -2,8 +2,8 @@ import { button } from './Button.css';
 
 type Props = {
   text: string;
-  disabled: boolean;
   fontSize: string;
+  disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
   handleClick?(event: React.MouseEvent<HTMLButtonElement>): void;
 };
