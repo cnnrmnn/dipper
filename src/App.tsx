@@ -1,10 +1,12 @@
 import './root.css';
 import { useEffect, useState } from 'react';
+import UserContext from './context/user';
 import ItemBoxContainer from './components/ItemBoxContainer';
 import TripleDipperBox from './components/TripleDipperBox';
 import AuthenticationModal from './components/AuthenticationModal';
 import { Item, getItems } from './api/item';
 import { ItemInput } from './api/cart';
+import { User } from './api/authentication';
 import { app } from './App.css';
 
 export default function App(): JSX.Element {
@@ -27,9 +29,11 @@ export default function App(): JSX.Element {
     setItemInputs(itemInputs.filter((itemInput, i) => i !== index));
   }
 
+  const [user, setUser] = useState({} as User);
+
   const [modalVisible, setModalVisible] = useState(true);
   return (
-    <>
+    <UserContext.Provider value={{ user, setUser }}>
       <nav>
         <h1>dipper</h1>
       </nav>
@@ -47,6 +51,6 @@ export default function App(): JSX.Element {
         />
       </main>
       {modalVisible && <AuthenticationModal setVisible={setModalVisible} />}
-    </>
+    </UserContext.Provider>
   );
 }

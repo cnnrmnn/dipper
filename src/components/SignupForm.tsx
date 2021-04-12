@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { signUp } from '../api/authentication';
+import UserContext from '../context/user';
 import Button from './Button';
 import ModalForm from './ModalForm';
 import ModalError from './ModalError';
@@ -20,12 +21,13 @@ export default function SignupForm({ phone, setForm }: Props): JSX.Element {
 
   const [error, setError] = useState('');
 
+  const { setUser } = useContext(UserContext);
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
 
     try {
       const user = await signUp(firstName, lastName, phone, email, code);
-      console.log(user);
+      setUser(user);
     } catch (error) {
       setError(error.response.errors[0].message);
     }

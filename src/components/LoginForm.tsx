@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import UserContext from '../context/user';
 import Button from './Button';
 import ModalForm from './ModalForm';
 import ModalError from './ModalError';
@@ -13,11 +14,12 @@ export default function LoginForm({ phone }: Props): JSX.Element {
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
 
+  const { setUser } = useContext(UserContext);
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     try {
       const user = await logIn(phone, code);
-      console.log(user);
+      setUser(user);
     } catch (error) {
       setError(error.response.errors[0].message);
     }
