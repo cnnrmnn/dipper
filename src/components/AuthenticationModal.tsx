@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import LoginForm from './LoginForm';
 import Modal from './Modal';
 import SignupForm from './SignupForm';
 import VerificationCodeForm from './VerificationCodeForm';
@@ -25,7 +26,7 @@ export default function AuthenticationModal({
       case 'signup':
         return <SignupForm setForm={setForm} phone={phone} />;
       case 'login':
-        return <p>Login form goes here</p>;
+        return <LoginForm phone={phone} />;
       // This case should never be reached but ensures the function always
       // returns a JSX.Element.
       default:
