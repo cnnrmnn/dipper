@@ -12,3 +12,7 @@
   outline: none;
   border-color: var(--secondary-color);
 }
+
+.input::placeholder {
+  color: var(--tertiary-color);
+}

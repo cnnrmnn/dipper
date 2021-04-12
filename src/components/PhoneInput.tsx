@@ -45,6 +45,12 @@ export default function PhoneInput({ value, setValue }: Props): JSX.Element {
     }
   }
   return (
-    <input className={input} type="tel" onKeyDown={handleKeyDown} ref={elt} />
+    <input
+      className={input}
+      type="tel"
+      placeholder="Phone"
+      onKeyDown={handleKeyDown}
+      ref={elt}
+    />
   );
 }

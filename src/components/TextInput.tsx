@@ -3,9 +3,14 @@ import { input } from './TextInput.css';
 type Props = {
   value: string;
   setValue(value: string): void;
+  placeholder?: string;
 };
 
-export default function TextInput({ value, setValue }: Props): JSX.Element {
+export default function TextInput({
+  value,
+  setValue,
+  placeholder,
+}: Props): JSX.Element {
   function handleChange(event: React.FormEvent<HTMLInputElement>): void {
     setValue(event.currentTarget.value);
   }
@@ -14,6 +19,7 @@ export default function TextInput({ value, setValue }: Props): JSX.Element {
       className={input}
       type="text"
       value={value}
+      placeholder={placeholder}
       onChange={handleChange}
     />
   );
