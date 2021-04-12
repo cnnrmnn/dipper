@@ -29,7 +29,7 @@ export default function App(): JSX.Element {
     setItemInputs(itemInputs.filter((itemInput, i) => i !== index));
   }
 
-  const [user, setUser] = useState({} as User);
+  const [user, setUser] = useState(null as User | null);
 
   const [modalVisible, setModalVisible] = useState(true);
   return (
