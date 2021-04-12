@@ -13,7 +13,7 @@ export default function AuthenticationModal({
 }: Props): JSX.Element {
   const [form, setForm] = useState('code');
   const [phone, setPhone] = useState('');
-  function currentForm(): JSX.Element {
+  function currentForm(closeModal: () => void): JSX.Element {
     switch (form) {
       case 'code':
         return (
@@ -24,9 +24,11 @@ export default function AuthenticationModal({
           />
         );
       case 'signup':
-        return <SignupForm setForm={setForm} phone={phone} />;
+        return (
+          <SignupForm setForm={setForm} phone={phone} closeModal={closeModal} />
+        );
       case 'login':
-        return <LoginForm phone={phone} />;
+        return <LoginForm phone={phone} closeModal={closeModal} />;
       // This case should never be reached but ensures the function always
       // returns a JSX.Element.
       default:
@@ -46,6 +48,7 @@ export default function AuthenticationModal({
         return '';
     }
   }
+
   return (
     <Modal
       title={currentTitle()}
@@ -53,7 +56,7 @@ export default function AuthenticationModal({
       width="300px"
       setVisible={setVisible}
     >
-      {currentForm()}
+      {currentForm}
     </Modal>
   );
 }

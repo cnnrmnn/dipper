@@ -7,7 +7,7 @@ type Props = {
   height: string;
   width: string;
   setVisible(visible: boolean): void;
-  children: JSX.Element;
+  children(closeModal: () => void): JSX.Element;
 };
 
 export default function Modal({
@@ -44,7 +44,7 @@ export default function Modal({
   useEffect(() => {
     setSiblingFilters('blur(2px)');
     setBodyOverflow('hidden');
-  });
+  }, []);
 
   function closeModal(): void {
     setBodyOverflow('');
@@ -59,7 +59,7 @@ export default function Modal({
           <h2 className={heading}>{title}</h2>
           <ModalButton closeModal={closeModal} />
         </div>
-        <div>{children}</div>
+        <div>{children(closeModal)}</div>
       </div>
     </div>
   );

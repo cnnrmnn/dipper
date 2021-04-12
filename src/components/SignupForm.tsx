@@ -11,9 +11,14 @@ import { codeInput } from './SignupForm.css';
 type Props = {
   phone: string;
   setForm(form: string): void;
+  closeModal(): void;
 };
 
-export default function SignupForm({ phone, setForm }: Props): JSX.Element {
+export default function SignupForm({
+  phone,
+  setForm,
+  closeModal,
+}: Props): JSX.Element {
   const [code, setCode] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -28,6 +33,7 @@ export default function SignupForm({ phone, setForm }: Props): JSX.Element {
     try {
       const user = await signUp(firstName, lastName, phone, email, code);
       setUser(user);
+      closeModal();
     } catch (error) {
       setError(error.response.errors[0].message);
     }
