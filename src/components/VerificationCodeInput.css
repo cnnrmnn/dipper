@@ -1,16 +1,23 @@
 .input {
   font-family: inherit;
-  font-size: 2em;
-  padding-left: 0.2em;
-  width: 4em;
-  letter-spacing: 0.1em;
+  font-size: 2rem;
+  padding-left: 7.5px;
+  width: 135px;
+  letter-spacing: 0.175rem;
   border: solid;
   border-color: var(--primary-color);
-  border-radius: 0.2em;
+  border-radius: 0.3rem;
   transition: border-color 0.4s;
 }
 
 .input:focus {
   outline: none;
   border-color: var(--secondary-color);
+}
+
+.input:placeholder-shown {
+  font-size: 1rem;
+  letter-spacing: normal;
+  height: 38px;
+  color: var(--tertiary-color);
 }

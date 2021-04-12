@@ -17,6 +17,7 @@ export default function VerificationCodeInput({
     <input
       className={input}
       type="text"
+      placeholder="Verification code"
       maxLength={6}
       value={value}
       onChange={handleChange}
