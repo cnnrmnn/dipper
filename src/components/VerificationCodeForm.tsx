@@ -26,8 +26,7 @@ export default function VerificationCodeForm({
       if (exists) setForm('login');
       else setForm('signup');
     } catch (error) {
-      console.log(error.response.errors[0].message);
-      setError('Unable to send verification code.');
+      setError(error.response.errors[0].message);
     }
   }
   return (
