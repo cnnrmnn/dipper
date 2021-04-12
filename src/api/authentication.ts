@@ -47,10 +47,20 @@ export async function signUp(
   code: string
 ): Promise<User> {
   const q = gql`
-    mutation signUp($firstName: String!, $lastName: String!, $phone: String!,
-      email: String!, $code: String!) {
-      signUp(firstName: $firstName, lastName: $lastName, phone: $phone,
-        email: $email, code: $code) {
+    mutation signUp(
+      $firstName: String!
+      $lastName: String!
+      $phone: String!
+      $email: String!
+      $code: String!
+    ) {
+      signUp(
+        firstName: $firstName
+        lastName: $lastName
+        phone: $phone
+        email: $email
+        code: $code
+      ) {
         id
         firstName
         lastName
