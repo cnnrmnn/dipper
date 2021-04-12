@@ -3,5 +3,12 @@
   flex-direction: column;
   align-items: center;
   margin: 20px;
-  row-gap: 10px;
+}
+
+.body > * {
+  margin-bottom: 10px;
+}
+
+.body :last-child {
+  margin-bottom: 0;
 }
