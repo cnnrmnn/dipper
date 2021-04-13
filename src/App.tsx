@@ -8,6 +8,7 @@ import { Item, getItems } from './api/item';
 import { ItemInput } from './api/cart';
 import { User } from './api/authentication';
 import { app } from './App.css';
+import Navbar from './components/Navbar';
 
 export default function App(): JSX.Element {
   const [items, setItems] = useState([] as Item[]);
@@ -30,13 +31,10 @@ export default function App(): JSX.Element {
   }
 
   const [user, setUser] = useState(null as User | null);
-
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <nav>
-        <h1>dipper</h1>
-      </nav>
+      <Navbar showAuthenticationModal={() => setModalVisible(true)} />
       <main className={app}>
         <ItemBoxContainer
           items={items}

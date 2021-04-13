@@ -1,0 +1,17 @@
+.navbar {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.dropdown {
+  position: absolute;
+  right: 8px;
+  top: 20px;
+}
