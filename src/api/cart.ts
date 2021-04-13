@@ -1,4 +1,5 @@
-import { gql, request } from 'graphql-request';
+import { gql } from 'graphql-request';
+import client from './api';
 
 export interface ItemInput {
   valueId: number;
@@ -19,6 +20,6 @@ export async function addToCart(items: ItemInput[]): Promise<TripleDipper> {
       }
     }
   `;
-  const data = await request(`${process.env.SERVER_URL}/graphql`, q, { items });
+  const data = await client.request(q, { items });
   return data.addToCart as TripleDipper;
 }

@@ -1,4 +1,5 @@
-import { request, gql } from 'graphql-request';
+import { gql } from 'graphql-request';
+import client from './api';
 
 export interface Extra {
   valueId: number;
@@ -28,6 +29,6 @@ export async function getItems(): Promise<Item[]> {
       }
     }
   `;
-  const data = await request(`${process.env.SERVER_URL}/graphql`, q);
+  const data = await client.request(q);
   return data.itemValues as Item[];
 }

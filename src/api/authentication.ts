@@ -1,4 +1,5 @@
-import { request, gql } from 'graphql-request';
+import { gql } from 'graphql-request';
+import client from './api';
 
 export interface User {
   id: number;
@@ -14,7 +15,7 @@ export async function sendCode(phone: string): Promise<boolean> {
       sendCode(phone: $phone)
     }
   `;
-  const data = await request(`${process.env.SERVER_URL}/graphql`, q, { phone });
+  const data = await client.request(q, { phone });
   // Unnecessary type assertion. Exists to emphasize that data.sendCode is a
   // boolean rather than another type being coerced into a boolean.
   return data.sendCode as boolean;
@@ -32,7 +33,7 @@ export async function logIn(phone: string, code: string): Promise<User> {
       }
     }
   `;
-  const data = await request(`${process.env.SERVER_URL}/graphql`, q, {
+  const data = await client.request(q, {
     phone,
     code,
   });
@@ -69,7 +70,7 @@ export async function signUp(
       }
     }
   `;
-  const data = await request(`${process.env.SERVER_URL}/graphql`, q, {
+  const data = await client.request(q, {
     firstName,
     lastName,
     phone,
