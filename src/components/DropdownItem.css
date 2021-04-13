@@ -1,0 +1,9 @@
+.item {
+  list-style-type: none;
+}
+
+.item:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2.5px;
+  cursor: pointer;
+}

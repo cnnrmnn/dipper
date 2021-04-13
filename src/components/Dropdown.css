@@ -1,0 +1,27 @@
+.dropdown {
+  padding: 5px;
+  padding-right: 25px;
+  background: url(../../assets/icons/chevron-down.svg) white top 4px right /
+    24px no-repeat;
+}
+
+.dropdownOpen {
+  box-shadow: 0 0 0 3px var(--primary-color);
+  border-radius: 5px;
+  background-image: url(../../assets/icons/chevron-up.svg);
+}
+
+.dropdown:hover {
+  cursor: pointer;
+}
+
+.heading {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.items {
+  padding: 0;
+  margin: 5px 0;
+}
