@@ -79,3 +79,32 @@ export async function signUp(
   });
   return data.signUp as User;
 }
+
+export async function me(): Promise<User | null> {
+  const q = gql`
+    query {
+      me {
+        id
+        firstName
+        lastName
+        phone
+        email
+      }
+    }
+  `;
+  try {
+    const data = await client.request(q);
+    return data.me;
+  } catch (error) {
+    return null;
+  }
+}
+
+export async function logOut(): Promise<void> {
+  const q = gql`
+    mutation {
+      logOut
+    }
+  `;
+  await client.request(q);
+}

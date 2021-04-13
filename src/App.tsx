@@ -6,7 +6,7 @@ import TripleDipperBox from './components/TripleDipperBox';
 import AuthenticationModal from './components/AuthenticationModal';
 import { Item, getItems } from './api/item';
 import { ItemInput } from './api/cart';
-import { User } from './api/authentication';
+import { me, User } from './api/authentication';
 import { app } from './App.css';
 import Navbar from './components/Navbar';
 
@@ -31,6 +31,12 @@ export default function App(): JSX.Element {
   }
 
   const [user, setUser] = useState(null as User | null);
+  useEffect(() => {
+    async function updateUser(): Promise<void> {
+      setUser(await me());
+    }
+    updateUser();
+  }, []);
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <UserContext.Provider value={{ user, setUser }}>
