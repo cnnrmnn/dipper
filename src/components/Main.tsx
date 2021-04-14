@@ -3,7 +3,7 @@ import UserContext from '../context/user';
 import ItemBoxContainer from './ItemBoxContainer';
 import TripleDipperBox from './TripleDipperBox';
 import { ItemValue, getItemValues } from '../api/value';
-import { ItemInput } from '../api/cart';
+import { ItemInput, TripleDipper, addToCart } from '../api/cart';
 import { main } from './Main.css';
 
 type Props = {
@@ -29,13 +29,8 @@ export default function Main({ showAuthentication }: Props): JSX.Element {
     setItemInputs(itemInputs.filter((itemInput, i) => i !== index));
   }
 
+  const [cart, setCart] = useState([] as TripleDipper[]);
   const { user } = useContext(UserContext);
-  function addToCart(): void {
-    if (!user) {
-      showAuthentication();
-      return;
-    }
-  }
 
   return (
     <main className={main}>
@@ -49,7 +44,14 @@ export default function Main({ showAuthentication }: Props): JSX.Element {
         itemInputs={itemInputs}
         setItemInputs={setItemInputs}
         removeItemInput={removeItemInput}
-        addToCart={addToCart}
+        addToCart={async () => {
+          if (!user) {
+            showAuthentication();
+            return;
+          }
+          const tripleDipper = await addToCart(itemInputs);
+          setCart(cart.concat(tripleDipper));
+        }}
       />
     </main>
   );
