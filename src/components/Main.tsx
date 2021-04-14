@@ -1,11 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import UserContext from '../context/user';
 import ItemBoxContainer from './ItemBoxContainer';
 import TripleDipperBox from './TripleDipperBox';
 import { Item, getItems } from '../api/item';
 import { ItemInput } from '../api/cart';
 import { main } from './Main.css';
 
-export default function Main(): JSX.Element {
+type Props = {
+  showAuthentication(): void;
+};
+
+export default function Main({ showAuthentication }: Props): JSX.Element {
   const [items, setItems] = useState([] as Item[]);
   useEffect(() => {
     async function updateItemValues(): Promise<void> {
@@ -21,9 +26,17 @@ export default function Main(): JSX.Element {
     }
   }
   function removeItemInput(index: number): void {
-    console.log(index);
     setItemInputs(itemInputs.filter((itemInput, i) => i !== index));
   }
+
+  const { user } = useContext(UserContext);
+  function addToCart(): void {
+    if (!user) {
+      showAuthentication();
+      return;
+    }
+  }
+
   return (
     <main className={main}>
       <ItemBoxContainer
@@ -36,6 +49,7 @@ export default function Main(): JSX.Element {
         itemInputs={itemInputs}
         setItemInputs={setItemInputs}
         removeItemInput={removeItemInput}
+        addToCart={addToCart}
       />
     </main>
   );

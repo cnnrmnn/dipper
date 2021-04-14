@@ -15,12 +15,14 @@ type Props = {
   itemInputs: ItemInput[];
   setItemInputs(itemsInputs: ItemInput[]): void;
   removeItemInput(index: number): void;
+  addToCart(): void;
 };
 export default function TripleDipperBox({
   items,
   itemInputs,
   setItemInputs,
   removeItemInput,
+  addToCart,
 }: Props): JSX.Element {
   function getItem(valueId: number): Item {
     // Assume that an item will be found. If not, something else is seriously
@@ -52,7 +54,7 @@ export default function TripleDipperBox({
           fontSize="0.8rem"
           text="Add to cart"
           disabled={itemInputs.length !== 3}
-          handleClick={() => null}
+          handleClick={addToCart}
         />
       </div>
     </div>
