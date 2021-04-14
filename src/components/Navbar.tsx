@@ -7,12 +7,10 @@ import DropdownItem from './DropdownItem';
 import { logo, navbar, dropdown } from './Navbar.css';
 
 type Props = {
-  showAuthenticationModal(): void;
+  showAuthentication(): void;
 };
 
-export default function Navbar({
-  showAuthenticationModal,
-}: Props): JSX.Element {
+export default function Navbar({ showAuthentication }: Props): JSX.Element {
   const { user, setUser } = useContext(UserContext);
 
   async function handleLogOut(): Promise<void> {
@@ -32,7 +30,7 @@ export default function Navbar({
         <Button
           text="Sign in"
           fontSize="1rem"
-          handleClick={showAuthenticationModal}
+          handleClick={showAuthentication}
         />
       )}
     </nav>
