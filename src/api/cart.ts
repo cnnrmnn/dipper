@@ -6,9 +6,20 @@ export interface ItemInput {
   extras: number[];
 }
 
+export interface Extra {
+  valueId: number;
+  value: string;
+}
+
+export interface Item {
+  valueId: number;
+  value: string;
+  extras: Extra[];
+}
 export interface TripleDipper {
   id: number;
   orderId: number;
+  items: Item[];
 }
 
 export async function addToCart(items: ItemInput[]): Promise<TripleDipper> {
@@ -17,6 +28,14 @@ export async function addToCart(items: ItemInput[]): Promise<TripleDipper> {
       addToCart(items: $items) {
         id
         orderId
+        items {
+          valueId
+          value
+          extras {
+            valueId
+            value
+          }
+        }
       }
     }
   `;
