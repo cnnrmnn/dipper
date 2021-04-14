@@ -1,36 +1,36 @@
 import { useState } from 'react';
 import ItemBoxButton from './ItemBoxButton';
 import Select from './Select';
-import { Item } from '../api/item';
+import { ItemValue } from '../api/value';
 import { ItemInput } from '../api/cart';
 import { box, image, text, heading, description } from './ItemBox.css';
 
 type Props = {
-  item: Item;
+  itemValue: ItemValue;
   addItemInput(itemInput: ItemInput): void;
   disabled: boolean;
 };
 
 export default function ItemBox({
-  item,
+  itemValue,
   addItemInput,
   disabled,
 }: Props): JSX.Element {
-  const [extra, setExtra] = useState(item.extras[0].valueId.toString());
+  const [extra, setExtra] = useState(itemValue.extras[0].valueId.toString());
   return (
     <div className={box}>
       <img
         className={image}
-        src={process.env.SERVER_URL + item.imagePath}
-        alt={item.value}
+        src={process.env.SERVER_URL + itemValue.imagePath}
+        alt={itemValue.value}
       />
       <div className={text}>
         <div>
-          <h3 className={heading}>{item.value}</h3>
-          <p className={description}>{item.description}</p>
+          <h3 className={heading}>{itemValue.value}</h3>
+          <p className={description}>{itemValue.description}</p>
         </div>
         <Select setValue={setExtra} disabled={disabled}>
-          {item.extras.map((extraValue) => (
+          {itemValue.extras.map((extraValue) => (
             <option key={extraValue.valueId} value={extraValue.valueId}>
               {extraValue.value}
             </option>
@@ -40,7 +40,10 @@ export default function ItemBox({
       <ItemBoxButton
         disabled={disabled}
         addItem={() =>
-          addItemInput({ valueId: item.valueId, extras: [parseInt(extra, 10)] })
+          addItemInput({
+            valueId: itemValue.valueId,
+            extras: [parseInt(extra, 10)],
+          })
         }
       />
     </div>

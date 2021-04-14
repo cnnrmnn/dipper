@@ -1,6 +1,6 @@
 import TripleDipperBoxItem from './TripleDipperBoxItem';
 import Button from './Button';
-import { Item } from '../api/item';
+import { ItemValue } from '../api/value';
 import { ItemInput } from '../api/cart';
 import {
   box,
@@ -11,23 +11,25 @@ import {
 } from './TripleDipperBox.css';
 
 type Props = {
-  items: Item[];
+  itemValues: ItemValue[];
   itemInputs: ItemInput[];
   setItemInputs(itemsInputs: ItemInput[]): void;
   removeItemInput(index: number): void;
   addToCart(): void;
 };
 export default function TripleDipperBox({
-  items,
+  itemValues,
   itemInputs,
   setItemInputs,
   removeItemInput,
   addToCart,
 }: Props): JSX.Element {
-  function getItem(valueId: number): Item {
+  function getItemValue(valueId: number): ItemValue {
     // Assume that an item will be found. If not, something else is seriously
     // broken. Type would be Item | undefined if not for type assertion.
-    return items.find((item) => item.valueId == valueId) as Item;
+    return itemValues.find(
+      (itemValue) => itemValue.valueId == valueId
+    ) as ItemValue;
   }
   return (
     <div className={box}>
@@ -38,7 +40,7 @@ export default function TripleDipperBox({
       {itemInputs.map((itemInput, i) => (
         <TripleDipperBoxItem
           key={i}
-          item={getItem(itemInput.valueId)}
+          itemValue={getItemValue(itemInput.valueId)}
           itemInput={itemInput}
           removeItemInput={() => removeItemInput(i)}
         />

@@ -1,20 +1,20 @@
 import { gql } from 'graphql-request';
 import client from './api';
 
-export interface Extra {
+export interface ExtraValue {
   valueId: number;
   value: string;
 }
 
-export interface Item {
+export interface ItemValue {
   valueId: number;
   value: string;
   description: string;
   imagePath: string;
-  extras: Extra[];
+  extras: ExtraValue[];
 }
 
-export async function getItems(): Promise<Item[]> {
+export async function getItemValues(): Promise<ItemValue[]> {
   const q = gql`
     query {
       itemValues {
@@ -30,5 +30,5 @@ export async function getItems(): Promise<Item[]> {
     }
   `;
   const data = await client.request(q);
-  return data.itemValues as Item[];
+  return data.itemValues as ItemValue[];
 }

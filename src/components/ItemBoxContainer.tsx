@@ -1,24 +1,24 @@
 import ItemBox from './ItemBox';
 import { ItemInput } from '../api/cart';
-import { Item } from '../api/item';
+import { ItemValue } from '../api/value';
 import { container } from './ItemBoxContainer.css';
 
 type Props = {
-  items: Item[];
+  itemValues: ItemValue[];
   addItemInput(itemInput: ItemInput): void;
   disabled: boolean;
 };
 export default function ItemBoxContainer({
-  items,
+  itemValues,
   addItemInput,
   disabled,
 }: Props): JSX.Element {
   return (
     <div className={container}>
-      {items.map((item) => (
+      {itemValues.map((itemValue) => (
         <ItemBox
-          key={item.valueId}
-          item={item}
+          key={itemValue.valueId}
+          itemValue={itemValue}
           addItemInput={addItemInput}
           disabled={disabled}
         />

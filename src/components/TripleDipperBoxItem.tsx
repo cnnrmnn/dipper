@@ -1,24 +1,26 @@
 import { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import TripleDipperBoxItemButton from './TripleDipperBoxItemButton';
-import { Extra, Item } from '../api/item';
+import { ItemValue, ExtraValue } from '../api/value';
 import { ItemInput } from '../api/cart';
 import * as styles from './TripleDipperBoxItem.css';
 
 type Props = {
-  item: Item;
+  itemValue: ItemValue;
   itemInput: ItemInput;
   removeItemInput(): void;
 };
 
 export default function TripleDipperBoxItem({
-  item,
+  itemValue,
   itemInput,
   removeItemInput,
 }: Props): JSX.Element {
   const [inProp, setInProp] = useState(true);
-  function getExtra(valueId: number): Extra {
-    return item.extras.find((extra) => extra.valueId === valueId) as Extra;
+  function getExtraValue(valueId: number): ExtraValue {
+    return itemValue.extras.find(
+      (extraValue) => extraValue.valueId === valueId
+    ) as ExtraValue;
   }
   return (
     <CSSTransition
@@ -36,12 +38,12 @@ export default function TripleDipperBoxItem({
         <div className={styles.content}>
           <img
             className={styles.image}
-            src={process.env.SERVER_URL + item.imagePath}
+            src={process.env.SERVER_URL + itemValue.imagePath}
           />
           <div className={styles.text}>
-            <h3 className={styles.heading}>{item.value}</h3>
+            <h3 className={styles.heading}>{itemValue.value}</h3>
             <p className={styles.description}>
-              {getExtra(itemInput.extras[0]).value}
+              {getExtraValue(itemInput.extras[0]).value}
             </p>
           </div>
         </div>

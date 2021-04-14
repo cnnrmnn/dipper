@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import UserContext from '../context/user';
 import ItemBoxContainer from './ItemBoxContainer';
 import TripleDipperBox from './TripleDipperBox';
-import { Item, getItems } from '../api/item';
+import { ItemValue, getItemValues } from '../api/value';
 import { ItemInput } from '../api/cart';
 import { main } from './Main.css';
 
@@ -11,10 +11,10 @@ type Props = {
 };
 
 export default function Main({ showAuthentication }: Props): JSX.Element {
-  const [items, setItems] = useState([] as Item[]);
+  const [itemValues, setItemValues] = useState([] as ItemValue[]);
   useEffect(() => {
     async function updateItemValues(): Promise<void> {
-      setItems(await getItems());
+      setItemValues(await getItemValues());
     }
     updateItemValues();
   }, []);
@@ -40,12 +40,12 @@ export default function Main({ showAuthentication }: Props): JSX.Element {
   return (
     <main className={main}>
       <ItemBoxContainer
-        items={items}
+        itemValues={itemValues}
         addItemInput={addItemInput}
         disabled={itemInputs.length === 3}
       />
       <TripleDipperBox
-        items={items}
+        itemValues={itemValues}
         itemInputs={itemInputs}
         setItemInputs={setItemInputs}
         removeItemInput={removeItemInput}
