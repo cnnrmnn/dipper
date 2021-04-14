@@ -42,3 +42,25 @@ export async function addToCart(items: ItemInput[]): Promise<TripleDipper> {
   const data = await client.request(q, { items });
   return data.addToCart as TripleDipper;
 }
+
+export async function getCart(): Promise<TripleDipper[]> {
+  const q = gql`
+    query {
+      currentOrder {
+        tripleDippers {
+          id
+          items {
+            valueId
+            value
+            extras {
+              valueId
+              value
+            }
+          }
+        }
+      }
+    }
+  `;
+  const data = await client.request(q);
+  return data.currentOrder.tripleDippers as TripleDipper[];
+}
