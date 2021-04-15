@@ -1,28 +1,3 @@
-.item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin: 5px 0;
-  position: relative;
-}
-
-.itemAppear {
-  opacity: 0;
-  right: 300px;
-}
-
-.itemAppearActive {
-  right: 0;
-  opacity: 1;
-  transition: right 350ms, opacity 350ms;
-}
-
-.itemExitActive {
-  opacity: 0;
-  transition: opacity 250ms;
-}
-
 .content {
   display: flex;
   flex-direction: row;

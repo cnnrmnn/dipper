@@ -1,8 +1,5 @@
 .item {
-  margin: 7.5px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin: 2.5px 0;
 }
 
 .heading {

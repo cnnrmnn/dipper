@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import BoxItem from './BoxItem';
 import TripleDipperBoxItemButton from './TripleDipperBoxItemButton';
 import { ItemValue, ExtraValue } from '../api/value';
 import { ItemInput } from '../api/cart';
@@ -23,32 +23,20 @@ export default function TripleDipperBoxItem({
     ) as ExtraValue;
   }
   return (
-    <CSSTransition
-      in={inProp}
-      appear={true}
-      timeout={350}
-      classNames={{
-        appear: styles.itemAppear,
-        appearActive: styles.itemAppearActive,
-        exitActive: styles.itemExitActive,
-      }}
-      onExited={removeItemInput}
-    >
-      <div className={styles.item}>
-        <div className={styles.content}>
-          <img
-            className={styles.image}
-            src={process.env.SERVER_URL + itemValue.imagePath}
-          />
-          <div className={styles.text}>
-            <h3 className={styles.heading}>{itemValue.value}</h3>
-            <p className={styles.description}>
-              {getExtraValue(itemInput.extras[0]).value}
-            </p>
-          </div>
+    <BoxItem inProp={inProp} onExited={removeItemInput}>
+      <div className={styles.content}>
+        <img
+          className={styles.image}
+          src={process.env.SERVER_URL + itemValue.imagePath}
+        />
+        <div className={styles.text}>
+          <h3 className={styles.heading}>{itemValue.value}</h3>
+          <p className={styles.description}>
+            {getExtraValue(itemInput.extras[0]).value}
+          </p>
         </div>
-        <TripleDipperBoxItemButton removeItemInput={() => setInProp(false)} />
       </div>
-    </CSSTransition>
+      <TripleDipperBoxItemButton removeItemInput={() => setInProp(false)} />
+    </BoxItem>
   );
 }
