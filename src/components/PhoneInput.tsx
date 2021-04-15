@@ -31,8 +31,8 @@ export default function PhoneInput({ value, setValue }: Props): JSX.Element {
 
   const elt = useRef<HTMLInputElement>(null);
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>): void {
-    event.preventDefault();
     const key = event.key;
+    if (key !== 'Escape' && key !== 'Enter') event.preventDefault();
     let newValue = value;
     if (key >= '0' && key <= '9' && value.length < 10) newValue = value + key;
     if (key == 'Backspace') newValue = value.substring(0, value.length - 1);
