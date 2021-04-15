@@ -1,0 +1,6 @@
+.box {
+  border: solid var(--primary-color);
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 7.5px;
+}

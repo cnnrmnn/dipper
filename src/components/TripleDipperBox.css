@@ -1,13 +1,6 @@
-.box {
-  align-self: start;
-  border: solid var(--primary-color);
-  border-radius: 5px;
-  overflow: hidden;
-}
-
 .header {
   min-width: 250px;
-  margin: 5px;
+  margin-bottom: 5px;
 }
 
 .heading {
@@ -22,8 +15,8 @@
 }
 
 .buttons {
+  margin-top: 5px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 5px;
 }
