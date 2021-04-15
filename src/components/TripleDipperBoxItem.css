@@ -15,12 +15,12 @@
 .itemAppearActive {
   right: 0;
   opacity: 1;
-  transition: right 500ms, opacity 500ms;
+  transition: right 350ms, opacity 350ms;
 }
 
 .itemExitActive {
   opacity: 0;
-  transition: opacity 500ms;
+  transition: opacity 250ms;
 }
 
 .content {
@@ -35,6 +35,7 @@
 
 .heading {
   margin: 0;
+  font-weight: 600;
   font-size: 0.85rem;
 }
 

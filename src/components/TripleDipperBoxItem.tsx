@@ -26,7 +26,7 @@ export default function TripleDipperBoxItem({
     <CSSTransition
       in={inProp}
       appear={true}
-      timeout={500}
+      timeout={350}
       classNames={{
         appear: styles.itemAppear,
         appearActive: styles.itemAppearActive,
