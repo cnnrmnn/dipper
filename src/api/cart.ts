@@ -7,11 +7,13 @@ export interface ItemInput {
 }
 
 export interface Extra {
+  id: number;
   valueId: number;
   value: string;
 }
 
 export interface Item {
+  id: number;
   valueId: number;
   value: string;
   extras: Extra[];
@@ -29,9 +31,11 @@ export async function addToCart(items: ItemInput[]): Promise<TripleDipper> {
         id
         orderId
         items {
+          id
           valueId
           value
           extras {
+            id
             valueId
             value
           }
@@ -43,6 +47,15 @@ export async function addToCart(items: ItemInput[]): Promise<TripleDipper> {
   return data.addToCart as TripleDipper;
 }
 
+export async function removeFromCart(tripleDipperId: number): Promise<void> {
+  const q = gql`
+    mutation removeFromCart($tripleDipperId: Int!) {
+      removeFromCart(tripleDipperId: $tripleDipperId)
+    }
+  `;
+  await client.request(q, { tripleDipperId });
+}
+
 export async function getCart(): Promise<TripleDipper[]> {
   const q = gql`
     query {
@@ -50,9 +63,11 @@ export async function getCart(): Promise<TripleDipper[]> {
         tripleDippers {
           id
           items {
+            id
             valueId
             value
             extras {
+              id
               valueId
               value
             }
