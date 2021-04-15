@@ -4,3 +4,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.right {
+  align-self: start;
+}

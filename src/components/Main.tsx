@@ -1,10 +1,17 @@
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import UserContext from '../context/user';
 import ItemBoxContainer from './ItemBoxContainer';
 import TripleDipperBox from './TripleDipperBox';
 import { ItemValue, getItemValues } from '../api/value';
-import { ItemInput, TripleDipper, addToCart } from '../api/cart';
-import { main } from './Main.css';
+import {
+  ItemInput,
+  TripleDipper,
+  addToCart,
+  getCart,
+  removeFromCart,
+} from '../api/cart';
+import { main, right } from './Main.css';
+import CartBox from './CartBox';
 
 type Props = {
   showAuthentication(): void;
@@ -32,6 +39,38 @@ export default function Main({ showAuthentication }: Props): JSX.Element {
   const [cart, setCart] = useState([] as TripleDipper[]);
   const { user } = useContext(UserContext);
 
+  useEffect(() => {
+    async function updateCart(): Promise<void> {
+      try {
+        setCart(await getCart());
+      } catch (error) {
+        setCart([]);
+      }
+    }
+    updateCart();
+  }, [user]);
+
+  async function createTripleDipper(): Promise<void> {
+    if (!user) {
+      showAuthentication();
+      return;
+    }
+    const tripleDipper = await addToCart(itemInputs);
+    setCart(cart.concat(tripleDipper));
+    setItemInputs([]);
+  }
+  async function destroyTripleDipper(tripleDipperId: number): Promise<void> {
+    try {
+      await removeFromCart(tripleDipperId);
+      setCart(
+        cart.filter((tripleDipper) => tripleDipper.id !== tripleDipperId)
+      );
+    } catch (error) {
+      // This should never happen.
+      console.error(error);
+    }
+  }
+
   return (
     <main className={main}>
       <ItemBoxContainer
@@ -39,20 +78,16 @@ export default function Main({ showAuthentication }: Props): JSX.Element {
         addItemInput={addItemInput}
         disabled={itemInputs.length === 3}
       />
-      <TripleDipperBox
-        itemValues={itemValues}
-        itemInputs={itemInputs}
-        setItemInputs={setItemInputs}
-        removeItemInput={removeItemInput}
-        addToCart={async () => {
-          if (!user) {
-            showAuthentication();
-            return;
-          }
-          const tripleDipper = await addToCart(itemInputs);
-          setCart(cart.concat(tripleDipper));
-        }}
-      />
+      <div className={right}>
+        <TripleDipperBox
+          itemValues={itemValues}
+          itemInputs={itemInputs}
+          setItemInputs={setItemInputs}
+          removeItemInput={removeItemInput}
+          addToCart={createTripleDipper}
+        />
+        <CartBox cart={cart} removeFromCart={destroyTripleDipper} />
+      </div>
     </main>
   );
 }

@@ -15,10 +15,13 @@ export default function App(): JSX.Element {
     updateUser();
   }, []);
   const [authentication, setAuthentication] = useState(false);
+  function showAuthentication(): void {
+    setAuthentication(true);
+  }
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <Navbar showAuthentication={() => setAuthentication(true)} />
-      <Main showAuthentication={() => setAuthentication(true)} />
+      <Navbar showAuthentication={showAuthentication} />
+      <Main showAuthentication={showAuthentication} />
       {authentication && <AuthenticationModal setVisible={setAuthentication} />}
     </UserContext.Provider>
   );
