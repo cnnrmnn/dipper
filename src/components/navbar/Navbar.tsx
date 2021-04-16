@@ -9,9 +9,13 @@ import { logo, navbar, address, account } from './Navbar.css';
 
 type Props = {
   showAuthentication(): void;
+  showAddress(): void;
 };
 
-export default function Navbar({ showAuthentication }: Props): JSX.Element {
+export default function Navbar({
+  showAuthentication,
+  showAddress,
+}: Props): JSX.Element {
   const { user, setUser } = useContext(UserContext);
 
   async function handleLogOut(): Promise<void> {
@@ -23,7 +27,7 @@ export default function Navbar({ showAuthentication }: Props): JSX.Element {
       <h1 className={logo}>dipper</h1>
       {user && (
         <div className={address}>
-          <AddressDropdown />
+          <AddressDropdown showAddress={showAddress} />
         </div>
       )}
       {user ? (
