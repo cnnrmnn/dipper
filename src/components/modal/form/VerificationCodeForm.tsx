@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { sendCode } from '../api/authentication';
-import Button from './Button';
-import ModalForm from './ModalForm';
-import ModalError from './ModalError';
-import PhoneInput from './PhoneInput';
+import { sendCode } from '../../../api/authentication';
+import Button from '../../generic/Button';
+import ModalForm from '../ModalForm';
+import ModalError from '../ModalError';
+import PhoneInput from '../../generic/PhoneInput';
 import { notice } from './VerificationCodeForm.css';
 
 type Props = {

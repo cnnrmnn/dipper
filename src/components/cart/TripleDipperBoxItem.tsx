@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import BoxItem from './BoxItem';
 import TripleDipperBoxItemButton from './TripleDipperBoxItemButton';
-import { ItemValue, ExtraValue } from '../api/value';
-import { ItemInput } from '../api/cart';
+import { ItemValue, ExtraValue } from '../../api/value';
+import { ItemInput } from '../../api/cart';
 import * as styles from './TripleDipperBoxItem.css';
 
 type Props = {

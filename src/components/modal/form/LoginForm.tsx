@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react';
-import UserContext from '../context/user';
-import Button from './Button';
-import ModalForm from './ModalForm';
-import ModalError from './ModalError';
-import VerificationCodeInput from './VerificationCodeInput';
-import { logIn } from '../api/authentication';
+import UserContext from '../../../context/user';
+import Button from '../../generic/Button';
+import ModalForm from '../ModalForm';
+import ModalError from '../ModalError';
+import VerificationCodeInput from '../../generic/VerificationCodeInput';
+import { logIn } from '../../../api/authentication';
 
 type Props = {
   phone: string;

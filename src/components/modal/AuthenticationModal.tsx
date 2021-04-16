@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import LoginForm from './LoginForm';
+import LoginForm from './form/LoginForm';
 import Modal from './Modal';
-import SignupForm from './SignupForm';
-import VerificationCodeForm from './VerificationCodeForm';
+import SignupForm from './form/SignupForm';
+import VerificationCodeForm from './form/VerificationCodeForm';
 
 type Props = {
   setVisible(visible: boolean): void;

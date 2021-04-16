@@ -1,6 +1,6 @@
-import { TripleDipper } from '../api/cart';
+import { TripleDipper } from '../../api/cart';
 import Box from './Box';
-import Button from './Button';
+import Button from '../generic/Button';
 import { header, heading } from './CartBox.css';
 import CartBoxItem from './CartBoxItem';
 

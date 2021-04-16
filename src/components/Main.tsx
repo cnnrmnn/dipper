@@ -1,7 +1,8 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import UserContext from '../context/user';
-import ItemBoxContainer from './ItemBoxContainer';
-import TripleDipperBox from './TripleDipperBox';
+import ItemBoxContainer from './item/ItemBoxContainer';
+import TripleDipperBox from './cart/TripleDipperBox';
+import CartBox from './cart/CartBox';
 import { ItemValue, getItemValues } from '../api/value';
 import {
   ItemInput,
@@ -11,7 +12,6 @@ import {
   removeFromCart,
 } from '../api/cart';
 import { main, right } from './Main.css';
-import CartBox from './CartBox';
 
 type Props = {
   showAuthentication(): void;

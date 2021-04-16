@@ -1,7 +1,7 @@
 .button {
   background: none;
   border: none;
-  background: url(../../assets/icons/trash.svg) center / 16px no-repeat;
+  background: url(../../../assets/icons/trash.svg) center / 16px no-repeat;
   padding: 8px;
   margin: 5px;
 }

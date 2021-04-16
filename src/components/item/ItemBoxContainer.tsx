@@ -1,6 +1,6 @@
 import ItemBox from './ItemBox';
-import { ItemInput } from '../api/cart';
-import { ItemValue } from '../api/value';
+import { ItemInput } from '../../api/cart';
+import { ItemValue } from '../../api/value';
 import { container } from './ItemBoxContainer.css';
 
 type Props = {

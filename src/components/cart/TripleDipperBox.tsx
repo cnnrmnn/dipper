@@ -1,7 +1,7 @@
 import TripleDipperBoxItem from './TripleDipperBoxItem';
-import Button from './Button';
-import { ItemValue } from '../api/value';
-import { ItemInput } from '../api/cart';
+import Button from '../generic/Button';
+import { ItemValue } from '../../api/value';
+import { ItemInput } from '../../api/cart';
 import { header, heading, subheading, buttons } from './TripleDipperBox.css';
 import Box from './Box';
 

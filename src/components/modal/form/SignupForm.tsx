@@ -1,13 +1,12 @@
 import { useContext, useState } from 'react';
-import { signUp } from '../api/authentication';
-import UserContext from '../context/user';
-import Button from './Button';
-import ModalForm from './ModalForm';
-import ModalError from './ModalError';
-import TextInput from './TextInput';
-import VerificationCodeInput from './VerificationCodeInput';
+import { signUp } from '../../../api/authentication';
+import UserContext from '../../../context/user';
+import Button from '../../generic/Button';
+import ModalForm from '../../modal/ModalForm';
+import ModalError from '../../modal/ModalError';
+import TextInput from '../../generic/TextInput';
+import VerificationCodeInput from '../../generic/VerificationCodeInput';
 import { codeInput } from './SignupForm.css';
-
 type Props = {
   phone: string;
   setForm(form: string): void;

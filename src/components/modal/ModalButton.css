@@ -1,7 +1,7 @@
 .button {
   background: none;
   border: none;
-  background: url(../../assets/icons/minus.svg) center / 16px no-repeat;
+  background: url(../../../assets/icons/x.svg) center / 16px no-repeat;
   padding: 8px;
   margin: 5px;
 }

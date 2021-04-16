@@ -3,7 +3,7 @@
   border: solid 2px var(--primary-color);
   margin: 0px;
   margin-right: 5px;
-  background: url(../../assets/icons/plus.svg) center / 16px no-repeat;
+  background: url(../../../assets/icons/plus.svg) center / 16px no-repeat;
   height: 20px;
   flex-shrink: 0;
   flex-basis: 20px;
@@ -15,7 +15,7 @@
 }
 
 .button:active {
-  background-image: url(../../assets/icons/plus-white.svg);
+  background-image: url(../../../assets/icons/plus-white.svg);
   background-color: var(--primary-color);
   color: white;
 }
@@ -26,7 +26,7 @@
 }
 
 .button:disabled {
-  background-image: url(../../assets/icons/plus-gray.svg);
+  background-image: url(../../../assets/icons/plus-gray.svg);
   border-color: var(--tertiary-color);
   color: var(--tertiary-color);
   cursor: not-allowed;

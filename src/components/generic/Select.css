@@ -3,7 +3,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   background-color: transparent;
-  background: url(../../assets/icons/chevron-down.svg) center right / 24px
+  background: url(../../../assets/icons/chevron-down.svg) center right / 24px
     no-repeat;
   border: 2.25px solid var(--primary-color);
   border-radius: 3px;

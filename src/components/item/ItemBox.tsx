@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import ItemBoxButton from './ItemBoxButton';
-import Select from './Select';
-import { ItemValue } from '../api/value';
-import { ItemInput } from '../api/cart';
+import Select from '../generic/Select';
+import { ItemValue } from '../../api/value';
+import { ItemInput } from '../../api/cart';
 import { box, image, text, heading, description } from './ItemBox.css';
 
 type Props = {

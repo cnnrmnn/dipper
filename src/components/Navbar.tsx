@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { logOut } from '../api/authentication';
 import UserContext from '../context/user';
-import Button from './Button';
-import Dropdown from './Dropdown';
-import DropdownItem from './DropdownItem';
+import Button from './generic/Button';
+import Dropdown from './generic/Dropdown';
+import DropdownItem from './generic/DropdownItem';
 import { logo, navbar, dropdown } from './Navbar.css';
 
 type Props = {
