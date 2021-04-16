@@ -1,0 +1,11 @@
+.item {
+  padding: 5px;
+  padding-left: 24px;
+  background: url(../../../assets/icons/radio-off.svg) top 55% left / 20px
+    no-repeat;
+}
+
+.itemSelected,
+.item:active {
+  background-image: url(../../../assets/icons/radio-on.svg);
+}

@@ -10,7 +10,14 @@
   font-size: 1.75rem;
 }
 
-.dropdown {
+.address {
+  position: absolute;
+  right: 50%;
+  top: 23px;
+  transform: translateX(50%);
+}
+
+.account {
   position: absolute;
   right: 8px;
   top: 20px;

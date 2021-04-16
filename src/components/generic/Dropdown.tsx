@@ -1,12 +1,26 @@
 import { useEffect, useRef, useState } from 'react';
-import { dropdown, dropdownOpen, heading, items } from './Dropdown.css';
+import {
+  dropdown,
+  dropdownOutline,
+  dropdownOpen,
+  heading,
+  headingCenter,
+  items,
+} from './Dropdown.css';
 
 type Props = {
   title: string;
+  outline?: boolean;
+  centerHeading?: boolean;
   children: null | JSX.Element | JSX.Element[];
 };
 
-export default function Dropdown({ title, children }: Props): JSX.Element {
+export default function Dropdown({
+  title,
+  outline,
+  centerHeading,
+  children,
+}: Props): JSX.Element {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -20,10 +34,14 @@ export default function Dropdown({ title, children }: Props): JSX.Element {
     return () => document.removeEventListener('click', handleClick, false);
   });
 
-  const className = dropdown + (open ? ` ${dropdownOpen}` : '');
+  const dropdownClass =
+    dropdown +
+    (outline ? ` ${dropdownOutline}` : '') +
+    (open ? ` ${dropdownOpen}` : '');
+  const headingClass = heading + (centerHeading ? ` ${headingCenter}` : '');
   return (
-    <div className={className} ref={ref} onClick={() => setOpen(!open)}>
-      <h2 className={heading}>{title}</h2>
+    <div className={dropdownClass} ref={ref} onClick={() => setOpen(!open)}>
+      <h2 className={headingClass}>{title}</h2>
       {open && <ul className={items}>{children}</ul>}
     </div>
   );

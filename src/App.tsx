@@ -1,9 +1,9 @@
 import './root.css';
 import { useEffect, useState } from 'react';
 import UserContext from './context/user';
-import AuthenticationModal from './components/AuthenticationModal';
+import AuthenticationModal from './components/modal/AuthenticationModal';
 import { me, User } from './api/authentication';
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar/Navbar';
 import Main from './components/Main';
 
 export default function App(): JSX.Element {

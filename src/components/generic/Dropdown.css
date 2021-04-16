@@ -5,6 +5,11 @@
     24px no-repeat;
 }
 
+.dropdownOutline {
+  box-shadow: 0 0 0 3px var(--primary-color);
+  border-radius: 5px;
+}
+
 .dropdownOpen {
   box-shadow: 0 0 0 3px var(--primary-color);
   border-radius: 5px;
@@ -19,6 +24,10 @@
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.headingCenter {
+  text-align: center;
 }
 
 .items {
