@@ -16,11 +16,12 @@ export default function AddressDropdown({ showAddress }: Props): JSX.Element {
   const { user } = useContext(UserContext);
   useEffect(() => {
     async function updateAddresses(): Promise<void> {
-      setAddresses(await getAddresses());
+      const addresses = await getAddresses();
+      setAddresses(addresses);
       setAddress(addresses[0]);
     }
     updateAddresses();
-  }, [user, addresses]);
+  }, [user]);
   return (
     <div className={dropdown}>
       <Dropdown
