@@ -1,9 +1,10 @@
 .input {
+  box-sizing: border-box;
+  width: 100%;
   font-family: inherit;
   font-size: 1rem;
   border: solid var(--primary-color);
   border-radius: 5px;
-  width: 100%;
 }
 
 .input:focus {
