@@ -38,3 +38,49 @@ export async function getAddresses(): Promise<Address[]> {
   const data = await client.request(q);
   return data.addresses as Address[];
 }
+
+export async function createAddress(
+  street: string,
+  unit: string,
+  city: string,
+  state: string,
+  zip: string,
+  notes: string
+): Promise<Address> {
+  const q = gql`
+    mutation createAddress(
+      $street: String!
+      $unit: String!
+      $city: String!
+      $state: String!
+      $zip: String!
+      $notes: String!
+    ) {
+      createAddress(
+        street: $street
+        unit: $unit
+        city: $city
+        state: $state
+        zip: $zip
+        notes: $notes
+      ) {
+        id
+        street
+        unit
+        city
+        state
+        zip
+        notes
+      }
+    }
+  `;
+  const data = await client.request(q, {
+    street,
+    unit,
+    city,
+    state,
+    zip,
+    notes,
+  });
+  return data.createAddress as Address;
+}
