@@ -40,11 +40,7 @@ export default function Dropdown({
     (open ? ` ${dropdownOpen}` : '');
   const headingClass = heading + (centerHeading ? ` ${headingCenter}` : '');
   return (
-    <div
-      className={dropdownClass}
-      ref={ref}
-      onClick={() => !open && setOpen(true)}
-    >
+    <div className={dropdownClass} ref={ref} onClick={() => setOpen(!open)}>
       <h2 className={headingClass}>{title}</h2>
       {open && <ul className={items}>{children}</ul>}
     </div>
