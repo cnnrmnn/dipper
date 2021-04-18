@@ -5,7 +5,7 @@ import { item, itemSelected } from './AddressDropdownItem.css';
 type Props = {
   address: Address;
   selected: boolean;
-  onClick(event: React.MouseEvent<HTMLLIElement>): void;
+  onClick(event: React.MouseEvent): void;
 };
 
 export default function AddressDropdownItem({
@@ -15,8 +15,8 @@ export default function AddressDropdownItem({
 }: Props): JSX.Element {
   const itemClass = item + (selected ? ` ${itemSelected}` : '');
   return (
-    <div className={itemClass}>
-      <DropdownItem text={addressString(address)} onClick={onClick} />
+    <div className={itemClass} onClick={onClick}>
+      <DropdownItem text={addressString(address)} />
     </div>
   );
 }
