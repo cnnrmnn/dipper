@@ -5,16 +5,23 @@ import AddressDropdown from './AddressDropdown';
 import Button from '../generic/Button';
 import Dropdown from '../generic/Dropdown';
 import DropdownItem from '../generic/DropdownItem';
-import { logo, navbar, address, account } from './Navbar.css';
+import { Address } from '../../api/address';
+import * as styles from './Navbar.css';
 
 type Props = {
   showAuthentication(): void;
   showAddress(): void;
+  address: Address | null;
+  setAddress(address: Address | null): void;
+  addresses: Address[];
 };
 
 export default function Navbar({
   showAuthentication,
   showAddress,
+  address,
+  setAddress,
+  addresses,
 }: Props): JSX.Element {
   const { user, setUser } = useContext(UserContext);
 
@@ -23,15 +30,20 @@ export default function Navbar({
     await logOut();
   }
   return (
-    <nav className={navbar}>
-      <h1 className={logo}>dipper</h1>
+    <nav className={styles.navbar}>
+      <h1 className={styles.logo}>dipper</h1>
       {user && (
-        <div className={address}>
-          <AddressDropdown showAddress={showAddress} />
+        <div className={styles.address}>
+          <AddressDropdown
+            showAddress={showAddress}
+            address={address}
+            setAddress={setAddress}
+            addresses={addresses}
+          />
         </div>
       )}
       {user ? (
-        <div className={account}>
+        <div className={styles.account}>
           <Dropdown title={`${user.firstName} ${user.lastName}`}>
             <DropdownItem text="Log out" onClick={handleLogOut} />
           </Dropdown>

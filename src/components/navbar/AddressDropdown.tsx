@@ -1,27 +1,21 @@
-import { useContext, useEffect, useState } from 'react';
-import UserContext from '../../context/user';
 import Dropdown from '../generic/Dropdown';
 import AddressDropdownItem from './AddressDropdownItem';
 import Button from '../generic/Button';
 import { dropdown, button } from './AddressDropdown.css';
-import { addressString, getAddresses, Address } from '../../api/address';
+import { addressString, Address } from '../../api/address';
 
 type Props = {
   showAddress(): void;
+  address: Address | null;
+  setAddress(address: Address | null): void;
+  addresses: Address[];
 };
-export default function AddressDropdown({ showAddress }: Props): JSX.Element {
-  const [address, setAddress] = useState(null as Address | null);
-  const [addresses, setAddresses] = useState([] as Address[]);
-
-  const { user } = useContext(UserContext);
-  useEffect(() => {
-    async function updateAddresses(): Promise<void> {
-      const addresses = await getAddresses();
-      setAddresses(addresses);
-      setAddress(addresses[0]);
-    }
-    updateAddresses();
-  }, [user]);
+export default function AddressDropdown({
+  showAddress,
+  address,
+  setAddress,
+  addresses,
+}: Props): JSX.Element {
   return (
     <div className={dropdown}>
       <Dropdown

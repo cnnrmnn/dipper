@@ -18,6 +18,8 @@ type Props = {
 };
 
 export default function Main({ showAuthentication }: Props): JSX.Element {
+  const { user } = useContext(UserContext);
+
   const [itemValues, setItemValues] = useState([] as ItemValue[]);
   useEffect(() => {
     async function updateItemValues(): Promise<void> {
@@ -37,8 +39,6 @@ export default function Main({ showAuthentication }: Props): JSX.Element {
   }
 
   const [cart, setCart] = useState([] as TripleDipper[]);
-  const { user } = useContext(UserContext);
-
   useEffect(() => {
     async function updateCart(): Promise<void> {
       try {

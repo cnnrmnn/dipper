@@ -7,10 +7,16 @@ import { streetRow, cityRow } from './AddressForm.css';
 import ModalError from '../modal/ModalError';
 
 type Props = {
+  setAddress(address: Address | null): void;
+  addAddress(address: Address): void;
   close(): void;
 };
 
-export default function AddressForm({ close }: Props): JSX.Element {
+export default function AddressForm({
+  setAddress,
+  addAddress,
+  close,
+}: Props): JSX.Element {
   const [street, setStreet] = useState('');
   const [unit, setUnit] = useState('');
   const [city, setCity] = useState('');
@@ -30,6 +36,8 @@ export default function AddressForm({ close }: Props): JSX.Element {
         zip,
         notes
       );
+      setAddress(address);
+      addAddress(address);
       close();
     } catch (error) {
       setError(error.response.errors[0].message);

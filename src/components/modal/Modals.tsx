@@ -1,22 +1,20 @@
-import AddressModal from '../navbar/AddressModal';
-import AuthenticationModal from './AuthenticationModal';
-
 type Props = {
   modal: string;
-  setModal(modal: string): void;
+  addressModal: JSX.Element;
+  authenticationModal: JSX.Element;
 };
 
-export default function Modals({ modal, setModal }: Props): JSX.Element {
-  function close(): void {
-    setModal('');
-  }
-
+export default function Modals({
+  modal,
+  addressModal,
+  authenticationModal,
+}: Props): JSX.Element {
   function currentModal(): JSX.Element {
     switch (modal) {
       case 'authentication':
-        return <AuthenticationModal close={close} />;
+        return authenticationModal;
       case 'address':
-        return <AddressModal close={close} />;
+        return addressModal;
       default:
         return <></>;
     }
