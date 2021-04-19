@@ -37,7 +37,6 @@ export default function AddressDropdown({ showAddress }: Props): JSX.Element {
               key={a.id}
               onClick={() => {
                 setAddress(a);
-                console.log('hi');
               }}
             />
           ))}
