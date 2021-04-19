@@ -8,10 +8,10 @@ import { logIn } from '../../../api/authentication';
 
 type Props = {
   phone: string;
-  closeModal(): void;
+  close(): void;
 };
 
-export default function LoginForm({ phone, closeModal }: Props): JSX.Element {
+export default function LoginForm({ phone, close }: Props): JSX.Element {
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
 
@@ -21,7 +21,7 @@ export default function LoginForm({ phone, closeModal }: Props): JSX.Element {
     try {
       const user = await logIn(phone, code);
       setUser(user);
-      closeModal();
+      close();
     } catch (error) {
       setError(error.response.errors[0].message);
     }

@@ -10,13 +10,13 @@ import { codeInput } from './SignupForm.css';
 type Props = {
   phone: string;
   setForm(form: string): void;
-  closeModal(): void;
+  close(): void;
 };
 
 export default function SignupForm({
   phone,
   setForm,
-  closeModal,
+  close,
 }: Props): JSX.Element {
   const [code, setCode] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -32,7 +32,7 @@ export default function SignupForm({
     try {
       const user = await signUp(firstName, lastName, phone, email, code);
       setUser(user);
-      closeModal();
+      close();
     } catch (error) {
       setError(error.response.errors[0].message);
     }
@@ -41,6 +41,7 @@ export default function SignupForm({
   function validEmail(email: string): boolean {
     return email.match(/.+@.+\..+/) !== null;
   }
+
   return (
     <ModalForm onSubmit={handleSubmit}>
       <div className={codeInput}>

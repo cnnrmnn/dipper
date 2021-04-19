@@ -5,15 +5,13 @@ import SignupForm from './form/SignupForm';
 import VerificationCodeForm from './form/VerificationCodeForm';
 
 type Props = {
-  setVisible(visible: boolean): void;
+  close(): void;
 };
 
-export default function AuthenticationModal({
-  setVisible,
-}: Props): JSX.Element {
+export default function AuthenticationModal({ close }: Props): JSX.Element {
   const [form, setForm] = useState('code');
   const [phone, setPhone] = useState('');
-  function currentForm(closeModal: () => void): JSX.Element {
+  function currentForm(): JSX.Element {
     switch (form) {
       case 'code':
         return (
@@ -24,11 +22,9 @@ export default function AuthenticationModal({
           />
         );
       case 'signup':
-        return (
-          <SignupForm setForm={setForm} phone={phone} closeModal={closeModal} />
-        );
+        return <SignupForm setForm={setForm} phone={phone} close={close} />;
       case 'login':
-        return <LoginForm phone={phone} closeModal={closeModal} />;
+        return <LoginForm phone={phone} close={close} />;
       // This case should never be reached but ensures the function always
       // returns a JSX.Element.
       default:
@@ -50,13 +46,8 @@ export default function AuthenticationModal({
   }
 
   return (
-    <Modal
-      title={currentTitle()}
-      height="auto"
-      width="300px"
-      setVisible={setVisible}
-    >
-      {currentForm}
+    <Modal title={currentTitle()} height="auto" width="300px" close={close}>
+      {currentForm()}
     </Modal>
   );
 }

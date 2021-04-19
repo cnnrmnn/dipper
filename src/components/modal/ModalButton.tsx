@@ -1,9 +1,9 @@
 import { button } from './ModalButton.css';
 
 type Props = {
-  closeModal(): void;
+  close(): void;
 };
 
-export default function ModalButton({ closeModal }: Props): JSX.Element {
-  return <button className={button} onClick={closeModal} />;
+export default function ModalButton({ close }: Props): JSX.Element {
+  return <button className={button} onClick={close} />;
 }

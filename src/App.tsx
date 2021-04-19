@@ -25,13 +25,17 @@ export default function App(): JSX.Element {
   }
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <Navbar
-        showAuthentication={showAuthentication}
-        showAddress={showAddress}
-      />
-      <Main showAuthentication={showAuthentication} />
-      {authentication && <AuthenticationModal setVisible={setAuthentication} />}
-      {address && <AddressModal setVisible={setAddress} />}
+      <div id="app">
+        <Navbar
+          showAuthentication={showAuthentication}
+          showAddress={showAddress}
+        />
+        <Main showAuthentication={showAuthentication} />
+      </div>
+      {authentication && (
+        <AuthenticationModal close={() => setAuthentication(false)} />
+      )}
+      {address && <AddressModal close={() => setAddress(false)} />}
     </UserContext.Provider>
   );
 }

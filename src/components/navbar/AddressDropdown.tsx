@@ -35,7 +35,10 @@ export default function AddressDropdown({ showAddress }: Props): JSX.Element {
               address={a}
               selected={a.id === address?.id}
               key={a.id}
-              onClick={() => setAddress(a)}
+              onClick={() => {
+                setAddress(a);
+                console.log('hi');
+              }}
             />
           ))}
         </>
