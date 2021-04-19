@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import LoginForm from './form/LoginForm';
-import Modal from './Modal';
-import SignupForm from './form/SignupForm';
-import VerificationCodeForm from './form/VerificationCodeForm';
+import LoginForm from './LoginForm';
+import Modal from '../Modal';
+import SignupForm from './SignupForm';
+import VerificationCodeForm from './VerificationCodeForm';
 
 type Props = {
   close(): void;

@@ -5,9 +5,9 @@ import { me, User } from './api/authentication';
 import Navbar from './components/navbar/Navbar';
 import Main from './components/Main';
 import Modals from './components/modal/Modals';
-import AddressModal from './components/navbar/AddressModal';
+import AddressModal from './components/modal/address/AddressModal';
+import AuthenticationModal from './components/modal/authentication/AuthenticationModal';
 import { Address, getAddresses } from './api/address';
-import AuthenticationModal from './components/modal/AuthenticationModal';
 
 export default function App(): JSX.Element {
   const [user, setUser] = useState(null as User | null);

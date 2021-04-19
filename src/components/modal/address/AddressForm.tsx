@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Address, createAddress } from '../../api/address';
-import ModalForm from '../modal/ModalForm';
-import Button from '../generic/Button';
-import TextInput from '../generic/TextInput';
+import { Address, createAddress } from '../../../api/address';
+import ModalForm from '../ModalForm';
+import Button from '../../generic/Button';
+import TextInput from '../../generic/TextInput';
+import ModalError from '../ModalError';
 import { streetRow, cityRow } from './AddressForm.css';
-import ModalError from '../modal/ModalError';
 
 type Props = {
   setAddress(address: Address | null): void;

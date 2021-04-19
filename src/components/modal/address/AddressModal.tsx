@@ -1,5 +1,5 @@
-import { Address } from '../../api/address';
-import Modal from '../modal/Modal';
+import { Address } from '../../../api/address';
+import Modal from '../../modal/Modal';
 import AddressForm from './AddressForm';
 
 type Props = {
