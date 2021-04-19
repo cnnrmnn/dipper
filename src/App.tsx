@@ -1,11 +1,10 @@
 import './root.css';
 import { useEffect, useState } from 'react';
 import UserContext from './context/user';
-import AuthenticationModal from './components/modal/AuthenticationModal';
 import { me, User } from './api/authentication';
 import Navbar from './components/navbar/Navbar';
 import Main from './components/Main';
-import AddressModal from './components/navbar/AddressModal';
+import Modals from './components/modal/Modals';
 
 export default function App(): JSX.Element {
   const [user, setUser] = useState(null as User | null);
@@ -15,27 +14,18 @@ export default function App(): JSX.Element {
     }
     updateUser();
   }, []);
-  const [authentication, setAuthentication] = useState(false);
-  function showAuthentication(): void {
-    setAuthentication(true);
-  }
-  const [address, setAddress] = useState(false);
-  function showAddress(): void {
-    setAddress(true);
-  }
+  const [modal, setModal] = useState('');
+
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <div id="app">
         <Navbar
-          showAuthentication={showAuthentication}
-          showAddress={showAddress}
+          showAuthentication={() => setModal('authentication')}
+          showAddress={() => setModal('address')}
         />
-        <Main showAuthentication={showAuthentication} />
+        <Main showAuthentication={() => setModal('authentication')} />
       </div>
-      {authentication && (
-        <AuthenticationModal close={() => setAuthentication(false)} />
-      )}
-      {address && <AddressModal close={() => setAddress(false)} />}
+      {modal && <Modals modal={modal} setModal={setModal} />}
     </UserContext.Provider>
   );
 }
