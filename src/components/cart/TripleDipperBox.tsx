@@ -33,12 +33,12 @@ export default function TripleDipperBox({
         <p className={subheading}>Choose any 3 items</p>
       </div>
       <>
-        {itemInputs.map((itemInput, i) => (
+        {itemInputs.map((itemInput) => (
           <TripleDipperBoxItem
-            key={i}
+            key={itemInput.id}
             itemValue={getItemValue(itemInput.valueId)}
             itemInput={itemInput}
-            removeItemInput={() => removeItemInput(i)}
+            removeItemInput={() => removeItemInput(itemInput.id)}
           />
         ))}
       </>

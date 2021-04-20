@@ -31,11 +31,12 @@ export default function Main({ setModal }: Props): JSX.Element {
   const [itemInputs, setItemInputs] = useState([] as ItemInput[]);
   function addItemInput(itemInput: ItemInput): void {
     if (itemInputs.length < 3) {
+      itemInput.id = new Date().getTime();
       setItemInputs(itemInputs.concat(itemInput));
     }
   }
-  function removeItemInput(index: number): void {
-    setItemInputs(itemInputs.filter((itemInput, i) => i !== index));
+  function removeItemInput(id: number): void {
+    setItemInputs(itemInputs.filter((itemInput) => itemInput.id !== id));
   }
 
   const [cart, setCart] = useState([] as TripleDipper[]);
@@ -55,7 +56,9 @@ export default function Main({ setModal }: Props): JSX.Element {
       setModal('authentication');
       return;
     }
-    const tripleDipper = await addToCart(itemInputs);
+    const tripleDipper = await addToCart(
+      itemInputs.map(({ id, ...rest }) => rest)
+    );
     setCart(cart.concat(tripleDipper));
     setItemInputs([]);
   }

@@ -2,6 +2,7 @@ import { gql } from 'graphql-request';
 import client from './api';
 
 export interface ItemInput {
+  id?: number;
   valueId: number;
   extras: number[];
 }
