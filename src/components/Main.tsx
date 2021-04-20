@@ -56,6 +56,7 @@ export default function Main({ setModal }: Props): JSX.Element {
       setModal('authentication');
       return;
     }
+    // Remove id field
     const tripleDipper = await addToCart(
       itemInputs.map(({ id, ...rest }) => rest)
     );
@@ -64,10 +65,10 @@ export default function Main({ setModal }: Props): JSX.Element {
   }
   async function destroyTripleDipper(tripleDipperId: number): Promise<void> {
     try {
-      await removeFromCart(tripleDipperId);
       setCart(
         cart.filter((tripleDipper) => tripleDipper.id !== tripleDipperId)
       );
+      await removeFromCart(tripleDipperId);
     } catch (error) {
       // This should never happen.
       console.error(error);
