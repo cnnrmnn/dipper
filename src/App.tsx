@@ -41,13 +41,12 @@ export default function App(): JSX.Element {
     <UserContext.Provider value={{ user, setUser }}>
       <div id="app">
         <Navbar
-          showAuthentication={() => setModal('authentication')}
-          showAddress={() => setModal('address')}
+          setModal={setModal}
           address={address}
           setAddress={setAddress}
           addresses={addresses}
         />
-        <Main showAuthentication={() => setModal('authentication')} />
+        <Main setModal={setModal} />
       </div>
       {modal && (
         <Modals

@@ -14,10 +14,10 @@ import {
 import { main, right } from './Main.css';
 
 type Props = {
-  showAuthentication(): void;
+  setModal(modal: string): void;
 };
 
-export default function Main({ showAuthentication }: Props): JSX.Element {
+export default function Main({ setModal }: Props): JSX.Element {
   const { user } = useContext(UserContext);
 
   const [itemValues, setItemValues] = useState([] as ItemValue[]);
@@ -52,7 +52,7 @@ export default function Main({ showAuthentication }: Props): JSX.Element {
 
   async function createTripleDipper(): Promise<void> {
     if (!user) {
-      showAuthentication();
+      setModal('authentication');
       return;
     }
     const tripleDipper = await addToCart(itemInputs);

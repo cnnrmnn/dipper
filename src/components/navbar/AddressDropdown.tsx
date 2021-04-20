@@ -5,13 +5,13 @@ import { dropdown, button } from './AddressDropdown.css';
 import { addressString, Address } from '../../api/address';
 
 type Props = {
-  showAddress(): void;
+  setModal(modal: string): void;
   address: Address | null;
   setAddress(address: Address | null): void;
   addresses: Address[];
 };
 export default function AddressDropdown({
-  showAddress,
+  setModal,
   address,
   setAddress,
   addresses,
@@ -39,7 +39,7 @@ export default function AddressDropdown({
           <Button
             text="Add an address"
             fontSize="1rem"
-            handleClick={showAddress}
+            handleClick={() => setModal('address')}
           />
         </div>
       </Dropdown>

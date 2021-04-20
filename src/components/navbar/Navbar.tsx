@@ -9,16 +9,14 @@ import { Address } from '../../api/address';
 import * as styles from './Navbar.css';
 
 type Props = {
-  showAuthentication(): void;
-  showAddress(): void;
+  setModal(modal: string): void;
   address: Address | null;
   setAddress(address: Address | null): void;
   addresses: Address[];
 };
 
 export default function Navbar({
-  showAuthentication,
-  showAddress,
+  setModal,
   address,
   setAddress,
   addresses,
@@ -35,7 +33,7 @@ export default function Navbar({
       {user && (
         <div className={styles.address}>
           <AddressDropdown
-            showAddress={showAddress}
+            setModal={setModal}
             address={address}
             setAddress={setAddress}
             addresses={addresses}
@@ -52,7 +50,7 @@ export default function Navbar({
         <Button
           text="Sign in"
           fontSize="1rem"
-          handleClick={showAuthentication}
+          handleClick={() => setModal('authentication')}
         />
       )}
     </nav>
