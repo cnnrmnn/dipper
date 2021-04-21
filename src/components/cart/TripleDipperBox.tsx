@@ -38,7 +38,7 @@ export default function TripleDipperBox({
             key={itemInput.id}
             itemValue={getItemValue(itemInput.valueId)}
             itemInput={itemInput}
-            removeItemInput={() => removeItemInput(itemInput.id)}
+            removeItemInput={() => removeItemInput(itemInput.id as number)}
           />
         ))}
       </>
