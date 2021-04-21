@@ -1,7 +1,7 @@
 import { box } from './Box.css';
 
 type Props = {
-  children: null | JSX.Element | JSX.Element[];
+  children: (null | string | JSX.Element)[];
 };
 
 export default function Box({ children }: Props): JSX.Element {
