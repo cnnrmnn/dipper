@@ -4,8 +4,12 @@ import { container, modal, header, heading } from './Modal.css';
 
 type Props = {
   title: string;
-  height: string;
-  width: string;
+  height?: string;
+  width?: string;
+  minHeight?: string;
+  minWidth?: string;
+  maxHeight?: string;
+  maxWidth?: string;
   children: null | JSX.Element | JSX.Element[];
   close(): void;
 };
@@ -14,6 +18,10 @@ export default function Modal({
   title,
   height,
   width,
+  minHeight,
+  minWidth,
+  maxHeight,
+  maxWidth,
   close,
   children,
 }: Props): JSX.Element {
@@ -53,7 +61,11 @@ export default function Modal({
 
   return (
     <div className={container} onClick={handleClick}>
-      <div className={modal} ref={modalRef} style={{ height, width }}>
+      <div
+        className={modal}
+        ref={modalRef}
+        style={{ height, width, minHeight, minWidth, maxHeight, maxWidth }}
+      >
         <div className={header}>
           <h2 className={heading}>{title}</h2>
           <ModalButton close={close} />
