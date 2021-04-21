@@ -5,9 +5,8 @@ import { me, User } from './api/authentication';
 import Navbar from './components/navbar/Navbar';
 import Main from './components/Main';
 import Modals from './components/modal/Modals';
-import AddressModal from './components/modal/address/AddressModal';
-import AuthenticationModal from './components/modal/authentication/AuthenticationModal';
 import { Address, getAddresses } from './api/address';
+import { Order } from './api/order';
 
 export default function App(): JSX.Element {
   const [user, setUser] = useState(null as User | null);
@@ -32,6 +31,8 @@ export default function App(): JSX.Element {
     updateAddresses();
   }, [user]);
 
+  const [order, setOrder] = useState(null as null | Order);
+
   const [modal, setModal] = useState('');
   function close(): void {
     setModal('');
@@ -46,19 +47,15 @@ export default function App(): JSX.Element {
           setAddress={setAddress}
           addresses={addresses}
         />
-        <Main setModal={setModal} />
+        <Main setModal={setModal} setOrder={setOrder} address={address} />
       </div>
       {modal && (
         <Modals
+          setAddress={setAddress}
+          addAddress={addAddress}
+          order={order}
           modal={modal}
-          addressModal={
-            <AddressModal
-              addAddress={addAddress}
-              setAddress={setAddress}
-              close={close}
-            />
-          }
-          authenticationModal={<AuthenticationModal close={close} />}
+          close={close}
         />
       )}
     </UserContext.Provider>

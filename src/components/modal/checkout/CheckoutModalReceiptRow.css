@@ -1,0 +1,21 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.price {
+  font-size: 0.9rem;
+  margin: 0;
+}

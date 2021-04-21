@@ -1,0 +1,11 @@
+.row {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.notes {
+  font-size: 0.9rem;
+  color: var(--tertiary-color);
+  margin: 5px 0;
+}

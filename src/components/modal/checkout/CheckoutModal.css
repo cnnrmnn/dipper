@@ -1,0 +1,9 @@
+.heading {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}

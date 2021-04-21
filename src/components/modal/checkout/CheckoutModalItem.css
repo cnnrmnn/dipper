@@ -1,0 +1,21 @@
+.modalItem {
+  margin: 10px 0;
+}
+
+.heading {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.item {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 2.5px 0;
+}
+
+.extra {
+  font-size: 0.75rem;
+  margin: 2.5px 0;
+  color: var(--tertiary-color);
+}

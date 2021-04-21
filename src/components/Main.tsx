@@ -4,20 +4,28 @@ import ItemBoxContainer from './item/ItemBoxContainer';
 import TripleDipperBox from './cart/TripleDipperBox';
 import CartBox from './cart/CartBox';
 import { ItemValue, getItemValues } from '../api/value';
+import { Order } from '../api/order';
 import {
   ItemInput,
   TripleDipper,
   addToCart,
-  getCart,
   removeFromCart,
+  getCart,
 } from '../api/cart';
 import { main, right } from './Main.css';
+import { Address } from '../api/address';
 
 type Props = {
   setModal(modal: string): void;
+  setOrder(order: Order | null): void;
+  address: Address | null;
 };
 
-export default function Main({ setModal }: Props): JSX.Element {
+export default function Main({
+  setModal,
+  setOrder,
+  address,
+}: Props): JSX.Element {
   const { user } = useContext(UserContext);
 
   const [itemValues, setItemValues] = useState([] as ItemValue[]);
@@ -50,7 +58,6 @@ export default function Main({ setModal }: Props): JSX.Element {
     }
     updateCart();
   }, [user]);
-
   async function createTripleDipper(): Promise<void> {
     if (!user) {
       setModal('authentication');
@@ -90,7 +97,13 @@ export default function Main({ setModal }: Props): JSX.Element {
           removeItemInput={removeItemInput}
           addToCart={createTripleDipper}
         />
-        <CartBox cart={cart} removeFromCart={destroyTripleDipper} />
+        <CartBox
+          setModal={setModal}
+          setOrder={setOrder}
+          address={address}
+          cart={cart}
+          removeFromCart={destroyTripleDipper}
+        />
       </div>
     </main>
   );

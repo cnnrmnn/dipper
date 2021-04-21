@@ -1,7 +1,7 @@
 .error {
   color: red;
   font-size: 0.75rem;
-  margin: 2.5px 0;
+  margin: 5px 0;
 }
 
 .error:first-letter {
