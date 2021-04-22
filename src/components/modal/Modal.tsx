@@ -70,15 +70,21 @@ export default function Modal({
         ref={modalRef}
         style={{ height, width, minHeight, minWidth, maxHeight, maxWidth }}
       >
-        <div className={styles.header}>
-          <div className={styles.bar}>
-            <h2 className={styles.heading}>{title}</h2>
-            <ModalButton close={close} />
+        {/*
+          Sticky positioned elements must be wrapped in a div to fix a webkit
+          bug
+        */}
+        <div>
+          <div className={styles.header}>
+            <div className={styles.bar}>
+              <h2 className={styles.heading}>{title}</h2>
+              <ModalButton close={close} />
+            </div>
+            {header}
           </div>
-          {header}
+          {children}
+          {footer && <div className={styles.footer}>{footer}</div>}
         </div>
-        <div>{children}</div>
-        {footer && <div className={styles.footer}>{footer}</div>}
       </div>
     </div>
   );

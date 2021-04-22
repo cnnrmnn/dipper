@@ -40,6 +40,6 @@
 .footer {
   background-color: white;
   position: sticky;
-  bottom: 1px;
+  bottom: 0;
   padding-bottom: 10px;
 }
