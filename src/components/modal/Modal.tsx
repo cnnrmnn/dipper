@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import ModalButton from './ModalButton';
-import * as styles from './Modal.css';
+import { container, modal, header, heading } from './Modal.css';
 
 type Props = {
   title: string;
@@ -10,9 +10,7 @@ type Props = {
   minWidth?: string;
   maxHeight?: string;
   maxWidth?: string;
-  children?: JSX.Element | JSX.Element[];
-  header?: JSX.Element;
-  footer?: JSX.Element;
+  children: null | JSX.Element | JSX.Element[];
   close(): void;
 };
 
@@ -26,8 +24,6 @@ export default function Modal({
   maxWidth,
   close,
   children,
-  header,
-  footer,
 }: Props): JSX.Element {
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -64,21 +60,17 @@ export default function Modal({
   });
 
   return (
-    <div className={styles.container} onClick={handleClick}>
+    <div className={container} onClick={handleClick}>
       <div
-        className={styles.modal}
+        className={modal}
         ref={modalRef}
         style={{ height, width, minHeight, minWidth, maxHeight, maxWidth }}
       >
-        <div className={styles.header}>
-          <div className={styles.bar}>
-            <h2 className={styles.heading}>{title}</h2>
-            <ModalButton close={close} />
-          </div>
-          {header}
+        <div className={header}>
+          <h2 className={heading}>{title}</h2>
+          <ModalButton close={close} />
         </div>
         <div>{children}</div>
-        {footer && <div className={styles.footer}>{footer}</div>}
       </div>
     </div>
   );
