@@ -18,18 +18,28 @@
   overflow: auto;
 }
 
-.header {
+.bar {
   align-self: start;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
-  position: sticky;
-  top: 0;
-  padding: 10px 0;
 }
 
 .heading {
   margin: 0;
+}
+
+.header {
+  background-color: white;
+  position: sticky;
+  top: 0;
+  padding-top: 10px;
+}
+
+.footer {
+  background-color: white;
+  position: sticky;
+  bottom: 1px;
+  padding-bottom: 10px;
 }
