@@ -14,13 +14,11 @@
   border-radius: 7.5px;
   background-color: white;
   box-shadow: 0 0 20px 1px;
-  padding: 10px;
-  display: grid;
-  align-items: center;
-  grid-template-rows: auto 1fr;
+  padding: 0 10px;
+  overflow: auto;
 }
 
-.header {
+.bar {
   align-self: start;
   display: flex;
   flex-direction: row;
@@ -30,4 +28,18 @@
 
 .heading {
   margin: 0;
+}
+
+.header {
+  background-color: white;
+  position: sticky;
+  top: 0;
+  padding-top: 10px;
+}
+
+.footer {
+  background-color: white;
+  position: sticky;
+  bottom: 1px;
+  padding-bottom: 10px;
 }
