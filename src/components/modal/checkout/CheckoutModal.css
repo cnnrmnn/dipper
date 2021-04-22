@@ -1,9 +1,34 @@
 .heading {
   font-size: 1.1rem;
-  margin: 10px 0;
+  margin: 0;
 }
 
 .button {
   display: flex;
   justify-content: center;
+}
+
+.items > :first-child,
+.items > :first-child > :first-child {
+  margin-top: 0;
+}
+
+.items > :last-child,
+.items > :last-child > :last-child {
+  margin-bottom: 0;
+}
+
+.top {
+  position: sticky;
+  top: 49px;
+  background-color: white;
+  padding-bottom: 7.5px;
+}
+
+.bottom {
+  position: sticky;
+  bottom: 0px;
+  background-color: white;
+  padding-top: 7.5px;
+  padding-bottom: 10px;
 }
