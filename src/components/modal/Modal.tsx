@@ -11,8 +11,8 @@ type Props = {
   maxHeight?: string;
   maxWidth?: string;
   children?: JSX.Element | JSX.Element[];
-  header?: JSX.Element;
-  footer?: JSX.Element;
+  header?: JSX.Element | null;
+  footer?: JSX.Element | null;
   close(): void;
 };
 

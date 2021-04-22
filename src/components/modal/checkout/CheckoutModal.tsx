@@ -12,14 +12,14 @@ type Props = {
 };
 
 export default function CheckoutModal({ order, close }: Props): JSX.Element {
-  const header = (
+  const header = order && (
     <div className={styles.header}>
       <h3 className={styles.heading}>Deliver to</h3>
       <CheckoutModalAddress address={order.address} />
       <h3 className={styles.heading}>Items</h3>
     </div>
   );
-  const footer = (
+  const footer = order && (
     <div className={styles.footer}>
       <CheckoutModalReceipt order={order} />
       <div className={styles.button}>
