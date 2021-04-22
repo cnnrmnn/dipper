@@ -4,7 +4,7 @@ import Modal from '../Modal';
 import CheckoutModalItem from './CheckoutModalItem';
 import CheckoutModalAddress from './CheckoutModalAddress';
 import CheckoutModalReceipt from './CheckoutModalReceipt';
-import { heading, button, top, bottom, items } from './CheckoutModal.css';
+import * as styles from './CheckoutModal.css';
 
 type Props = {
   order: Order | null;
@@ -12,6 +12,21 @@ type Props = {
 };
 
 export default function CheckoutModal({ order, close }: Props): JSX.Element {
+  const header = (
+    <div className={styles.header}>
+      <h3 className={styles.heading}>Deliver to</h3>
+      <CheckoutModalAddress address={order.address} />
+      <h3 className={styles.heading}>Items</h3>
+    </div>
+  );
+  const footer = (
+    <div className={styles.footer}>
+      <CheckoutModalReceipt order={order} />
+      <div className={styles.button}>
+        <Button text="Place order" fontSize="1rem" />
+      </div>
+    </div>
+  );
   return (
     <Modal
       title="Checkout"
@@ -19,15 +34,12 @@ export default function CheckoutModal({ order, close }: Props): JSX.Element {
       minHeight="400px"
       width="350px"
       close={close}
+      header={header}
+      footer={footer}
     >
       {order ? (
         <>
-          <div className={top}>
-            <h3 className={heading}>Deliver to</h3>
-            <CheckoutModalAddress address={order.address} />
-            <h3 className={heading}>Items</h3>
-          </div>
-          <div className={items}>
+          <div className={styles.items}>
             {order.tripleDippers.map((tripleDipper) => (
               <CheckoutModalItem
                 key={tripleDipper.id}
@@ -35,15 +47,9 @@ export default function CheckoutModal({ order, close }: Props): JSX.Element {
               />
             ))}
           </div>
-          <div className={bottom}>
-            <CheckoutModalReceipt order={order} />
-            <div className={button}>
-              <Button text="Place order" fontSize="1rem" />
-            </div>
-          </div>
         </>
       ) : (
-        <h3 className={heading}>No order found</h3>
+        <h3 className={styles.heading}>No order found</h3>
       )}
     </Modal>
   );
