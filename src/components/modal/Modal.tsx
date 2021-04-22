@@ -78,7 +78,7 @@ export default function Modal({
           {header}
         </div>
         <div>{children}</div>
-        <div className={styles.footer}>{footer}</div>
+        {footer && <div className={styles.footer}>{footer}</div>}
       </div>
     </div>
   );
