@@ -24,17 +24,21 @@ export default function CartBox({
   removeFromCart,
 }: Props): JSX.Element {
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   async function handleClick(): Promise<void> {
     try {
       if (address) {
+        setLoading(true);
         const order = await checkOut(address.id);
         setError('');
         setOrder(order);
+        setLoading(false);
         setModal('checkout');
       } else {
         setError('No address set');
       }
     } catch (error) {
+      setLoading(false);
       setError(error.response.errors[0].message);
     }
   }
@@ -47,6 +51,7 @@ export default function CartBox({
           handleClick={handleClick}
           text="Check out"
           disabled={cart.length === 0}
+          loading={loading}
           fontSize="0.85rem"
         />
       </div>

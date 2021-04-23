@@ -3,6 +3,7 @@ import { button } from './Button.css';
 type Props = {
   text: string;
   fontSize: string;
+  loading?: boolean;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
   handleClick?(event: React.MouseEvent<HTMLButtonElement>): void;
@@ -10,6 +11,7 @@ type Props = {
 export default function Button({
   type,
   text,
+  loading,
   disabled,
   fontSize,
   handleClick,
@@ -22,7 +24,7 @@ export default function Button({
       disabled={disabled}
       onClick={handleClick}
     >
-      {text}
+      {loading ? 'Loading...' : text}
     </button>
   );
 }
