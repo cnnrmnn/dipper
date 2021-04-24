@@ -1,9 +1,9 @@
-import { error } from './ModalError.css';
+import styles from './ModalError.css';
 
 type Props = {
   message: string;
 };
 
 export default function ModalError({ message }: Props): JSX.Element {
-  return <p className={error}>{message}</p>;
+  return <p className={styles.error}>{message}</p>;
 }

@@ -1,9 +1,9 @@
 import TripleDipperBoxItem from './TripleDipperBoxItem';
-import Button from '../generic/Button';
 import { ItemValue } from '../../api/value';
 import { ItemInput } from '../../api/cart';
-import { header, heading, subheading, buttons } from './TripleDipperBox.css';
 import Box from './Box';
+import Button from '../generic/Button';
+import styles from './TripleDipperBox.css';
 
 type Props = {
   itemValues: ItemValue[];
@@ -28,9 +28,9 @@ export default function TripleDipperBox({
   }
   return (
     <Box>
-      <div className={header}>
-        <h2 className={heading}>Triple Dipper</h2>
-        <p className={subheading}>Choose any 3 items</p>
+      <div className={styles.header}>
+        <h2 className={styles.heading}>Triple Dipper</h2>
+        <p className={styles.subheading}>Choose any 3 items</p>
       </div>
       <>
         {itemInputs.map((itemInput) => (
@@ -42,7 +42,7 @@ export default function TripleDipperBox({
           />
         ))}
       </>
-      <div className={buttons}>
+      <div className={styles.buttons}>
         <Button
           fontSize="0.8rem"
           text="Clear"

@@ -1,9 +1,0 @@
-{
-  "extends": "@parcel/config-default",
-  "transformers": {
-    "src/*.{ts,tsx}": ["@parcel/transformer-typescript-tsc"]
-  },
-  "validators": {
-    "src/*.{ts,tsx}": ["@parcel/validator-typescript"]
-  }
-}

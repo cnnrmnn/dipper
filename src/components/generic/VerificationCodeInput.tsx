@@ -1,4 +1,4 @@
-import { input } from './VerificationCodeInput.css';
+import styles from './VerificationCodeInput.css';
 
 type Props = {
   value: string;
@@ -15,7 +15,7 @@ export default function VerificationCodeInput({
   }
   return (
     <input
-      className={input}
+      className={styles.input}
       type="text"
       placeholder="Verification code"
       maxLength={6}

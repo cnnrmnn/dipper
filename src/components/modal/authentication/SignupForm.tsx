@@ -6,7 +6,8 @@ import ModalForm from '../../modal/ModalForm';
 import ModalError from '../../modal/ModalError';
 import TextInput from '../../generic/TextInput';
 import VerificationCodeInput from '../../generic/VerificationCodeInput';
-import { codeInput } from './SignupForm.css';
+import styles from './SignupForm.css';
+
 type Props = {
   phone: string;
   setForm(form: string): void;
@@ -44,7 +45,7 @@ export default function SignupForm({
 
   return (
     <ModalForm onSubmit={handleSubmit}>
-      <div className={codeInput}>
+      <div className={styles.codeInput}>
         <VerificationCodeInput value={code} setValue={setCode} />
       </div>
       <TextInput

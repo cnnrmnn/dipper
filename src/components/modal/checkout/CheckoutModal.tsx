@@ -4,7 +4,7 @@ import Modal from '../Modal';
 import CheckoutModalItem from './CheckoutModalItem';
 import CheckoutModalAddress from './CheckoutModalAddress';
 import CheckoutModalReceipt from './CheckoutModalReceipt';
-import * as styles from './CheckoutModal.css';
+import styles from './CheckoutModal.css';
 
 type Props = {
   order: Order | null;

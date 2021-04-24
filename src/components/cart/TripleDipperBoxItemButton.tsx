@@ -1,4 +1,4 @@
-import { button } from './TripleDipperBoxItemButton.css';
+import styles from './TripleDipperBoxItemButton.css';
 
 type Props = {
   removeItemInput(): void;
@@ -7,5 +7,5 @@ type Props = {
 export default function TripleDipperBoxItemButton({
   removeItemInput,
 }: Props): JSX.Element {
-  return <button className={button} onClick={removeItemInput} />;
+  return <button className={styles.button} onClick={removeItemInput} />;
 }

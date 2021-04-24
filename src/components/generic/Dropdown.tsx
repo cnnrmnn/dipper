@@ -1,12 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-  dropdown,
-  dropdownOutline,
-  dropdownOpen,
-  heading,
-  headingCenter,
-  items,
-} from './Dropdown.css';
+import styles from './Dropdown.css';
 
 type Props = {
   title: string;
@@ -35,14 +28,15 @@ export default function Dropdown({
   });
 
   const dropdownClass =
-    dropdown +
-    (outline ? ` ${dropdownOutline}` : '') +
-    (open ? ` ${dropdownOpen}` : '');
-  const headingClass = heading + (centerHeading ? ` ${headingCenter}` : '');
+    styles.dropdown +
+    (outline ? ` ${styles.dropdownOutline}` : '') +
+    (open ? ` ${styles.dropdownOpen}` : '');
+  const headingClass =
+    styles.heading + (centerHeading ? ` ${styles.headingCenter}` : '');
   return (
     <div className={dropdownClass} ref={ref} onClick={() => setOpen(!open)}>
       <h2 className={headingClass}>{title}</h2>
-      {open && <ul className={items}>{children}</ul>}
+      {open && <ul className={styles.items}>{children}</ul>}
     </div>
   );
 }

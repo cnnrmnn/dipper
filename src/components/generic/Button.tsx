@@ -1,4 +1,4 @@
-import { button } from './Button.css';
+import styles from './Button.css';
 
 type Props = {
   text: string;
@@ -19,7 +19,7 @@ export default function Button({
   return (
     <button
       type={type}
-      className={button}
+      className={styles.button}
       style={{ fontSize }}
       disabled={disabled}
       onClick={handleClick}

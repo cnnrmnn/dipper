@@ -1,8 +1,8 @@
 import Dropdown from '../generic/Dropdown';
 import AddressDropdownItem from './AddressDropdownItem';
 import Button from '../generic/Button';
-import { dropdown, button } from './AddressDropdown.css';
 import { addressString, Address } from '../../api/address';
+import styles from './AddressDropdown.css';
 
 type Props = {
   setModal(modal: string): void;
@@ -17,7 +17,7 @@ export default function AddressDropdown({
   addresses,
 }: Props): JSX.Element {
   return (
-    <div className={dropdown}>
+    <div className={styles.dropdown}>
       <Dropdown
         title={address ? addressString(address) : 'Add an address'}
         outline={true}
@@ -35,7 +35,7 @@ export default function AddressDropdown({
             />
           ))}
         </>
-        <div className={button}>
+        <div className={styles.button}>
           <Button
             text="Add an address"
             fontSize="1rem"

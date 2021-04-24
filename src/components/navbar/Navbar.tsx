@@ -6,7 +6,7 @@ import Button from '../generic/Button';
 import Dropdown from '../generic/Dropdown';
 import DropdownItem from '../generic/DropdownItem';
 import { Address } from '../../api/address';
-import * as styles from './Navbar.css';
+import styles from './Navbar.css';
 
 type Props = {
   setModal(modal: string): void;

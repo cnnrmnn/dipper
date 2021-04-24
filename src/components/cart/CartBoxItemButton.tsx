@@ -1,4 +1,4 @@
-import { button } from './CartBoxItemButton.css';
+import styles from './CartBoxItemButton.css';
 
 type Props = {
   removeFromCart(): void;
@@ -7,5 +7,5 @@ type Props = {
 export default function CartBoxItemButton({
   removeFromCart,
 }: Props): JSX.Element {
-  return <button className={button} onClick={removeFromCart} />;
+  return <button className={styles.button} onClick={removeFromCart} />;
 }

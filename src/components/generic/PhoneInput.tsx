@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { input } from './PhoneInput.css';
+import styles from './PhoneInput.css';
 
 type Props = {
   value: string;
@@ -46,7 +46,7 @@ export default function PhoneInput({ value, setValue }: Props): JSX.Element {
   }
   return (
     <input
-      className={input}
+      className={styles.input}
       type="tel"
       placeholder="Phone"
       onKeyDown={handleKeyDown}

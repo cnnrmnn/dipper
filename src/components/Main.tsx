@@ -12,7 +12,7 @@ import {
   removeFromCart,
   getCart,
 } from '../api/cart';
-import { main, right } from './Main.css';
+import styles from './Main.css';
 import { Address } from '../api/address';
 
 type Props = {
@@ -83,13 +83,13 @@ export default function Main({
   }
 
   return (
-    <main className={main}>
+    <main className={styles.main}>
       <ItemBoxContainer
         itemValues={itemValues}
         addItemInput={addItemInput}
         disabled={itemInputs.length === 3}
       />
-      <div className={right}>
+      <div className={styles.right}>
         <TripleDipperBox
           itemValues={itemValues}
           itemInputs={itemInputs}

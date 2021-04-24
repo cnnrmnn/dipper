@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import ModalButton from './ModalButton';
-import * as styles from './Modal.css';
+import styles from './Modal.css';
 
 type Props = {
   title: string;

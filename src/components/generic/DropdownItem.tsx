@@ -1,4 +1,4 @@
-import { item } from './DropdownItem.css';
+import styles from './DropdownItem.css';
 
 type Props = {
   text: string;
@@ -7,7 +7,7 @@ type Props = {
 
 export default function DropdownItem({ text, onClick }: Props): JSX.Element {
   return (
-    <li className={item} onClick={onClick}>
+    <li className={styles.item} onClick={onClick}>
       {text}
     </li>
   );

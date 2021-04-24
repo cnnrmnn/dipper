@@ -1,5 +1,5 @@
 import { TripleDipper } from '../../../api/cart';
-import * as styles from './CheckoutModalItem.css';
+import styles from './CheckoutModalItem.css';
 
 type Props = {
   tripleDipper: TripleDipper;

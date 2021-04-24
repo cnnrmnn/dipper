@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { TripleDipper } from '../../api/cart';
 import CartBoxItemButton from './CartBoxItemButton';
 import BoxItem from './BoxItem';
-import { item, heading, subheading, description } from './CartBoxItem.css';
+import styles from './CartBoxItem.css';
 
 type Props = {
   tripleDipper: TripleDipper;
@@ -16,14 +16,14 @@ export default function CartBoxItem({
   const [inProp, setInProp] = useState(true);
   return (
     <BoxItem inProp={inProp} onExited={removeFromCart}>
-      <div className={item}>
+      <div className={styles.item}>
         <div>
-          <h2 className={heading}>Triple Dipper</h2>
+          <h2 className={styles.heading}>Triple Dipper</h2>
           {tripleDipper.items.map((item) => (
             <div key={item.id}>
-              <h3 className={subheading}>{item.value}</h3>
+              <h3 className={styles.subheading}>{item.value}</h3>
               {item.extras.map((extra) => (
-                <h4 key={extra.id} className={description}>
+                <h4 key={extra.id} className={styles.description}>
                   {extra.value}
                 </h4>
               ))}

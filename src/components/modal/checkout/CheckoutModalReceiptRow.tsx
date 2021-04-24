@@ -1,4 +1,5 @@
-import * as styles from './CheckoutModalReceiptRow.css';
+import styles from './CheckoutModalReceiptRow.css';
+
 type Props = {
   title: string;
   price: number;

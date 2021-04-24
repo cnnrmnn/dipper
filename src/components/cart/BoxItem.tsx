@@ -1,5 +1,5 @@
 import { CSSTransition } from 'react-transition-group';
-import * as styles from './BoxItem.css';
+import styles from './BoxItem.css';
 
 type Props = {
   inProp: boolean;

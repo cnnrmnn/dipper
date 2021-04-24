@@ -4,7 +4,7 @@ import ModalForm from '../ModalForm';
 import Button from '../../generic/Button';
 import TextInput from '../../generic/TextInput';
 import ModalError from '../ModalError';
-import { streetRow, cityRow } from './AddressForm.css';
+import styles from './AddressForm.css';
 
 type Props = {
   setAddress(address: Address | null): void;
@@ -46,11 +46,11 @@ export default function AddressForm({
 
   return (
     <ModalForm onSubmit={handleSubmit}>
-      <div className={streetRow}>
+      <div className={styles.streetRow}>
         <TextInput value={street} setValue={setStreet} placeholder="Street" />
         <TextInput value={unit} setValue={setUnit} placeholder="Unit" />
       </div>
-      <div className={cityRow}>
+      <div className={styles.cityRow}>
         <TextInput value={city} setValue={setCity} placeholder="City" />
         <TextInput value={state} setValue={setState} placeholder="State" />
         <TextInput value={zip} setValue={setZip} placeholder="Zip" />

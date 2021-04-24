@@ -1,4 +1,4 @@
-import { input } from './TextInput.css';
+import styles from './TextInput.css';
 
 type Props = {
   value: string;
@@ -16,7 +16,7 @@ export default function TextInput({
   }
   return (
     <input
-      className={input}
+      className={styles.input}
       type="text"
       value={value}
       placeholder={placeholder}

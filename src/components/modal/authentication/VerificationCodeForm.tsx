@@ -4,7 +4,7 @@ import Button from '../../generic/Button';
 import ModalForm from '../ModalForm';
 import ModalError from '../ModalError';
 import PhoneInput from '../../generic/PhoneInput';
-import { notice } from './VerificationCodeForm.css';
+import styles from './VerificationCodeForm.css';
 
 type Props = {
   phone: string;
@@ -39,7 +39,7 @@ export default function VerificationCodeForm({
         disabled={phone.length !== 10}
       />
       {error && <ModalError message={error} />}
-      <p className={notice}>Message and data rates may apply.</p>
+      <p className={styles.notice}>Message and data rates may apply.</p>
     </ModalForm>
   );
 }

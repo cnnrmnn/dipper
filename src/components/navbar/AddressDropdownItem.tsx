@@ -1,6 +1,6 @@
 import { Address, addressString } from '../../api/address';
 import DropdownItem from '../generic/DropdownItem';
-import { item, itemSelected } from './AddressDropdownItem.css';
+import styles from './AddressDropdownItem.css';
 
 type Props = {
   address: Address;
@@ -13,7 +13,7 @@ export default function AddressDropdownItem({
   selected,
   onClick,
 }: Props): JSX.Element {
-  const itemClass = item + (selected ? ` ${itemSelected}` : '');
+  const itemClass = styles.item + (selected ? ` ${styles.itemSelected}` : '');
   return (
     <div className={itemClass} onClick={onClick}>
       <DropdownItem text={addressString(address)} />

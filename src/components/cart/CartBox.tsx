@@ -2,11 +2,11 @@ import { TripleDipper } from '../../api/cart';
 import Box from './Box';
 import BoxError from './BoxError';
 import Button from '../generic/Button';
-import { header, heading } from './CartBox.css';
 import CartBoxItem from './CartBoxItem';
 import { checkOut, Order } from '../../api/order';
 import { useState } from 'react';
 import { Address } from '../../api/address';
+import styles from './CartBox.css';
 
 type Props = {
   setModal(modal: string): void;
@@ -45,8 +45,8 @@ export default function CartBox({
 
   return (
     <Box>
-      <div className={header}>
-        <h2 className={heading}>Cart</h2>
+      <div className={styles.header}>
+        <h2 className={styles.heading}>Cart</h2>
         <Button
           handleClick={handleClick}
           text="Check out"

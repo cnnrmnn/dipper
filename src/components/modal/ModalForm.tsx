@@ -1,4 +1,4 @@
-import { body } from './ModalForm.css';
+import styles from './ModalForm.css';
 
 type Props = {
   onSubmit(event: React.SyntheticEvent): Promise<void>;
@@ -7,7 +7,7 @@ type Props = {
 
 export default function ModalForm({ onSubmit, children }: Props): JSX.Element {
   return (
-    <form className={body} onSubmit={onSubmit}>
+    <form className={styles.body} onSubmit={onSubmit}>
       {children}
     </form>
   );

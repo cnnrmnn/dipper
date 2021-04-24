@@ -1,4 +1,4 @@
-import { select } from './Select.css';
+import styles from './Select.css';
 
 type Props = {
   children: JSX.Element[];
@@ -15,7 +15,11 @@ export default function Select({
     setValue(event.currentTarget.value);
   }
   return (
-    <select className={select} onChange={handleChange} disabled={disabled}>
+    <select
+      className={styles.select}
+      onChange={handleChange}
+      disabled={disabled}
+    >
       {children}
     </select>
   );

@@ -3,7 +3,7 @@ import ItemBoxButton from './ItemBoxButton';
 import Select from '../generic/Select';
 import { ItemValue } from '../../api/value';
 import { ItemInput } from '../../api/cart';
-import { box, image, text, heading, description } from './ItemBox.css';
+import styles from './ItemBox.css';
 
 type Props = {
   itemValue: ItemValue;
@@ -18,16 +18,16 @@ export default function ItemBox({
 }: Props): JSX.Element {
   const [extra, setExtra] = useState(itemValue.extras[0].valueId.toString());
   return (
-    <div className={box}>
+    <div className={styles.box}>
       <img
-        className={image}
+        className={styles.image}
         src={process.env.SERVER_URL + itemValue.imagePath}
         alt={itemValue.value}
       />
-      <div className={text}>
+      <div className={styles.text}>
         <div>
-          <h3 className={heading}>{itemValue.value}</h3>
-          <p className={description}>{itemValue.description}</p>
+          <h3 className={styles.heading}>{itemValue.value}</h3>
+          <p className={styles.description}>{itemValue.description}</p>
         </div>
         <Select setValue={setExtra} disabled={disabled}>
           {itemValue.extras.map((extraValue) => (
