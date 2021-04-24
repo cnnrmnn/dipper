@@ -1,21 +1,28 @@
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ReactRefreshTypeScript = require('react-refresh-typescript');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
   mode: 'development',
   entry: './src/index.tsx',
-  plugins: [
-    new HtmlWebpackPlugin({ template: './src/index.html' }),
-    new Dotenv(),
-  ],
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
   },
+  // Don't use browserslist to fix HMR bug with webpack-dev-server.
+  target: 'web',
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: {
+          loader: 'ts-loader',
+          options: {
+            getCustomTransformers: () => ({
+              before: [ReactRefreshTypeScript()],
+            }),
+          },
+        },
         exclude: /node+modules/,
       },
       {
@@ -38,5 +45,11 @@ module.exports = {
   },
   devServer: {
     port: 1234,
+    hot: true,
   },
+  plugins: [
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new Dotenv(),
+    new ReactRefreshWebpackPlugin(),
+  ],
 };
