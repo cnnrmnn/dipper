@@ -35,8 +35,12 @@ export async function getAddresses(): Promise<Address[]> {
       }
     }
   `;
-  const data = await client.request(q);
-  return data.addresses as Address[];
+  try {
+    const data = await client.request(q);
+    return data.addresses as Address[];
+  } catch (error) {
+    return [];
+  }
 }
 
 export async function createAddress(
