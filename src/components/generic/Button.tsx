@@ -1,3 +1,4 @@
+import threeDots from '../../../assets/icons/three-dots.svg';
 import styles from './Button.css';
 
 type Props = {
@@ -24,7 +25,7 @@ export default function Button({
       disabled={disabled}
       onClick={handleClick}
     >
-      {loading ? 'Loading...' : text}
+      {loading ? <img className={styles.loader} src={threeDots} /> : text}
     </button>
   );
 }

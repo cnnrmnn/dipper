@@ -5,6 +5,7 @@
   padding: 2px 5px;
   font-family: inherit;
   font-weight: 600;
+  align-items: center;
 }
 
 .button:hover {
@@ -26,4 +27,10 @@
   color: var(--tertiary-color);
   border-color: var(--tertiary-color);
   cursor: not-allowed;
+}
+
+.loader {
+  width: 30px;
+  height: 8px;
+  padding-bottom: 1px;
 }
