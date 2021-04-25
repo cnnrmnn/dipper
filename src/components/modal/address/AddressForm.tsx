@@ -62,7 +62,13 @@ export default function AddressForm({
       </div>
       <TextInput value={notes} setValue={setNotes} placeholder="Notes" />
       {error && <ModalError message={error} />}
-      <Button type="submit" fontSize="1rem" disabled={false} text="Add" />
+      <Button
+        type="submit"
+        fontSize="1rem"
+        disabled={false}
+        loading={loading}
+        text="Add"
+      />
     </ModalForm>
   );
 }
