@@ -16,12 +16,18 @@ export default function AddressDropdown({
   setAddress,
   addresses,
 }: Props): JSX.Element {
+  const noAddresses = addresses.length === 0;
+  function handleClick() {
+    if (noAddresses) setModal('address');
+  }
   return (
     <div className={styles.dropdown}>
       <Dropdown
         title={address ? addressString(address) : 'Add an address'}
         outline={true}
         centerHeading={true}
+        onClick={handleClick}
+        canOpen={!noAddresses}
       >
         <>
           {addresses.map((a) => (
