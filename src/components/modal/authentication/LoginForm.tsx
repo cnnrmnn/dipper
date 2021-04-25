@@ -14,15 +14,20 @@ type Props = {
 export default function LoginForm({ phone, close }: Props): JSX.Element {
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const { setUser } = useContext(UserContext);
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     try {
+      setError('');
+      setLoading(true);
       const user = await logIn(phone, code);
       setUser(user);
+      setLoading(false);
       close();
     } catch (error) {
+      setLoading(false);
       setError(error.response.errors[0].message);
     }
   }
@@ -35,6 +40,7 @@ export default function LoginForm({ phone, close }: Props): JSX.Element {
         type="submit"
         fontSize="1rem"
         disabled={code.length != 6}
+        loading={loading}
         text="Log in"
       />
     </ModalForm>

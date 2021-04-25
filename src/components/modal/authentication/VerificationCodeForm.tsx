@@ -17,15 +17,19 @@ export default function VerificationCodeForm({
   setForm,
 }: Props): JSX.Element {
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
-    setError('');
     try {
+      setError('');
+      setLoading(true);
       const exists = await sendCode(phone);
+      setLoading(false);
       if (exists) setForm('login');
       else setForm('signup');
     } catch (error) {
+      setLoading(false);
       setError(error.response.errors[0].message);
     }
   }
@@ -37,6 +41,7 @@ export default function VerificationCodeForm({
         fontSize="1rem"
         text="Send verification code"
         disabled={phone.length !== 10}
+        loading={loading}
       />
       {error && <ModalError message={error} />}
       <p className={styles.notice}>Message and data rates may apply.</p>

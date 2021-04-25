@@ -28,9 +28,9 @@ export default function CartBox({
   async function handleClick(): Promise<void> {
     try {
       if (address) {
+        setError('');
         setLoading(true);
         const order = await checkOut(address.id);
-        setError('');
         setOrder(order);
         setLoading(false);
         setModal('checkout');

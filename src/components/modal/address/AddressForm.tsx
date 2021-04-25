@@ -25,9 +25,12 @@ export default function AddressForm({
   const [notes, setNotes] = useState('');
 
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     try {
+      setError('');
+      setLoading(true);
       const address = await createAddress(
         street,
         unit,
@@ -38,8 +41,10 @@ export default function AddressForm({
       );
       setAddress(address);
       addAddress(address);
+      setLoading(false);
       close();
     } catch (error) {
+      setLoading(true);
       setError(error.response.errors[0].message);
     }
   }
