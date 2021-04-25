@@ -1,4 +1,4 @@
-import styles from './TextInput.css';
+import styles from './Input.css';
 
 type Props = {
   value: string;
