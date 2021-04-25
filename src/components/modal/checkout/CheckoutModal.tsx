@@ -8,14 +8,22 @@ import styles from './CheckoutModal.css';
 
 type Props = {
   order: Order | null;
+  setModal(modal: string): void;
   close(): void;
 };
 
-export default function CheckoutModal({ order, close }: Props): JSX.Element {
+export default function CheckoutModal({
+  order,
+  setModal,
+  close,
+}: Props): JSX.Element {
   const header = order && (
     <div className={styles.header}>
-      <h3 className={styles.heading}>Deliver to</h3>
-      <CheckoutModalAddress address={order.address} />
+      <h3 className={styles.heading}>Delivery</h3>
+      <CheckoutModalAddress
+        address={order.address}
+        deliveryTime={order.deliveryTime}
+      />
       <h3 className={styles.heading}>Items</h3>
     </div>
   );
@@ -23,7 +31,11 @@ export default function CheckoutModal({ order, close }: Props): JSX.Element {
     <div className={styles.footer}>
       <CheckoutModalReceipt order={order} />
       <div className={styles.button}>
-        <Button text="Place order" fontSize="1rem" />
+        <Button
+          text="Continue"
+          fontSize="1rem"
+          handleClick={() => setModal('payment')}
+        />
       </div>
     </div>
   );
