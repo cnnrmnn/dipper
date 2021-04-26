@@ -4,15 +4,20 @@ type Props = {
   value: string;
   setValue(value: string): void;
   placeholder?: string;
+  maxLength?: number;
+  pattern?: RegExp;
 };
 
 export default function TextInput({
   value,
   setValue,
   placeholder,
+  maxLength,
+  pattern,
 }: Props): JSX.Element {
   function handleChange(event: React.FormEvent<HTMLInputElement>): void {
-    setValue(event.currentTarget.value);
+    if (!pattern || pattern.test(event.currentTarget.value))
+      setValue(event.currentTarget.value);
   }
   return (
     <input
@@ -21,6 +26,7 @@ export default function TextInput({
       value={value}
       placeholder={placeholder}
       onChange={handleChange}
+      maxLength={maxLength}
     />
   );
 }
