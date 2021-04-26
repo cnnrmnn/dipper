@@ -31,20 +31,13 @@ export default function Modal({
 }: Props): JSX.Element {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  function setAppFilter(value: string): void {
-    const app = document.getElementById('app');
-    if (app) app.style.filter = value;
-  }
-
   function setBodyOverflow(value: string): void {
     document.getElementsByTagName('body')[0].style.overflow = value;
   }
 
   useEffect(() => {
-    setAppFilter('blur(2px)');
     setBodyOverflow('hidden');
     return () => {
-      setAppFilter('');
       setBodyOverflow('');
     };
   }, []);
