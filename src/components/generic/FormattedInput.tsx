@@ -25,7 +25,8 @@ export default function FormattedInput({
   const elt = useRef<HTMLInputElement>(null);
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>): void {
     const { key } = event;
-    if (key !== 'Escape' && key !== 'Enter') event.preventDefault();
+    if (key !== 'Escape' && key !== 'Enter' && key !== 'Tab')
+      event.preventDefault();
     let newValue = value;
     if (
       (!validKey || validKey(key)) &&
