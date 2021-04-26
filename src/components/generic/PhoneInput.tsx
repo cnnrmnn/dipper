@@ -1,5 +1,4 @@
-import { useRef } from 'react';
-import styles from './PhoneInput.css';
+import FormattedInput from './FormattedInput';
 
 type Props = {
   value: string;
@@ -9,18 +8,12 @@ type Props = {
 export default function PhoneInput({ value, setValue }: Props): JSX.Element {
   function format(phone: string): string {
     const len = phone.length;
-    if (len >= 1 && len <= 3) return `(${phone.substring(0, len)})`;
+    let formatted = '';
+    if (len >= 1) formatted += `(${phone.substring(0, 3)})`;
+    if (len >= 4) formatted += ` ${phone.substring(3, 6)}`;
+    if (len >= 7) formatted += `-${phone.substring(6, len)}`;
 
-    if (len >= 4 && len <= 6)
-      return `(${phone.substring(0, 3)}) ${phone.substring(3, len)}`;
-
-    if (len >= 7 && len <= 10)
-      return `(${phone.substring(0, 3)}) ${phone.substring(
-        3,
-        6
-      )}–${phone.substring(6, len)}`;
-
-    return phone;
+    return formatted;
   }
   function cursorPosition(length: number): number {
     if (length <= 3) return length + 1;
@@ -29,28 +22,20 @@ export default function PhoneInput({ value, setValue }: Props): JSX.Element {
     return length;
   }
 
-  const elt = useRef<HTMLInputElement>(null);
-  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>): void {
-    const key = event.key;
-    if (key !== 'Escape' && key !== 'Enter') event.preventDefault();
-    let newValue = value;
-    if (key >= '0' && key <= '9' && value.length < 10) newValue = value + key;
-    if (key == 'Backspace') newValue = value.substring(0, value.length - 1);
-
-    setValue(newValue);
-    if (elt.current) {
-      elt.current.value = format(newValue);
-      const pos = cursorPosition(newValue.length);
-      elt.current.setSelectionRange(pos, pos);
-    }
+  function validKey(key: string): boolean {
+    return key >= '0' && key <= '9';
   }
+
   return (
-    <input
-      className={styles.input}
+    <FormattedInput
+      value={value}
+      setValue={setValue}
       type="tel"
       placeholder="Phone"
-      onKeyDown={handleKeyDown}
-      ref={elt}
+      maxLength={10}
+      format={format}
+      cursorPosition={cursorPosition}
+      validKey={validKey}
     />
   );
 }

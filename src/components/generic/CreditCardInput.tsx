@@ -1,5 +1,4 @@
-import { useRef } from 'react';
-import styles from './Input.css';
+import FormattedInput from './FormattedInput';
 
 type Props = {
   value: string;
@@ -13,38 +12,25 @@ export default function CreditCardInput({
   function format(num: string): string {
     const len = num.length;
     let formatted = num.substring(0, 4);
-    if (len >= 4) formatted += ' ' + num.substring(4, 8);
-    if (len >= 8) formatted += ' ' + num.substring(8, 12);
-    if (len >= 12) formatted += ' ' + num.substring(12, 16);
+    if (len > 4) formatted += ' ' + num.substring(4, 8);
+    if (len > 8) formatted += ' ' + num.substring(8, 12);
+    if (len > 12) formatted += ' ' + num.substring(12, 16);
 
     return formatted;
   }
-  function cursorPosition(length: number): number {
-    return length + 1 + Math.floor(length / 4);
+
+  function validKey(key: string): boolean {
+    return key >= '0' && key <= '9';
   }
 
-  const elt = useRef<HTMLInputElement>(null);
-  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>): void {
-    const key = event.key;
-    if (key !== 'Escape' && key !== 'Enter') event.preventDefault();
-    let newValue = value;
-    if (key >= '0' && key <= '9' && value.length < 16) newValue = value + key;
-    if (key == 'Backspace') newValue = value.substring(0, value.length - 1);
-
-    setValue(newValue);
-    if (elt.current) {
-      elt.current.value = format(newValue);
-      const pos = cursorPosition(newValue.length);
-      elt.current.setSelectionRange(pos, pos);
-    }
-  }
   return (
-    <input
-      className={styles.input}
-      type="text"
+    <FormattedInput
+      value={value}
+      setValue={setValue}
       placeholder="Card number"
-      onKeyDown={handleKeyDown}
-      ref={elt}
+      maxLength={16}
+      format={format}
+      validKey={validKey}
     />
   );
 }
