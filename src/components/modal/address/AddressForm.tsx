@@ -44,7 +44,7 @@ export default function AddressForm({
       setLoading(false);
       close();
     } catch (error) {
-      setLoading(true);
+      setLoading(false);
       setError(error.response.errors[0].message);
     }
   }
