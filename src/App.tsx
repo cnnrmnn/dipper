@@ -55,6 +55,7 @@ export default function App(): JSX.Element {
           addAddress={addAddress}
           order={order}
           modal={modal}
+          setModal={setModal}
           close={close}
         />
       )}
