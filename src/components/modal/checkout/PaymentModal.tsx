@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { placeOrder } from '../../../api/order';
+import { Order, placeOrder } from '../../../api/order';
 import Button from '../../generic/Button';
 import CreditCardInput from '../../generic/CreditCardInput';
 import ExpirationDateInput from '../../generic/ExpirationDateInput';
@@ -7,6 +7,7 @@ import TextInput from '../../generic/TextInput';
 import Modal from '../Modal';
 import ModalError from '../ModalError';
 import ModalForm from '../ModalForm';
+import CheckoutModalAddress from './CheckoutModalAddress';
 import styles from './PaymentModal.css';
 
 type Props = {
@@ -19,6 +20,8 @@ export default function PaymentModal({ close }: Props): JSX.Element {
   const [cvv, setCvv] = useState('');
   const [zip, setZip] = useState('');
 
+  const [order, setOrder] = useState(null as null | Order);
+
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -27,7 +30,7 @@ export default function PaymentModal({ close }: Props): JSX.Element {
     try {
       setError('');
       setLoading(true);
-      const order = await placeOrder(
+      const ord = await placeOrder(
         name,
         card,
         expiration.substring(0, 2),
@@ -35,6 +38,7 @@ export default function PaymentModal({ close }: Props): JSX.Element {
         cvv,
         zip
       );
+      setOrder(ord);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -43,39 +47,59 @@ export default function PaymentModal({ close }: Props): JSX.Element {
   }
 
   return (
-    <Modal title="Payment" height="auto" width="350px" close={close}>
-      <ModalForm onSubmit={handleSubmit}>
-        <TextInput value={name} setValue={setName} placeholder="Name" />
-        <div className={styles.cardRow}>
-          <CreditCardInput value={card} setValue={setCard} />
-          <ExpirationDateInput value={expiration} setValue={setExpiration} />
-          <TextInput
-            pattern={/^[0-9]{0,3}$/}
-            placeholder="CVV"
-            value={cvv}
-            setValue={setCvv}
+    <Modal
+      title={order ? 'Order placed' : 'Payment'}
+      height="auto"
+      width="350px"
+      close={close}
+    >
+      {order ? (
+        <div className={styles.body}>
+          <h3
+            className={styles.heading}
+          >{`Your order is on the way from Chili's ${order.location}!`}</h3>
+          <CheckoutModalAddress
+            address={order.address}
+            deliveryTime={order.deliveryTime}
           />
+          <div className={styles.button}>
+            <Button text="Close" fontSize="1rem" handleClick={close} />
+          </div>
         </div>
-        <TextInput
-          pattern={/^[0-9]{0,5}$/}
-          value={zip}
-          setValue={setZip}
-          placeholder="Zip"
-        />
-        {error && <ModalError message={error} />}
-        <Button
-          text="Place order"
-          fontSize="1rem"
-          type="submit"
-          disabled={
-            !name ||
-            card.length !== 16 ||
-            expiration.length !== 6 ||
-            zip.length !== 5
-          }
-          loading={loading}
-        />
-      </ModalForm>
+      ) : (
+        <ModalForm onSubmit={handleSubmit}>
+          <TextInput value={name} setValue={setName} placeholder="Name" />
+          <div className={styles.cardRow}>
+            <CreditCardInput value={card} setValue={setCard} />
+            <ExpirationDateInput value={expiration} setValue={setExpiration} />
+            <TextInput
+              pattern={/^[0-9]{0,3}$/}
+              placeholder="CVV"
+              value={cvv}
+              setValue={setCvv}
+            />
+          </div>
+          <TextInput
+            pattern={/^[0-9]{0,5}$/}
+            value={zip}
+            setValue={setZip}
+            placeholder="Zip"
+          />
+          {error && <ModalError message={error} />}
+          <Button
+            text="Place order"
+            fontSize="1rem"
+            type="submit"
+            disabled={
+              !name ||
+              card.length !== 16 ||
+              expiration.length !== 6 ||
+              zip.length !== 5
+            }
+            loading={loading}
+          />
+        </ModalForm>
+      )}
     </Modal>
   );
 }
