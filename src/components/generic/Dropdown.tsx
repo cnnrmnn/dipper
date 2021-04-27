@@ -39,13 +39,15 @@ export default function Dropdown({
 
   const dropdownClass =
     styles.dropdown +
-    (outline ? ` ${styles.dropdownOutline}` : '') +
+    (outline || open ? ` ${styles.dropdownOutline}` : '') +
     (open ? ` ${styles.dropdownOpen}` : '');
   const headingClass =
     styles.heading + (centerHeading ? ` ${styles.headingCenter}` : '');
   return (
-    <div className={dropdownClass} ref={ref} onClick={handleClick}>
-      <h2 className={headingClass}>{title}</h2>
+    <div className={styles.container}>
+      <div className={dropdownClass} ref={ref} onClick={handleClick}>
+        <h2 className={headingClass}>{title}</h2>
+      </div>
       {open && <ul className={styles.items}>{children}</ul>}
     </div>
   );

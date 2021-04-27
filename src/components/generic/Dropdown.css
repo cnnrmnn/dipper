@@ -1,18 +1,25 @@
+.container {
+  position: relative;
+}
+
 .dropdown {
   padding: 5px;
   padding-right: 25px;
+  border: solid 3px transparent;
   background: url(../../../assets/icons/chevron-down.svg) white top 4px right /
     24px no-repeat;
 }
 
 .dropdownOutline {
-  box-shadow: 0 0 0 3px var(--primary-color);
   border-radius: 5px;
+  border-color: var(--primary-color);
 }
 
 .dropdownOpen {
-  box-shadow: 0 0 0 3px var(--primary-color);
-  border-radius: 5px;
+  border-radius: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-color: transparent;
   background-image: url(../../../assets/icons/chevron-up.svg);
 }
 
@@ -31,6 +38,16 @@
 }
 
 .items {
-  padding: 0;
-  margin: 5px 0;
+  position: absolute;
+  left: 0;
+  top: calc(100% - 3px);
+  width: 100%;
+  box-sizing: border-box;
+  border: solid 3px var(--primary-color);
+  border-top: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: white;
+  padding: 5px;
+  margin: 0;
 }
