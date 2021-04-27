@@ -31,21 +31,17 @@ export default function Navbar({
     <nav className={styles.navbar}>
       <h1 className={styles.logo}>dipper</h1>
       {user && (
-        <div className={styles.address}>
-          <AddressDropdown
-            setModal={setModal}
-            address={address}
-            setAddress={setAddress}
-            addresses={addresses}
-          />
-        </div>
+        <AddressDropdown
+          setModal={setModal}
+          address={address}
+          setAddress={setAddress}
+          addresses={addresses}
+        />
       )}
       {user ? (
-        <div className={styles.account}>
-          <Dropdown title={`${user.firstName} ${user.lastName}`}>
-            <DropdownItem text="Log out" onClick={handleLogOut} />
-          </Dropdown>
-        </div>
+        <Dropdown title={`${user.firstName} ${user.lastName}`}>
+          <DropdownItem text="Log out" onClick={handleLogOut} />
+        </Dropdown>
       ) : (
         <Button
           text="Sign in"
