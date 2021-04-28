@@ -4,3 +4,9 @@
   align-items: start;
   justify-content: space-between;
 }
+
+.right {
+  position: sticky;
+  width: 275px;
+  top: 80px;
+}

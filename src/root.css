@@ -6,3 +6,8 @@
   --tertiary-color: grey;
   font-family: 'expressway', sans-serif;
 }
+
+body {
+  margin: 8px;
+  margin-top: 0;
+}

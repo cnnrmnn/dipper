@@ -11,8 +11,8 @@ import {
   addToCart,
   removeFromCart,
 } from '../api/cart';
-import styles from './Main.css';
 import { Address } from '../api/address';
+import styles from './Main.css';
 
 type Props = {
   setModal(modal: string): void;
@@ -82,7 +82,7 @@ export default function Main({
         addItemInput={addItemInput}
         disabled={itemInputs.length === 3}
       />
-      <div>
+      <div className={styles.right}>
         <TripleDipperBox
           itemValues={itemValues}
           itemInputs={itemInputs}
