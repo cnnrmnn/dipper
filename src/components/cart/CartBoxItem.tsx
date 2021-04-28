@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { TripleDipper } from '../../api/cart';
-import CartBoxItemButton from './CartBoxItemButton';
 import BoxItem from './BoxItem';
+import SVGButton from '../generic/SVGButton';
+import trash from '../../../assets/icons/trash.svg';
 import styles from './CartBoxItem.css';
 
 type Props = {
@@ -31,7 +32,7 @@ export default function CartBoxItem({
           ))}
         </div>
       </div>
-      <CartBoxItemButton removeFromCart={() => setInProp(false)} />
+      <SVGButton svg={trash} onClick={() => setInProp(false)} />
     </BoxItem>
   );
 }

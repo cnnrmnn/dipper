@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import BoxItem from './BoxItem';
-import TripleDipperBoxItemButton from './TripleDipperBoxItemButton';
 import { ItemValue, ExtraValue } from '../../api/value';
 import { ItemInput } from '../../api/cart';
+import SVGButton from '../generic/SVGButton';
+import minus from '../../../assets/icons/minus.svg';
 import styles from './TripleDipperBoxItem.css';
 
 type Props = {
@@ -36,7 +37,12 @@ export default function TripleDipperBoxItem({
           </p>
         </div>
       </div>
-      <TripleDipperBoxItemButton removeItemInput={() => setInProp(false)} />
+      <SVGButton
+        svg={minus}
+        onClick={() => setInProp(false)}
+        height="16px"
+        width="16px"
+      />
     </BoxItem>
   );
 }
