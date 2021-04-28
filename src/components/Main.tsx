@@ -81,7 +81,7 @@ export default function Main({
         addItemInput={addItemInput}
         disabled={itemInputs.length === 3}
       />
-      <div className={styles.right}>
+      <div>
         <TripleDipperBox
           itemValues={itemValues}
           itemInputs={itemInputs}
