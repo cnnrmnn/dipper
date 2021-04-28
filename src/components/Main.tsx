@@ -76,6 +76,7 @@ export default function Main({
 
   return (
     <main className={styles.main}>
+      <div></div>
       <ItemBoxContainer
         itemValues={itemValues}
         addItemInput={addItemInput}
