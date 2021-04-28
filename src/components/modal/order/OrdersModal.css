@@ -3,8 +3,8 @@
   font-weight: 400;
 }
 
-.orders :first-child {
-  margin: 0;
+.orders > :first-child {
+  margin-top: 0;
 }
 
 .buttons {
