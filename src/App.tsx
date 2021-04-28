@@ -7,6 +7,7 @@ import Main from './components/Main';
 import Modals from './components/modal/Modals';
 import { Address, getAddresses } from './api/address';
 import { getOrders, Order } from './api/order';
+import { getCart, TripleDipper } from './api/cart';
 
 export default function App(): JSX.Element {
   const [user, setUser] = useState(null as User | null);
@@ -29,6 +30,18 @@ export default function App(): JSX.Element {
       setAddress(addresses[0]);
     }
     updateAddresses();
+  }, [user]);
+
+  const [cart, setCart] = useState([] as TripleDipper[]);
+  useEffect(() => {
+    async function updateCart(): Promise<void> {
+      try {
+        setCart(await getCart());
+      } catch (error) {
+        setCart([]);
+      }
+    }
+    updateCart();
   }, [user]);
 
   const [order, setOrder] = useState(null as null | Order);
@@ -55,12 +68,20 @@ export default function App(): JSX.Element {
           setAddress={setAddress}
           addresses={addresses}
         />
-        <Main setModal={setModal} setOrder={setOrder} address={address} />
+        <Main
+          setModal={setModal}
+          cart={cart}
+          setCart={setCart}
+          setOrder={setOrder}
+          address={address}
+        />
       </div>
       {modal && (
         <Modals
           setAddress={setAddress}
           addAddress={addAddress}
+          setCart={setCart}
+          cart={cart}
           order={order}
           orders={orders}
           modal={modal}

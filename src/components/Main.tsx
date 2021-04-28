@@ -10,19 +10,22 @@ import {
   TripleDipper,
   addToCart,
   removeFromCart,
-  getCart,
 } from '../api/cart';
 import styles from './Main.css';
 import { Address } from '../api/address';
 
 type Props = {
   setModal(modal: string): void;
+  cart: TripleDipper[];
+  setCart(cart: TripleDipper[]): void;
   setOrder(order: Order | null): void;
   address: Address | null;
 };
 
 export default function Main({
   setModal,
+  cart,
+  setCart,
   setOrder,
   address,
 }: Props): JSX.Element {
@@ -47,17 +50,6 @@ export default function Main({
     setItemInputs(itemInputs.filter((itemInput) => itemInput.id !== id));
   }
 
-  const [cart, setCart] = useState([] as TripleDipper[]);
-  useEffect(() => {
-    async function updateCart(): Promise<void> {
-      try {
-        setCart(await getCart());
-      } catch (error) {
-        setCart([]);
-      }
-    }
-    updateCart();
-  }, [user]);
   async function createTripleDipper(): Promise<void> {
     if (!user) {
       setModal('authentication');
