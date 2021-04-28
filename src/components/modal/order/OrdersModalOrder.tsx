@@ -10,7 +10,7 @@ type Props = {
 
 export default function OrdersModalOrder({ order }: Props): JSX.Element {
   return (
-    <>
+    <div className={styles.order}>
       <h3 className={styles.heading}>Delivery</h3>
       <h4 className={styles.subheading}>{`Chili's ${order.location}`}</h4>
       <ModalAddress address={order.address} deliveryTime={order.deliveryTime} />
@@ -19,6 +19,6 @@ export default function OrdersModalOrder({ order }: Props): JSX.Element {
         <ModalItem key={tripleDipper.id} tripleDipper={tripleDipper} />
       ))}
       <ModalReceipt order={order} />
-    </>
+    </div>
   );
 }

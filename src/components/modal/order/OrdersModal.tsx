@@ -21,9 +21,14 @@ export default function OrdersModal({ orders, close }: Props): JSX.Element {
       close={close}
       footer={
         order && (
-          <div className={styles.button}>
+          <div className={styles.buttons}>
             <Button
-              text="Close"
+              text="Back"
+              fontSize="1rem"
+              handleClick={() => setOrder(null)}
+            />
+            <Button
+              text="Order again"
               fontSize="1rem"
               handleClick={() => setOrder(null)}
             />
@@ -34,13 +39,15 @@ export default function OrdersModal({ orders, close }: Props): JSX.Element {
       {order ? (
         <OrdersModalOrder order={order} />
       ) : orders.length > 0 ? (
-        orders.map((order) => (
-          <OrdersModalItem
-            order={order}
-            onClick={() => setOrder(order)}
-            key={order.id}
-          />
-        ))
+        <div className={styles.orders}>
+          {orders.map((order) => (
+            <OrdersModalItem
+              order={order}
+              onClick={() => setOrder(order)}
+              key={order.id}
+            />
+          ))}
+        </div>
       ) : (
         <h3 className={styles.heading}>No orders yet</h3>
       )}
