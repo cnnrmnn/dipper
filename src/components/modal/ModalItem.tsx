@@ -1,13 +1,11 @@
-import { TripleDipper } from '../../../api/cart';
-import styles from './CheckoutModalItem.css';
+import { TripleDipper } from '../../api/cart';
+import styles from './ModalItem.css';
 
 type Props = {
   tripleDipper: TripleDipper;
 };
 
-export default function CheckoutModalItem({
-  tripleDipper,
-}: Props): JSX.Element {
+export default function ModalItem({ tripleDipper }: Props): JSX.Element {
   return (
     <div className={styles.modalItem}>
       <h4 className={styles.heading}>Triple Dipper</h4>

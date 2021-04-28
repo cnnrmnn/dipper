@@ -1,4 +1,4 @@
-import styles from './CheckoutModalReceiptRow.css';
+import styles from './ModalReceiptRow.css';
 
 type Props = {
   title: string;
@@ -6,7 +6,7 @@ type Props = {
   bold?: boolean;
 };
 
-export default function CheckoutModalReceiptRow({
+export default function ModalReceiptRow({
   title,
   price,
   bold,

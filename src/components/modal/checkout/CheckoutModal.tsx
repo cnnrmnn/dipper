@@ -1,9 +1,9 @@
 import { Order } from '../../../api/order';
 import Button from '../../generic/Button';
 import Modal from '../Modal';
-import CheckoutModalItem from './CheckoutModalItem';
-import CheckoutModalAddress from './CheckoutModalAddress';
-import CheckoutModalReceipt from './CheckoutModalReceipt';
+import ModalItem from '../ModalItem';
+import ModalAddress from '../ModalAddress';
+import ModalReceipt from '../ModalReceipt';
 import styles from './CheckoutModal.css';
 
 type Props = {
@@ -20,16 +20,13 @@ export default function CheckoutModal({
   const header = order && (
     <div className={styles.header}>
       <h3 className={styles.heading}>Delivery</h3>
-      <CheckoutModalAddress
-        address={order.address}
-        deliveryTime={order.deliveryTime}
-      />
+      <ModalAddress address={order.address} deliveryTime={order.deliveryTime} />
       <h3 className={styles.heading}>Items</h3>
     </div>
   );
   const footer = order && (
     <div className={styles.footer}>
-      <CheckoutModalReceipt order={order} />
+      <ModalReceipt order={order} />
       <div className={styles.button}>
         <Button
           text="Continue"
@@ -53,10 +50,7 @@ export default function CheckoutModal({
         <>
           <div className={styles.items}>
             {order.tripleDippers.map((tripleDipper) => (
-              <CheckoutModalItem
-                key={tripleDipper.id}
-                tripleDipper={tripleDipper}
-              />
+              <ModalItem key={tripleDipper.id} tripleDipper={tripleDipper} />
             ))}
           </div>
         </>

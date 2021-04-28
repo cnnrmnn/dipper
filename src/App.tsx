@@ -6,7 +6,7 @@ import Navbar from './components/navbar/Navbar';
 import Main from './components/Main';
 import Modals from './components/modal/Modals';
 import { Address, getAddresses } from './api/address';
-import { Order } from './api/order';
+import { getOrders, Order } from './api/order';
 
 export default function App(): JSX.Element {
   const [user, setUser] = useState(null as User | null);
@@ -32,6 +32,14 @@ export default function App(): JSX.Element {
   }, [user]);
 
   const [order, setOrder] = useState(null as null | Order);
+  const [orders, setOrders] = useState([] as Order[]);
+  useEffect(() => {
+    async function updateOrders(): Promise<void> {
+      const orders = await getOrders();
+      setOrders(orders);
+    }
+    updateOrders();
+  }, [user]);
 
   const [modal, setModal] = useState('');
   function close(): void {
@@ -54,6 +62,7 @@ export default function App(): JSX.Element {
           setAddress={setAddress}
           addAddress={addAddress}
           order={order}
+          orders={orders}
           modal={modal}
           setModal={setModal}
           close={close}

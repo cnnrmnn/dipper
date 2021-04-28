@@ -7,12 +7,13 @@ import TextInput from '../../generic/TextInput';
 import Modal from '../Modal';
 import ModalError from '../ModalError';
 import ModalForm from '../ModalForm';
-import CheckoutModalAddress from './CheckoutModalAddress';
+import ModalAddress from '../ModalAddress';
 import styles from './PaymentModal.css';
 
 type Props = {
   close(): void;
 };
+
 export default function PaymentModal({ close }: Props): JSX.Element {
   const [name, setName] = useState('');
   const [card, setCard] = useState('');
@@ -58,7 +59,7 @@ export default function PaymentModal({ close }: Props): JSX.Element {
           <h3
             className={styles.heading}
           >{`Your order is on the way from Chili's ${order.location}!`}</h3>
-          <CheckoutModalAddress
+          <ModalAddress
             address={order.address}
             deliveryTime={order.deliveryTime}
           />

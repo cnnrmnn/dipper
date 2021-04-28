@@ -40,6 +40,7 @@ export default function Navbar({
       )}
       {user ? (
         <Dropdown title={`${user.firstName} ${user.lastName}`}>
+          <DropdownItem text="Orders" onClick={() => setModal('orders')} />
           <DropdownItem text="Log out" onClick={handleLogOut} />
         </Dropdown>
       ) : (

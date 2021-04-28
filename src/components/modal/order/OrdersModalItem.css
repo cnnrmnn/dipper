@@ -1,0 +1,16 @@
+.item {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.heading {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.subheading {
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 5px 0;
+}

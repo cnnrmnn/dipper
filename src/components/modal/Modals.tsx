@@ -4,11 +4,13 @@ import CheckoutModal from './checkout/CheckoutModal';
 import PaymentModal from './checkout/PaymentModal';
 import { Address } from '../../api/address';
 import { Order } from '../../api/order';
+import OrdersModal from './order/OrdersModal';
 
 type Props = {
   setAddress(address: Address | null): void;
   addAddress(address: Address): void;
   order: Order | null;
+  orders: Order[];
   modal: string;
   setModal(modal: string): void;
   close(): void;
@@ -18,6 +20,7 @@ export default function Modals({
   setAddress,
   addAddress,
   order,
+  orders,
   modal,
   setModal,
   close,
@@ -40,6 +43,8 @@ export default function Modals({
         );
       case 'payment':
         return <PaymentModal close={close} />;
+      case 'orders':
+        return <OrdersModal orders={orders} close={close} />;
       default:
         return <></>;
     }

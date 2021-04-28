@@ -1,24 +1,16 @@
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-import { Address } from '../../../api/address';
-import styles from './CheckoutModalAddress.css';
-
-dayjs.extend(utc);
+import { parseDeliveryTime } from '../../api/order';
+import { Address } from '../../api/address';
+import styles from './ModalAddress.css';
 
 type Props = {
   address: Address;
   deliveryTime: string;
 };
-export default function CheckoutModalAddress({
+
+export default function ModalAddress({
   address,
   deliveryTime,
 }: Props): JSX.Element {
-  function parseDeliveryTime(time: string): string {
-    return dayjs
-      .utc(time.slice(0, 19), 'YYYY-MM-DD HH:mm:ss')
-      .local()
-      .format('dddd MMMM D, YYYY [at] h:mm a');
-  }
   return (
     <div className={styles.modalAddress}>
       <h4 className={styles.time}>{parseDeliveryTime(deliveryTime)}</h4>
