@@ -3,7 +3,7 @@ import utc from 'dayjs/plugin/utc';
 import { gql } from 'graphql-request';
 import client from './api';
 import { Address } from './address';
-import { TripleDipper } from './cart';
+import { addToCart, Item, ItemInput, TripleDipper } from './cart';
 
 dayjs.extend(utc);
 
@@ -114,6 +114,22 @@ export async function getOrders(): Promise<Order[]> {
   }
 }
 
+export async function orderAgain(order: Order): Promise<TripleDipper[]> {
+  function toItemInput(item: Item): ItemInput {
+    return {
+      valueId: item.valueId,
+      extras: item.extras.map((extra) => extra.valueId),
+    };
+  }
+  const tripleDippers = await Promise.all(
+    order.tripleDippers.map(
+      async (tripleDipper) =>
+        await addToCart(tripleDipper.items.map(toItemInput))
+    )
+  );
+
+  return tripleDippers;
+}
 export function parseDeliveryTime(time: string): string {
   return dayjs
     .utc(time.slice(0, 19), 'YYYY-MM-DD HH:mm:ss')
