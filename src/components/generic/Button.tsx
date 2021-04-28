@@ -7,7 +7,7 @@ type Props = {
   loading?: boolean;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
-  handleClick?(event: React.MouseEvent<HTMLButtonElement>): void;
+  onClick?(event: React.MouseEvent<HTMLButtonElement>): void;
 };
 export default function Button({
   type,
@@ -15,7 +15,7 @@ export default function Button({
   loading,
   disabled,
   fontSize,
-  handleClick,
+  onClick,
 }: Props): JSX.Element {
   return (
     <button
@@ -23,7 +23,7 @@ export default function Button({
       className={styles.button}
       style={{ fontSize }}
       disabled={disabled}
-      onClick={handleClick}
+      onClick={onClick}
     >
       {loading ? <img className={styles.loader} src={threeDots} /> : text}
     </button>

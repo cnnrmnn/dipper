@@ -45,7 +45,7 @@ export default function AddressDropdown({
           <Button
             text="Add an address"
             fontSize="1rem"
-            handleClick={() => setModal('address')}
+            onClick={() => setModal('address')}
           />
         </div>
       </Dropdown>

@@ -53,12 +53,12 @@ export default function OrdersModal({
             <Button
               text="Back"
               fontSize="1rem"
-              handleClick={() => setOrder(null)}
+              onClick={() => setOrder(null)}
             />
             <Button
               text="Order again"
               fontSize="1rem"
-              handleClick={handleClick}
+              onClick={handleClick}
               loading={loading}
             />
           </div>

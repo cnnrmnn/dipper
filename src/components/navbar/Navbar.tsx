@@ -47,7 +47,7 @@ export default function Navbar({
         <Button
           text="Sign in"
           fontSize="1rem"
-          handleClick={() => setModal('authentication')}
+          onClick={() => setModal('authentication')}
         />
       )}
     </nav>

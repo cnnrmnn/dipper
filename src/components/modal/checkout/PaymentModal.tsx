@@ -64,7 +64,7 @@ export default function PaymentModal({ close }: Props): JSX.Element {
             deliveryTime={order.deliveryTime}
           />
           <div className={styles.button}>
-            <Button text="Close" fontSize="1rem" handleClick={close} />
+            <Button text="Close" fontSize="1rem" onClick={close} />
           </div>
         </div>
       ) : (

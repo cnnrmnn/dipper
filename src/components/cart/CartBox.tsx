@@ -48,7 +48,7 @@ export default function CartBox({
       <div className={styles.header}>
         <h2 className={styles.heading}>Cart</h2>
         <Button
-          handleClick={handleClick}
+          onClick={handleClick}
           text="Check out"
           disabled={cart.length === 0}
           loading={loading}

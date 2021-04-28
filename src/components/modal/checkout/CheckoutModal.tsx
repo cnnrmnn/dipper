@@ -31,7 +31,7 @@ export default function CheckoutModal({
         <Button
           text="Continue"
           fontSize="1rem"
-          handleClick={() => setModal('payment')}
+          onClick={() => setModal('payment')}
         />
       </div>
     </div>
