@@ -1,7 +1,7 @@
 import styles from './Select.css';
 
 type Props = {
-  children: JSX.Element[];
+  children: React.ReactNode;
   setValue(value: string): void;
   disabled: boolean;
 };

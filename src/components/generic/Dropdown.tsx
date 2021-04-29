@@ -5,7 +5,7 @@ type Props = {
   title: string;
   outline?: boolean;
   centerHeading?: boolean;
-  children: null | JSX.Element | JSX.Element[];
+  children: React.ReactNode;
   onClick?: (event: React.MouseEvent) => void;
   canOpen?: boolean;
 };

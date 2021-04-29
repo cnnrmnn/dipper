@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface ModalContextInterface {
-  modal: null | JSX.Element;
-  setModal(modal: null | JSX.Element): void;
+  modal: React.ReactNode;
+  setModal(modal: React.ReactNode): void;
   closeModal(): void;
 }
 

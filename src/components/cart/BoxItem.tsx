@@ -4,8 +4,9 @@ import styles from './BoxItem.css';
 type Props = {
   inProp: boolean;
   onExited(): void;
-  children: null | JSX.Element | JSX.Element[];
+  children: React.ReactNode;
 };
+
 export default function BoxItem({
   inProp,
   onExited,

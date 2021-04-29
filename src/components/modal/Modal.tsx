@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import ModalContext from '../../context/modal';
 import ModalButton from './ModalButton';
 import styles from './Modal.css';
@@ -11,9 +11,9 @@ type Props = {
   minWidth?: string;
   maxHeight?: string;
   maxWidth?: string;
-  children?: JSX.Element | JSX.Element[];
-  header?: JSX.Element | null;
-  footer?: JSX.Element | null;
+  children?: React.ReactNode;
+  header?: React.ReactNode;
+  footer?: React.ReactNode;
 };
 
 export default function Modal({
