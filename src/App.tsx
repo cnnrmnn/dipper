@@ -5,7 +5,7 @@ import ModalContext from './context/modal';
 import { me, User } from './api/authentication';
 import Navbar from './components/navbar/Navbar';
 import Main from './components/Main';
-import { Address, getAddresses } from './api/address';
+import { Address } from './api/address';
 import { getOrders, Order } from './api/order';
 import { getCart, TripleDipper } from './api/cart';
 
