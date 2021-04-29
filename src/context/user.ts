@@ -1,7 +1,7 @@
 import React from 'react';
 import { User } from '../api/authentication';
 
-export interface UserContextInterface {
+interface UserContextInterface {
   user: User | null;
   setUser(user: User | null): void;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface ModalContextInterface {
+interface ModalContextInterface {
   modal: null | JSX.Element;
   setModal(modal: null | JSX.Element): void;
   closeModal(): void;
