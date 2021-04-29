@@ -1,5 +1,6 @@
 import { Address, createAddress } from '../../../api/address';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import ModalContext from '../../../context/modal';
 import ModalForm from '../ModalForm';
 import Button from '../../generic/Button';
 import TextInput from '../../generic/TextInput';
@@ -10,14 +11,14 @@ import styles from './AddressModal.css';
 type Props = {
   addAddress(address: Address): void;
   setAddress(address: null | Address): void;
-  close(): void;
 };
 
 export default function AddressModal({
   addAddress,
   setAddress,
-  close,
 }: Props): JSX.Element {
+  const { closeModal } = useContext(ModalContext);
+
   const [street, setStreet] = useState('');
   const [unit, setUnit] = useState('');
   const [city, setCity] = useState('');
@@ -43,7 +44,7 @@ export default function AddressModal({
       setAddress(address);
       addAddress(address);
       setLoading(false);
-      close();
+      closeModal();
     } catch (error) {
       setLoading(false);
       setError(error.response.errors[0].message);
@@ -51,7 +52,7 @@ export default function AddressModal({
   }
 
   return (
-    <Modal title="Add an address" height="auto" width="350px" close={close}>
+    <Modal title="Add an address" height="auto" width="350px">
       <ModalForm onSubmit={handleSubmit}>
         <div className={styles.streetRow}>
           <TextInput value={street} setValue={setStreet} placeholder="Street" />

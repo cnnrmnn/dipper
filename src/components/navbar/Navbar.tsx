@@ -1,53 +1,82 @@
-import { useContext } from 'react';
-import { logOut } from '../../api/authentication';
+import { useContext, useEffect, useState } from 'react';
 import UserContext from '../../context/user';
+import ModalContext from '../../context/modal';
+import { logOut } from '../../api/authentication';
+import OrdersModal from '../modal/order/OrdersModal';
 import AddressDropdown from './AddressDropdown';
 import Button from '../generic/Button';
 import Dropdown from '../generic/Dropdown';
 import DropdownItem from '../generic/DropdownItem';
-import { Address } from '../../api/address';
+import AuthenticationModal from '../modal/authentication/AuthenticationModal';
 import styles from './Navbar.css';
+import { Address, getAddresses } from '../../api/address';
+import { Order } from '../../api/order';
+import { TripleDipper } from '../../api/cart';
 
 type Props = {
-  setModal(modal: string): void;
+  appendToCart(tripleDippers: TripleDipper[]): void;
+  orders: Order[];
   address: Address | null;
   setAddress(address: Address | null): void;
-  addresses: Address[];
 };
 
 export default function Navbar({
-  setModal,
+  appendToCart,
+  orders,
   address,
   setAddress,
-  addresses,
 }: Props): JSX.Element {
   const { user, setUser } = useContext(UserContext);
+  const { setModal } = useContext(ModalContext);
 
   async function handleLogOut(): Promise<void> {
     setUser(null);
     await logOut();
   }
+
+  function showOrdersModal(): void {
+    setModal(<OrdersModal orders={orders} appendToCart={appendToCart} />);
+  }
+
+  function showAuthenticationModal(): void {
+    setModal(<AuthenticationModal />);
+  }
+
+  const [addresses, setAddresses] = useState([] as Address[]);
+  function addAddress(address: Address): void {
+    setAddresses(addresses.concat(address));
+  }
+
+  useEffect(() => {
+    async function updateAddresses(): Promise<void> {
+      const addresses = await getAddresses();
+      setAddresses(addresses);
+      setAddress(addresses[0]);
+    }
+    updateAddresses();
+  }, [user, setAddress]);
+
   return (
     <nav className={styles.navbar}>
       <h1 className={styles.logo}>dipper</h1>
       {user && (
         <AddressDropdown
-          setModal={setModal}
           address={address}
           setAddress={setAddress}
+          addAddress={addAddress}
           addresses={addresses}
         />
       )}
       {user ? (
         <Dropdown title={`${user.firstName} ${user.lastName}`}>
-          <DropdownItem text="Orders" onClick={() => setModal('orders')} />
+          <DropdownItem text="Orders" onClick={showOrdersModal} />
           <DropdownItem text="Log out" onClick={handleLogOut} />
         </Dropdown>
       ) : (
         <Button
           text="Sign in"
           fontSize="1rem"
-          onClick={() => setModal('authentication')}
+          onClick={showAuthenticationModal}
         />
       )}
     </nav>

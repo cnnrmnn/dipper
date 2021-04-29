@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
+import ModalContext from '../../context/modal';
 import ModalButton from './ModalButton';
 import styles from './Modal.css';
 
@@ -13,7 +14,6 @@ type Props = {
   children?: JSX.Element | JSX.Element[];
   header?: JSX.Element | null;
   footer?: JSX.Element | null;
-  close(): void;
 };
 
 export default function Modal({
@@ -24,11 +24,12 @@ export default function Modal({
   minWidth,
   maxHeight,
   maxWidth,
-  close,
   children,
   header,
   footer,
 }: Props): JSX.Element {
+  const { closeModal } = useContext(ModalContext);
+
   const modalRef = useRef<HTMLDivElement>(null);
 
   function setBodyOverflow(value: string): void {
@@ -44,7 +45,7 @@ export default function Modal({
 
   function handleClick(event: React.MouseEvent): void {
     if (modalRef.current && !modalRef.current.contains(event.target as Node))
-      close();
+      closeModal();
   }
 
   function handleKeyDown(event: KeyboardEvent): void {
@@ -71,7 +72,7 @@ export default function Modal({
           <div className={styles.header}>
             <div className={styles.bar}>
               <h2 className={styles.heading}>{title}</h2>
-              <ModalButton close={close} />
+              <ModalButton close={closeModal} />
             </div>
             {header}
           </div>

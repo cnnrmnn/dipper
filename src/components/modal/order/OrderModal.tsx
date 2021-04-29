@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import ModalContext from '../../../context/modal';
 import { Order, orderAgain } from '../../../api/order';
 import { TripleDipper } from '../../../api/cart';
 import Modal from '../Modal';
@@ -8,20 +9,25 @@ import ModalError from '../ModalError';
 import ModalReceipt from '../ModalReceipt';
 import Button from '../../generic/Button';
 import styles from './OrderModal.css';
+import OrdersModal from './OrdersModal';
 
 type Props = {
-  setModal(modal: string): void;
-  addToCart(tripleDippers: TripleDipper[]): void;
+  appendToCart(tripleDippers: TripleDipper[]): void;
   order: Order | null;
-  close(): void;
+  orders: Order[];
 };
 
 export default function OrderModal({
-  setModal,
-  addToCart,
+  appendToCart,
   order,
-  close,
+  orders,
 }: Props): JSX.Element {
+  const { setModal, closeModal } = useContext(ModalContext);
+
+  function showOrdersModal(): void {
+    setModal(<OrdersModal orders={orders} appendToCart={appendToCart} />);
+  }
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   async function handleClick(): Promise<void> {
@@ -30,9 +36,9 @@ export default function OrderModal({
         setError('');
         setLoading(true);
         const tripleDippers = await orderAgain(order);
-        addToCart(tripleDippers);
+        appendToCart(tripleDippers);
         setLoading(false);
-        close();
+        closeModal();
       } catch (error) {
         setLoading(false);
         setError(error.response.errors[0].message);
@@ -42,7 +48,6 @@ export default function OrderModal({
   return (
     <Modal
       title="Order"
-      close={close}
       width="400px"
       maxHeight="80%"
       footer={
@@ -51,7 +56,7 @@ export default function OrderModal({
           <Button
             text="Back to orders"
             fontSize="1rem"
-            onClick={() => setModal('orders')}
+            onClick={showOrdersModal}
           />
           <Button
             text="Order again"

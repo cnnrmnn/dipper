@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
-import { signUp } from '../../../api/authentication';
 import UserContext from '../../../context/user';
+import ModalContext from '../../../context/modal';
+import { signUp } from '../../../api/authentication';
 import Button from '../../generic/Button';
 import ModalForm from '../../modal/ModalForm';
 import ModalError from '../../modal/ModalError';
@@ -10,15 +11,12 @@ import styles from './SignupForm.css';
 
 type Props = {
   phone: string;
-  setForm(form: string): void;
-  close(): void;
 };
 
-export default function SignupForm({
-  phone,
-  setForm,
-  close,
-}: Props): JSX.Element {
+export default function SignupForm({ phone }: Props): JSX.Element {
+  const { setUser } = useContext(UserContext);
+  const { closeModal } = useContext(ModalContext);
+
   const [code, setCode] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -27,7 +25,6 @@ export default function SignupForm({
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { setUser } = useContext(UserContext);
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     try {
@@ -36,7 +33,7 @@ export default function SignupForm({
       const user = await signUp(firstName, lastName, phone, email, code);
       setUser(user);
       setLoading(false);
-      close();
+      closeModal();
     } catch (error) {
       setLoading(false);
       setError(error.response.errors[0].message);

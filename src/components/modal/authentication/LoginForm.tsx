@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import UserContext from '../../../context/user';
+import ModalContext from '../../../context/modal';
 import Button from '../../generic/Button';
 import ModalForm from '../ModalForm';
 import ModalError from '../ModalError';
@@ -8,15 +9,16 @@ import { logIn } from '../../../api/authentication';
 
 type Props = {
   phone: string;
-  close(): void;
 };
 
-export default function LoginForm({ phone, close }: Props): JSX.Element {
+export default function LoginForm({ phone }: Props): JSX.Element {
+  const { setUser } = useContext(UserContext);
+  const { closeModal } = useContext(ModalContext);
+
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { setUser } = useContext(UserContext);
   async function handleSubmit(event: React.SyntheticEvent): Promise<void> {
     event.preventDefault();
     try {
@@ -25,7 +27,7 @@ export default function LoginForm({ phone, close }: Props): JSX.Element {
       const user = await logIn(phone, code);
       setUser(user);
       setLoading(false);
-      close();
+      closeModal();
     } catch (error) {
       setLoading(false);
       setError(error.response.errors[0].message);

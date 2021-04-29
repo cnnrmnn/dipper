@@ -1,8 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 import UserContext from '../context/user';
+import ModalContext from '../context/modal';
+import AuthenticationModal from './modal/authentication/AuthenticationModal';
 import ItemBoxContainer from './item/ItemBoxContainer';
 import TripleDipperBox from './cart/TripleDipperBox';
 import CartBox from './cart/CartBox';
+import OrdersBox from './order/OrdersBox';
 import { ItemValue, getItemValues } from '../api/value';
 import { Order } from '../api/order';
 import {
@@ -13,28 +16,26 @@ import {
 } from '../api/cart';
 import { Address } from '../api/address';
 import styles from './Main.css';
-import OrdersBox from './order/OrdersBox';
 
 type Props = {
-  setModal(modal: string): void;
   cart: TripleDipper[];
   setCart(cart: TripleDipper[]): void;
-  setOrder(order: Order | null): void;
-  setModalOrder(order: Order | null): void;
+  appendToCart(tripleDippers: TripleDipper[]): void;
+  addOrder(order: Order): void;
   orders: Order[];
   address: Address | null;
 };
 
 export default function Main({
-  setModal,
   cart,
   setCart,
-  setOrder,
-  setModalOrder,
+  appendToCart,
+  addOrder,
   orders,
   address,
 }: Props): JSX.Element {
   const { user } = useContext(UserContext);
+  const { setModal } = useContext(ModalContext);
 
   const [itemValues, setItemValues] = useState([] as ItemValue[]);
   useEffect(() => {
@@ -57,14 +58,14 @@ export default function Main({
 
   async function createTripleDipper(): Promise<void> {
     if (!user) {
-      setModal('authentication');
+      setModal(<AuthenticationModal />);
       return;
     }
     // Remove id field
     const tripleDipper = await addToCart(
       itemInputs.map(({ id, ...rest }) => rest)
     );
-    setCart(cart.concat(tripleDipper));
+    appendToCart([tripleDipper]);
     setItemInputs([]);
   }
   async function destroyTripleDipper(tripleDipperId: number): Promise<void> {
@@ -82,11 +83,7 @@ export default function Main({
   return (
     <main className={styles.main}>
       <div className={`${styles.sidebar} ${styles.left}`}>
-        <OrdersBox
-          orders={orders}
-          setModal={setModal}
-          setModalOrder={setModalOrder}
-        />
+        <OrdersBox orders={orders} appendToCart={appendToCart} />
       </div>
       <div className={styles.center}>
         <ItemBoxContainer
@@ -104,8 +101,7 @@ export default function Main({
           addToCart={createTripleDipper}
         />
         <CartBox
-          setModal={setModal}
-          setOrder={setOrder}
+          addOrder={addOrder}
           address={address}
           cart={cart}
           removeFromCart={destroyTripleDipper}

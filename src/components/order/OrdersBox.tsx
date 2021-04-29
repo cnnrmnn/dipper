@@ -1,19 +1,29 @@
+import ModalContext from '../../context/modal';
 import { Order } from '../../api/order';
 import Box from '../Box';
 import OrderItem from './OrderItem';
 import styles from './OrdersBox.css';
+import { useContext } from 'react';
+import OrderModal from '../modal/order/OrderModal';
+import { TripleDipper } from '../../api/cart';
 
 type Props = {
+  appendToCart(tripleDippers: TripleDipper[]): void;
   orders: Order[];
-  setModal(modal: string): void;
-  setModalOrder(order: Order | null): void;
 };
 
 export default function OrdersBox({
+  appendToCart,
   orders,
-  setModal,
-  setModalOrder,
 }: Props): JSX.Element {
+  const { setModal } = useContext(ModalContext);
+
+  function showOrderModal(order: Order): () => void {
+    return () =>
+      setModal(
+        <OrderModal appendToCart={appendToCart} order={order} orders={orders} />
+      );
+  }
   return (
     <Box>
       <h2 className={styles.heading}>Orders</h2>
@@ -21,10 +31,7 @@ export default function OrdersBox({
         <OrderItem
           order={order}
           key={order.id}
-          onClick={() => {
-            setModalOrder(order);
-            setModal('order');
-          }}
+          onClick={showOrderModal(order)}
         />
       ))}
     </Box>

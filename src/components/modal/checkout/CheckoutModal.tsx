@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import ModalContext from '../../../context/modal';
 import { Order } from '../../../api/order';
 import Button from '../../generic/Button';
 import Modal from '../Modal';
@@ -5,18 +7,19 @@ import ModalItem from '../ModalItem';
 import ModalAddress from '../ModalAddress';
 import ModalReceipt from '../ModalReceipt';
 import styles from './CheckoutModal.css';
+import PaymentModal from './PaymentModal';
 
 type Props = {
   order: Order | null;
-  setModal(modal: string): void;
-  close(): void;
+  addOrder(order: Order): void;
 };
 
-export default function CheckoutModal({
-  order,
-  setModal,
-  close,
-}: Props): JSX.Element {
+export default function CheckoutModal({ order, addOrder }: Props): JSX.Element {
+  const { setModal } = useContext(ModalContext);
+  function showPaymentModal(): void {
+    setModal(<PaymentModal addOrder={addOrder} />);
+  }
+
   const header = order && (
     <div className={styles.header}>
       <h3 className={styles.heading}>Delivery</h3>
@@ -28,11 +31,7 @@ export default function CheckoutModal({
     <div className={styles.footer}>
       <ModalReceipt order={order} />
       <div className={styles.button}>
-        <Button
-          text="Continue"
-          fontSize="1rem"
-          onClick={() => setModal('payment')}
-        />
+        <Button text="Continue" fontSize="1rem" onClick={showPaymentModal} />
       </div>
     </div>
   );
@@ -42,7 +41,6 @@ export default function CheckoutModal({
       maxHeight="80%"
       minHeight="400px"
       width="350px"
-      close={close}
       header={header}
       footer={footer}
     >

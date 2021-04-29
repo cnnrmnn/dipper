@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import ModalContext from '../../../context/modal';
 import { Order, placeOrder } from '../../../api/order';
 import Button from '../../generic/Button';
 import CreditCardInput from '../../generic/CreditCardInput';
@@ -12,10 +13,11 @@ import styles from './PaymentModal.css';
 
 type Props = {
   addOrder(order: Order): void;
-  close(): void;
 };
 
-export default function PaymentModal({ addOrder, close }: Props): JSX.Element {
+export default function PaymentModal({ addOrder }: Props): JSX.Element {
+  const { closeModal } = useContext(ModalContext);
+
   const [name, setName] = useState('');
   const [card, setCard] = useState('');
   const [expiration, setExpiration] = useState('');
@@ -54,7 +56,6 @@ export default function PaymentModal({ addOrder, close }: Props): JSX.Element {
       title={order ? 'Order placed' : 'Payment'}
       height="auto"
       width="350px"
-      close={close}
     >
       {order ? (
         <div className={styles.body}>
@@ -66,7 +67,7 @@ export default function PaymentModal({ addOrder, close }: Props): JSX.Element {
             deliveryTime={order.deliveryTime}
           />
           <div className={styles.button}>
-            <Button text="Close" fontSize="1rem" onClick={close} />
+            <Button text="Close" fontSize="1rem" onClick={closeModal} />
           </div>
         </div>
       ) : (

@@ -4,11 +4,7 @@ import Modal from '../Modal';
 import SignupForm from './SignupForm';
 import VerificationCodeForm from './VerificationCodeForm';
 
-type Props = {
-  close(): void;
-};
-
-export default function AuthenticationModal({ close }: Props): JSX.Element {
+export default function AuthenticationModal(): JSX.Element {
   const [form, setForm] = useState('code');
   const [phone, setPhone] = useState('');
   function currentForm(): JSX.Element {
@@ -22,9 +18,9 @@ export default function AuthenticationModal({ close }: Props): JSX.Element {
           />
         );
       case 'signup':
-        return <SignupForm setForm={setForm} phone={phone} close={close} />;
+        return <SignupForm phone={phone} />;
       case 'login':
-        return <LoginForm phone={phone} close={close} />;
+        return <LoginForm phone={phone} />;
       // This case should never be reached but ensures the function always
       // returns a JSX.Element.
       default:
@@ -46,7 +42,7 @@ export default function AuthenticationModal({ close }: Props): JSX.Element {
   }
 
   return (
-    <Modal title={currentTitle()} height="auto" width="300px" close={close}>
+    <Modal title={currentTitle()} height="auto" width="300px">
       {currentForm()}
     </Modal>
   );
