@@ -11,10 +11,11 @@ import ModalAddress from '../ModalAddress';
 import styles from './PaymentModal.css';
 
 type Props = {
+  addOrder(order: Order): void;
   close(): void;
 };
 
-export default function PaymentModal({ close }: Props): JSX.Element {
+export default function PaymentModal({ addOrder, close }: Props): JSX.Element {
   const [name, setName] = useState('');
   const [card, setCard] = useState('');
   const [expiration, setExpiration] = useState('');
@@ -39,6 +40,7 @@ export default function PaymentModal({ close }: Props): JSX.Element {
         cvv,
         zip
       );
+      addOrder(ord);
       setOrder(ord);
       setLoading(false);
     } catch (error) {

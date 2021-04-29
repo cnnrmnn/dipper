@@ -53,6 +53,9 @@ export default function App(): JSX.Element {
     }
     updateOrders();
   }, [user]);
+  function addOrder(order: Order): void {
+    setOrders(orders.concat(order));
+  }
 
   const [modal, setModal] = useState('');
   function close(): void {
@@ -84,6 +87,7 @@ export default function App(): JSX.Element {
           cart={cart}
           order={order}
           orders={orders}
+          addOrder={addOrder}
           modal={modal}
           setModal={setModal}
           close={close}

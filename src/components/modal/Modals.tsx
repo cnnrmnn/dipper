@@ -13,6 +13,7 @@ type Props = {
   cart: TripleDipper[];
   setCart(cart: TripleDipper[]): void;
   order: Order | null;
+  addOrder(order: Order): void;
   orders: Order[];
   modal: string;
   setModal(modal: string): void;
@@ -25,6 +26,7 @@ export default function Modals({
   cart,
   setCart,
   order,
+  addOrder,
   orders,
   modal,
   setModal,
@@ -47,7 +49,7 @@ export default function Modals({
           <CheckoutModal order={order} close={close} setModal={setModal} />
         );
       case 'payment':
-        return <PaymentModal close={close} />;
+        return <PaymentModal addOrder={addOrder} close={close} />;
       case 'orders':
         return (
           <OrdersModal
