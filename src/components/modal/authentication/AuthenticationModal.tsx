@@ -42,7 +42,7 @@ export default function AuthenticationModal(): JSX.Element {
   }
 
   return (
-    <Modal title={currentTitle()} height="auto" width="300px">
+    <Modal title={currentTitle()} width="300px">
       {currentForm()}
     </Modal>
   );

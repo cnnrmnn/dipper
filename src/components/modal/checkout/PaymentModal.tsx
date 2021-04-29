@@ -52,11 +52,7 @@ export default function PaymentModal({ addOrder }: Props): JSX.Element {
   }
 
   return (
-    <Modal
-      title={order ? 'Order placed' : 'Payment'}
-      height="auto"
-      width="350px"
-    >
+    <Modal title={order ? 'Order placed' : 'Payment'} width="350px">
       {order ? (
         <div className={styles.body}>
           <h3

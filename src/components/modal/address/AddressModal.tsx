@@ -52,7 +52,7 @@ export default function AddressModal({
   }
 
   return (
-    <Modal title="Add an address" height="auto" width="350px">
+    <Modal title="Add an address" width="350px">
       <ModalForm onSubmit={handleSubmit}>
         <div className={styles.streetRow}>
           <TextInput value={street} setValue={setStreet} placeholder="Street" />
