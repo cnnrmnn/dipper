@@ -27,13 +27,17 @@ export default function OrdersBox({
   return (
     <Box>
       <h2 className={styles.heading}>Orders</h2>
-      {orders.map((order) => (
-        <OrderItem
-          order={order}
-          key={order.id}
-          onClick={showOrderModal(order)}
-        />
-      ))}
+      {orders.length > 0 ? (
+        orders.map((order) => (
+          <OrderItem
+            order={order}
+            key={order.id}
+            onClick={showOrderModal(order)}
+          />
+        ))
+      ) : (
+        <h3 className={styles.subheading}>No orders yet</h3>
+      )}
     </Box>
   );
 }

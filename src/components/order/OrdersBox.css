@@ -2,3 +2,10 @@
   font-size: 1.25rem;
   margin: 0;
 }
+
+.subheading {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
