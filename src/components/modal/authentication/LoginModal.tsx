@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import UserContext from '../../../context/user';
 import ModalContext from '../../../context/modal';
 import Button from '../../generic/Button';
+import Modal from '../Modal';
 import ModalForm from '../ModalForm';
 import ModalError from '../ModalError';
 import VerificationCodeInput from '../../generic/VerificationCodeInput';
@@ -11,7 +12,7 @@ type Props = {
   phone: string;
 };
 
-export default function LoginForm({ phone }: Props): JSX.Element {
+export default function LoginModal({ phone }: Props): JSX.Element {
   const { setUser } = useContext(UserContext);
   const { closeModal } = useContext(ModalContext);
 
@@ -35,16 +36,18 @@ export default function LoginForm({ phone }: Props): JSX.Element {
   }
 
   return (
-    <ModalForm onSubmit={handleSubmit}>
-      <VerificationCodeInput value={code} setValue={setCode} />
-      {error && <ModalError message={error} />}
-      <Button
-        type="submit"
-        fontSize="1rem"
-        disabled={code.length != 6}
-        loading={loading}
-        text="Log in"
-      />
-    </ModalForm>
+    <Modal title="Log in" width="300px">
+      <ModalForm onSubmit={handleSubmit}>
+        <VerificationCodeInput value={code} setValue={setCode} />
+        {error && <ModalError message={error} />}
+        <Button
+          type="submit"
+          fontSize="1rem"
+          disabled={code.length != 6}
+          loading={loading}
+          text="Log in"
+        />
+      </ModalForm>
+    </Modal>
   );
 }

@@ -7,13 +7,14 @@ import ModalForm from '../../modal/ModalForm';
 import ModalError from '../../modal/ModalError';
 import TextInput from '../../generic/TextInput';
 import VerificationCodeInput from '../../generic/VerificationCodeInput';
-import styles from './SignupForm.css';
+import styles from './SignupModal.css';
+import Modal from '../Modal';
 
 type Props = {
   phone: string;
 };
 
-export default function SignupForm({ phone }: Props): JSX.Element {
+export default function SignupModal({ phone }: Props): JSX.Element {
   const { setUser } = useContext(UserContext);
   const { closeModal } = useContext(ModalContext);
 
@@ -45,34 +46,36 @@ export default function SignupForm({ phone }: Props): JSX.Element {
   }
 
   return (
-    <ModalForm onSubmit={handleSubmit}>
-      <div className={styles.codeInput}>
-        <VerificationCodeInput value={code} setValue={setCode} />
-      </div>
-      <TextInput
-        value={firstName}
-        setValue={setFirstName}
-        placeholder="First name"
-      />
-      <TextInput
-        value={lastName}
-        setValue={setLastName}
-        placeholder="Last name"
-      />
-      <TextInput value={email} setValue={setEmail} placeholder="Email" />
-      {error && <ModalError message={error} />}
-      <Button
-        type="submit"
-        fontSize="1rem"
-        disabled={
-          code.length !== 6 ||
-          firstName.length === 0 ||
-          lastName.length === 0 ||
-          !validEmail(email)
-        }
-        loading={loading}
-        text="Sign up"
-      />
-    </ModalForm>
+    <Modal title="Sign up" width="300px">
+      <ModalForm onSubmit={handleSubmit}>
+        <div className={styles.codeInput}>
+          <VerificationCodeInput value={code} setValue={setCode} />
+        </div>
+        <TextInput
+          value={firstName}
+          setValue={setFirstName}
+          placeholder="First name"
+        />
+        <TextInput
+          value={lastName}
+          setValue={setLastName}
+          placeholder="Last name"
+        />
+        <TextInput value={email} setValue={setEmail} placeholder="Email" />
+        {error && <ModalError message={error} />}
+        <Button
+          type="submit"
+          fontSize="1rem"
+          disabled={
+            code.length !== 6 ||
+            firstName.length === 0 ||
+            lastName.length === 0 ||
+            !validEmail(email)
+          }
+          loading={loading}
+          text="Sign up"
+        />
+      </ModalForm>
+    </Modal>
   );
 }

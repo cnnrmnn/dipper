@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import UserContext from '../context/user';
 import ModalContext from '../context/modal';
-import AuthenticationModal from './modal/authentication/AuthenticationModal';
 import ItemBoxContainer from './item/ItemBoxContainer';
 import TripleDipperBox from './cart/TripleDipperBox';
 import CartBox from './cart/CartBox';
@@ -16,6 +15,7 @@ import {
 } from '../api/cart';
 import { Address } from '../api/address';
 import styles from './Main.css';
+import VerificationCodeModal from './modal/authentication/VerificationCodeModal';
 
 type Props = {
   cart: TripleDipper[];
@@ -58,7 +58,7 @@ export default function Main({
 
   async function createTripleDipper(): Promise<void> {
     if (!user) {
-      setModal(<AuthenticationModal />);
+      setModal(<VerificationCodeModal />);
       return;
     }
     // Remove id field

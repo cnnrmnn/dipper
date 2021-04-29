@@ -7,11 +7,11 @@ import AddressDropdown from './AddressDropdown';
 import Button from '../generic/Button';
 import Dropdown from '../generic/Dropdown';
 import DropdownItem from '../generic/DropdownItem';
-import AuthenticationModal from '../modal/authentication/AuthenticationModal';
 import styles from './Navbar.css';
 import { Address, getAddresses } from '../../api/address';
 import { Order } from '../../api/order';
 import { TripleDipper } from '../../api/cart';
+import VerificationCodeModal from '../modal/authentication/VerificationCodeModal';
 
 type Props = {
   appendToCart(tripleDippers: TripleDipper[]): void;
@@ -38,8 +38,8 @@ export default function Navbar({
     setModal(<OrdersModal orders={orders} appendToCart={appendToCart} />);
   }
 
-  function showAuthenticationModal(): void {
-    setModal(<AuthenticationModal />);
+  function showVerificationCodeModal(): void {
+    setModal(<VerificationCodeModal />);
   }
 
   const [addresses, setAddresses] = useState([] as Address[]);
@@ -78,7 +78,7 @@ export default function Navbar({
         <Button
           text="Sign in"
           fontSize="1rem"
-          onClick={showAuthenticationModal}
+          onClick={showVerificationCodeModal}
         />
       )}
     </nav>
