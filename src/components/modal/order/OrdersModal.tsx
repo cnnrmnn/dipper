@@ -1,6 +1,6 @@
 import { Order, orderAgain } from '../../../api/order';
 import Modal from '../Modal';
-import OrdersModalItem from './OrdersModalItem';
+import OrdersModalItem from '../../order/OrderItem';
 import styles from './OrdersModal.css';
 import { useState } from 'react';
 import OrdersModalOrder from './OrdersModalOrder';

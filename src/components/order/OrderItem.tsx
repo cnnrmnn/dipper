@@ -1,16 +1,13 @@
-import { Order, parseDeliveryTime } from '../../../api/order';
-import chevronRight from '../../../../assets/icons/chevron-right.svg';
-import styles from './OrdersModalItem.css';
+import { Order, parseDeliveryTime } from '../../api/order';
+import chevronRight from '../../../assets/icons/chevron-right.svg';
+import styles from './OrderItem.css';
 
 type Props = {
   order: Order;
   onClick(event: React.MouseEvent): void;
 };
 
-export default function OrdersModalItem({
-  order,
-  onClick,
-}: Props): JSX.Element {
+export default function OrderItem({ order, onClick }: Props): JSX.Element {
   return (
     <div className={styles.item} onClick={onClick}>
       <div>
