@@ -3,6 +3,10 @@
   font-weight: 400;
 }
 
+.orders {
+  margin-bottom: 10px;
+}
+
 .orders > :first-child {
   margin-top: 0;
 }
