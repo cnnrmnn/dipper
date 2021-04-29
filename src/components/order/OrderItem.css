@@ -1,5 +1,5 @@
 .item {
-  margin: 10px 0;
+  margin: 5px 0;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -15,5 +15,6 @@
 .subheading {
   font-size: 0.9rem;
   font-weight: 400;
+  color: gray;
   margin: 5px 0;
 }

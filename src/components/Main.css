@@ -5,8 +5,20 @@
   justify-content: space-between;
 }
 
-.right {
+@media (max-width: 1560px) {
+  .left {
+    display: none;
+  }
+}
+
+.center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar {
   position: sticky;
   width: 275px;
-  top: 80px;
+  top: 78px;
 }

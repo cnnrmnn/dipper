@@ -13,12 +13,14 @@ import {
 } from '../api/cart';
 import { Address } from '../api/address';
 import styles from './Main.css';
+import OrdersBox from './order/OrdersBox';
 
 type Props = {
   setModal(modal: string): void;
   cart: TripleDipper[];
   setCart(cart: TripleDipper[]): void;
   setOrder(order: Order | null): void;
+  orders: Order[];
   address: Address | null;
 };
 
@@ -27,6 +29,7 @@ export default function Main({
   cart,
   setCart,
   setOrder,
+  orders,
   address,
 }: Props): JSX.Element {
   const { user } = useContext(UserContext);
@@ -76,13 +79,17 @@ export default function Main({
 
   return (
     <main className={styles.main}>
-      <div></div>
-      <ItemBoxContainer
-        itemValues={itemValues}
-        addItemInput={addItemInput}
-        disabled={itemInputs.length === 3}
-      />
-      <div className={styles.right}>
+      <div className={`${styles.sidebar} ${styles.left}`}>
+        <OrdersBox orders={orders} />
+      </div>
+      <div className={styles.center}>
+        <ItemBoxContainer
+          itemValues={itemValues}
+          addItemInput={addItemInput}
+          disabled={itemInputs.length === 3}
+        />
+      </div>
+      <div className={styles.sidebar}>
         <TripleDipperBox
           itemValues={itemValues}
           itemInputs={itemInputs}

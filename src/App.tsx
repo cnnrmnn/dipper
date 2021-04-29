@@ -76,6 +76,7 @@ export default function App(): JSX.Element {
           cart={cart}
           setCart={setCart}
           setOrder={setOrder}
+          orders={orders}
           address={address}
         />
       </div>
