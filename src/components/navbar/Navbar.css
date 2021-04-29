@@ -6,9 +6,26 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   box-sizing: border-box;
   height: 80px;
+}
+
+.navbar > * {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar > :first-child {
+  justify-content: flex-start;
+}
+
+.navbar > :last-child {
+  justify-content: flex-end;
+}
+
+.dropdown {
+  width: 100%;
 }
 
 .logo {

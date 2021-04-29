@@ -60,12 +60,14 @@ export default function Navbar({
     <nav className={styles.navbar}>
       <h1 className={styles.logo}>dipper</h1>
       {user && (
-        <AddressDropdown
-          address={address}
-          setAddress={setAddress}
-          addAddress={addAddress}
-          addresses={addresses}
-        />
+        <div className={styles.dropdown}>
+          <AddressDropdown
+            address={address}
+            setAddress={setAddress}
+            addAddress={addAddress}
+            addresses={addresses}
+          />
+        </div>
       )}
       {user ? (
         <Dropdown title={`${user.firstName} ${user.lastName}`}>
