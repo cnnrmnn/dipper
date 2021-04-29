@@ -1,7 +1,7 @@
 import styles from './Box.css';
 
 type Props = {
-  children: (null | string | JSX.Element)[];
+  children: React.ReactNode;
 };
 
 export default function Box({ children }: Props): JSX.Element {

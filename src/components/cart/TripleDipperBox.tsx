@@ -1,7 +1,7 @@
 import TripleDipperBoxItem from './TripleDipperBoxItem';
 import { ItemValue } from '../../api/value';
 import { ItemInput } from '../../api/cart';
-import Box from './Box';
+import Box from '../Box';
 import Button from '../generic/Button';
 import styles from './TripleDipperBox.css';
 

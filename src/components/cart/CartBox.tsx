@@ -1,5 +1,5 @@
 import { TripleDipper } from '../../api/cart';
-import Box from './Box';
+import Box from '../Box';
 import BoxError from './BoxError';
 import Button from '../generic/Button';
 import CartBoxItem from './CartBoxItem';
