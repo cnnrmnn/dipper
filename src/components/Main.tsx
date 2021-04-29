@@ -82,9 +82,11 @@ export default function Main({
 
   return (
     <main className={styles.main}>
-      <div className={`${styles.sidebar} ${styles.left}`}>
-        <OrdersBox orders={orders} appendToCart={appendToCart} />
-      </div>
+      {user && (
+        <div className={`${styles.sidebar} ${styles.left}`}>
+          <OrdersBox orders={orders} appendToCart={appendToCart} />
+        </div>
+      )}
       <div className={styles.center}>
         <ItemBoxContainer
           itemValues={itemValues}
