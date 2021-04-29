@@ -1,21 +1,37 @@
-import styles from './SVGButton.css';
+import Button from './Button';
 
 type Props = {
   svg: string;
-  onClick(event: React.MouseEvent): void;
+  fontSize?: string;
+  loading?: boolean;
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+  onClick?(event: React.MouseEvent<HTMLButtonElement>): void;
   height?: string;
   width?: string;
+  fill?: string;
 };
 
 export default function SVGButton({
   svg,
+  fontSize,
+  loading,
+  disabled,
+  type,
+  onClick,
   height,
   width,
-  onClick,
 }: Props): JSX.Element {
   return (
-    <button className={styles.button} onClick={onClick}>
+    <Button
+      fontSize={fontSize}
+      loading={loading}
+      disabled={disabled}
+      unstyled={true}
+      type={type}
+      onClick={onClick}
+    >
       <img src={svg} style={{ height, width }} />
-    </button>
+    </Button>
   );
 }

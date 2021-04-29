@@ -53,11 +53,12 @@ export default function CartBox({
         <h2 className={styles.heading}>Cart</h2>
         <Button
           onClick={handleClick}
-          text="Check out"
           disabled={cart.length === 0}
           loading={loading}
           fontSize="0.85rem"
-        />
+        >
+          Check out
+        </Button>
       </div>
       {error && <BoxError message={error} />}
       <>

@@ -38,10 +38,11 @@ export default function VerificationCodeModal(): JSX.Element {
         <Button
           type="submit"
           fontSize="1rem"
-          text="Send verification code"
           disabled={phone.length !== 10}
           loading={loading}
-        />
+        >
+          Send verification code
+        </Button>
         {error && <ModalError message={error} />}
         <p className={styles.notice}>Message and data rates may apply.</p>
       </ModalForm>

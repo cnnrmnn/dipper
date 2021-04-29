@@ -45,8 +45,9 @@ export default function LoginModal({ phone }: Props): JSX.Element {
           fontSize="1rem"
           disabled={code.length != 6}
           loading={loading}
-          text="Log in"
-        />
+        >
+          Log in
+        </Button>
       </ModalForm>
     </Modal>
   );

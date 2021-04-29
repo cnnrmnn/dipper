@@ -1,11 +1,11 @@
+import { useContext } from 'react';
 import ModalContext from '../../context/modal';
+import { addressString, Address } from '../../api/address';
 import Dropdown from '../generic/Dropdown';
 import AddressDropdownItem from './AddressDropdownItem';
 import Button from '../generic/Button';
-import { addressString, Address } from '../../api/address';
-import styles from './AddressDropdown.css';
-import { useContext } from 'react';
 import AddressModal from '../modal/address/AddressModal';
+import styles from './AddressDropdown.css';
 
 type Props = {
   address: Address | null;
@@ -13,6 +13,7 @@ type Props = {
   addAddress(address: Address): void;
   addresses: Address[];
 };
+
 export default function AddressDropdown({
   address,
   setAddress,
@@ -50,11 +51,9 @@ export default function AddressDropdown({
           ))}
         </>
         <div className={styles.button}>
-          <Button
-            text="Add an address"
-            fontSize="1rem"
-            onClick={showAddressModal}
-          />
+          <Button fontSize="1rem" onClick={showAddressModal}>
+            Add an address
+          </Button>
         </div>
       </Dropdown>
     </div>

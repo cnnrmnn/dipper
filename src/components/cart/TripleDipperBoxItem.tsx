@@ -42,6 +42,7 @@ export default function TripleDipperBoxItem({
         onClick={() => setInProp(false)}
         height="16px"
         width="16px"
+        fill="pink"
       />
     </BoxItem>
   );

@@ -2,13 +2,13 @@ import { useContext, useState } from 'react';
 import UserContext from '../../../context/user';
 import ModalContext from '../../../context/modal';
 import { signUp } from '../../../api/authentication';
+import Modal from '../Modal';
 import Button from '../../generic/Button';
 import ModalForm from '../../modal/ModalForm';
 import ModalError from '../../modal/ModalError';
 import TextInput from '../../generic/TextInput';
 import VerificationCodeInput from '../../generic/VerificationCodeInput';
 import styles from './SignupModal.css';
-import Modal from '../Modal';
 
 type Props = {
   phone: string;
@@ -73,8 +73,9 @@ export default function SignupModal({ phone }: Props): JSX.Element {
             !validEmail(email)
           }
           loading={loading}
-          text="Sign up"
-        />
+        >
+          Sign up
+        </Button>
       </ModalForm>
     </Modal>
   );

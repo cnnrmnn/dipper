@@ -31,7 +31,9 @@ export default function CheckoutModal({ order, addOrder }: Props): JSX.Element {
     <div className={styles.footer}>
       <ModalReceipt order={order} />
       <div className={styles.button}>
-        <Button text="Continue" fontSize="1rem" onClick={showPaymentModal} />
+        <Button fontSize="1rem" onClick={showPaymentModal}>
+          Continue
+        </Button>
       </div>
     </div>
   );

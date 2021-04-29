@@ -63,7 +63,9 @@ export default function PaymentModal({ addOrder }: Props): JSX.Element {
             deliveryTime={order.deliveryTime}
           />
           <div className={styles.button}>
-            <Button text="Close" fontSize="1rem" onClick={closeModal} />
+            <Button fontSize="1rem" onClick={closeModal}>
+              Close
+            </Button>
           </div>
         </div>
       ) : (
@@ -87,7 +89,6 @@ export default function PaymentModal({ addOrder }: Props): JSX.Element {
           />
           {error && <ModalError message={error} />}
           <Button
-            text="Place order"
             fontSize="1rem"
             type="submit"
             disabled={
@@ -97,7 +98,9 @@ export default function PaymentModal({ addOrder }: Props): JSX.Element {
               zip.length !== 5
             }
             loading={loading}
-          />
+          >
+            Place order
+          </Button>
         </ModalForm>
       )}
     </Modal>

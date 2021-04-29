@@ -70,8 +70,9 @@ export default function AddressModal({
           fontSize="1rem"
           disabled={false}
           loading={loading}
-          text="Add"
-        />
+        >
+          Add
+        </Button>
       </ModalForm>
     </Modal>
   );

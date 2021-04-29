@@ -8,8 +8,8 @@ import ModalItem from '../ModalItem';
 import ModalError from '../ModalError';
 import ModalReceipt from '../ModalReceipt';
 import Button from '../../generic/Button';
-import styles from './OrderModal.css';
 import OrdersModal from './OrdersModal';
+import styles from './OrderModal.css';
 
 type Props = {
   appendToCart(tripleDippers: TripleDipper[]): void;
@@ -53,17 +53,12 @@ export default function OrderModal({
       footer={
         <div className={styles.buttons}>
           {error && <ModalError message={error} />}
-          <Button
-            text="Back to orders"
-            fontSize="1rem"
-            onClick={showOrdersModal}
-          />
-          <Button
-            text="Order again"
-            fontSize="1rem"
-            onClick={handleClick}
-            loading={loading}
-          />
+          <Button fontSize="1rem" onClick={showOrdersModal}>
+            Back to orders
+          </Button>
+          <Button fontSize="1rem" onClick={handleClick} loading={loading}>
+            Order again
+          </Button>
         </div>
       }
     >

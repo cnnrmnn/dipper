@@ -45,16 +45,18 @@ export default function TripleDipperBox({
       <div className={styles.buttons}>
         <Button
           fontSize="0.8rem"
-          text="Clear"
           disabled={itemInputs.length === 0}
           onClick={() => setItemInputs([])}
-        />
+        >
+          Clear
+        </Button>
         <Button
           fontSize="0.8rem"
-          text="Add to cart"
           disabled={itemInputs.length !== 3}
           onClick={addToCart}
-        />
+        >
+          Add to cart
+        </Button>
       </div>
     </Box>
   );

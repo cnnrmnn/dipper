@@ -77,11 +77,9 @@ export default function Navbar({
           <DropdownItem text="Log out" onClick={handleLogOut} />
         </Dropdown>
       ) : (
-        <Button
-          text="Sign in"
-          fontSize="1rem"
-          onClick={showVerificationCodeModal}
-        />
+        <Button fontSize="1rem" onClick={showVerificationCodeModal}>
+          Sign in
+        </Button>
       )}
     </nav>
   );

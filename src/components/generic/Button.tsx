@@ -2,30 +2,33 @@ import threeDots from '../../../assets/icons/three-dots.svg';
 import styles from './Button.css';
 
 type Props = {
-  text: string;
-  fontSize: string;
+  children: React.ReactNode;
+  fontSize?: string;
   loading?: boolean;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
   onClick?(event: React.MouseEvent<HTMLButtonElement>): void;
+  unstyled?: boolean;
 };
 export default function Button({
+  children,
   type,
-  text,
   loading,
   disabled,
   fontSize,
   onClick,
+  unstyled,
 }: Props): JSX.Element {
+  const className = styles.button + (unstyled ? '' : ` ${styles.styled}`);
   return (
     <button
       type={type}
-      className={styles.button}
+      className={className}
       style={{ fontSize }}
       disabled={disabled}
       onClick={onClick}
     >
-      {loading ? <img className={styles.loader} src={threeDots} /> : text}
+      {loading ? <img className={styles.loader} src={threeDots} /> : children}
     </button>
   );
 }
