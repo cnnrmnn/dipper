@@ -6,12 +6,14 @@ import { Address } from '../../api/address';
 import { Order } from '../../api/order';
 import OrdersModal from './order/OrdersModal';
 import { TripleDipper } from '../../api/cart';
+import OrderModal from './order/OrderModal';
 
 type Props = {
   setAddress(address: Address | null): void;
   addAddress(address: Address): void;
-  cart: TripleDipper[];
-  setCart(cart: TripleDipper[]): void;
+  addToCart(tripleDippers: TripleDipper[]): void;
+  setModalOrder(order: Order | null): void;
+  modalOrder: Order | null;
   order: Order | null;
   addOrder(order: Order): void;
   orders: Order[];
@@ -23,9 +25,10 @@ type Props = {
 export default function Modals({
   setAddress,
   addAddress,
-  cart,
-  setCart,
+  addToCart,
   order,
+  modalOrder,
+  setModalOrder,
   addOrder,
   orders,
   modal,
@@ -50,12 +53,24 @@ export default function Modals({
         );
       case 'payment':
         return <PaymentModal addOrder={addOrder} close={close} />;
+      case 'order':
+        return (
+          <OrderModal
+            setModal={setModal}
+            addToCart={addToCart}
+            order={modalOrder}
+            close={() => {
+              close();
+              setModalOrder(null);
+            }}
+          />
+        );
       case 'orders':
         return (
           <OrdersModal
+            setModal={setModal}
+            setModalOrder={setModalOrder}
             orders={orders}
-            cart={cart}
-            setCart={setCart}
             close={close}
           />
         );

@@ -20,6 +20,7 @@ type Props = {
   cart: TripleDipper[];
   setCart(cart: TripleDipper[]): void;
   setOrder(order: Order | null): void;
+  setModalOrder(order: Order | null): void;
   orders: Order[];
   address: Address | null;
 };
@@ -29,6 +30,7 @@ export default function Main({
   cart,
   setCart,
   setOrder,
+  setModalOrder,
   orders,
   address,
 }: Props): JSX.Element {
@@ -80,7 +82,11 @@ export default function Main({
   return (
     <main className={styles.main}>
       <div className={`${styles.sidebar} ${styles.left}`}>
-        <OrdersBox orders={orders} />
+        <OrdersBox
+          orders={orders}
+          setModal={setModal}
+          setModalOrder={setModalOrder}
+        />
       </div>
       <div className={styles.center}>
         <ItemBoxContainer

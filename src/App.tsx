@@ -43,6 +43,9 @@ export default function App(): JSX.Element {
     }
     updateCart();
   }, [user]);
+  function addToCart(tripleDippers: TripleDipper[]): void {
+    setCart(cart.concat(tripleDippers));
+  }
 
   const [order, setOrder] = useState(null as null | Order);
   const [orders, setOrders] = useState([] as Order[]);
@@ -62,6 +65,8 @@ export default function App(): JSX.Element {
     setModal('');
   }
 
+  const [modalOrder, setModalOrder] = useState(null as null | Order);
+
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <div id="app">
@@ -76,6 +81,7 @@ export default function App(): JSX.Element {
           cart={cart}
           setCart={setCart}
           setOrder={setOrder}
+          setModalOrder={setModalOrder}
           orders={orders}
           address={address}
         />
@@ -84,8 +90,9 @@ export default function App(): JSX.Element {
         <Modals
           setAddress={setAddress}
           addAddress={addAddress}
-          setCart={setCart}
-          cart={cart}
+          addToCart={addToCart}
+          modalOrder={modalOrder}
+          setModalOrder={setModalOrder}
           order={order}
           orders={orders}
           addOrder={addOrder}
