@@ -15,3 +15,9 @@
   margin: 0;
   font-size: 1.75rem;
 }
+
+@media (min-width: 1560px) {
+  .orders {
+    display: none;
+  }
+}

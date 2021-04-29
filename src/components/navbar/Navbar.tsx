@@ -69,7 +69,9 @@ export default function Navbar({
       )}
       {user ? (
         <Dropdown title={`${user.firstName} ${user.lastName}`}>
-          <DropdownItem text="Orders" onClick={showOrdersModal} />
+          <div className={styles.orders}>
+            <DropdownItem text="Orders" onClick={showOrdersModal} />
+          </div>
           <DropdownItem text="Log out" onClick={handleLogOut} />
         </Dropdown>
       ) : (
