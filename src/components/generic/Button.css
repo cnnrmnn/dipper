@@ -11,7 +11,7 @@
 
 .button.styled {
   background-color: white;
-  padding: 2px 5px;
+  padding: 3px 5px;
   border: solid 2px var(--primary-color);
   border-radius: 3px;
 }

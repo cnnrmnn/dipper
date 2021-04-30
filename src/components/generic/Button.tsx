@@ -24,7 +24,7 @@ export default function Button({
     <button
       type={type}
       className={className}
-      style={{ fontSize, minHeight: fontSize }}
+      style={{ fontSize, height: fontSize }}
       disabled={disabled}
       onClick={onClick}
     >

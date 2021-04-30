@@ -70,16 +70,20 @@ export default function Navbar({
         </div>
       )}
       {user ? (
-        <Dropdown title={`${user.firstName} ${user.lastName}`}>
-          <div className={styles.orders}>
-            <DropdownItem text="Orders" onClick={showOrdersModal} />
-          </div>
-          <DropdownItem text="Log out" onClick={handleLogOut} />
-        </Dropdown>
+        <div>
+          <Dropdown title={`${user.firstName} ${user.lastName}`}>
+            <div className={styles.orders}>
+              <DropdownItem text="Orders" onClick={showOrdersModal} />
+            </div>
+            <DropdownItem text="Log out" onClick={handleLogOut} />
+          </Dropdown>
+        </div>
       ) : (
-        <Button fontSize="1rem" onClick={showVerificationCodeModal}>
-          Sign in
-        </Button>
+        <div>
+          <Button fontSize="1rem" onClick={showVerificationCodeModal}>
+            Sign in
+          </Button>
+        </div>
       )}
     </nav>
   );
