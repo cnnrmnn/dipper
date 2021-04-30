@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import ModalContext from '../../context/modal';
-import ModalButton from './ModalButton';
+import SVGButton from '../generic/SVGButton';
+import x from '../../../assets/icons/x.svg';
 import styles from './Modal.css';
 
 type Props = {
@@ -72,7 +73,7 @@ export default function Modal({
           <div className={styles.header}>
             <div className={styles.bar}>
               <h2 className={styles.heading}>{title}</h2>
-              <ModalButton close={closeModal} />
+              <SVGButton svg={x} onClick={closeModal} />
             </div>
             {header}
           </div>
