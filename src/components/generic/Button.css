@@ -1,16 +1,17 @@
 .button {
   background-color: transparent;
   border: none;
-  padding: 2px 5px;
   font-family: inherit;
   font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: content-box;
 }
 
 .button.styled {
   background-color: white;
+  padding: 2px 5px;
   border: solid 2px var(--primary-color);
   border-radius: 3px;
 }
@@ -44,5 +45,4 @@
 .loader {
   width: 30px;
   height: 8px;
-  padding-bottom: 1px;
 }
